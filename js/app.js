@@ -5137,7 +5137,7 @@ window.moveAdminItem = function(type, id, direction) {
         
         const summaryBlock = document.getElementById('balanceSummaryBlock');
         if (summaryBlock) {
-            summaryBlock.innerHTML = \
+            summaryBlock.innerHTML = 
                 <div style="background: #0f172a; border-radius: 12px; padding: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
                     <div style="display: flex; align-items: center; gap: 12px; color: #94a3b8; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">
                         <i data-lucide="pie-chart" style="width: 24px; height: 24px; color: #38bdf8;"></i> 
@@ -5146,19 +5146,19 @@ window.moveAdminItem = function(type, id, direction) {
                     <div style="display: flex; gap: 40px; flex-wrap: wrap; align-items: center;">
                         <div style="display: flex; flex-direction: column;">
                             <span style="color: #94a3b8; font-size: 0.8rem; text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Ventas Totales</span>
-                            <span style="color: #f8fafc; font-size: 1.25rem; font-weight: 700;"> + "" + </span>
+                            <span style="color: #f8fafc; font-size: 1.25rem; font-weight: 700;"></span>
                         </div>
                         <div style="display: flex; flex-direction: column;">
                             <span style="color: #94a3b8; font-size: 0.8rem; text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Gastos</span>
-                            <span style="color: #f8fafc; font-size: 1.25rem; font-weight: 700;"> + "" + </span>
+                            <span style="color: #f8fafc; font-size: 1.25rem; font-weight: 700;"></span>
                         </div>
                         <div style="display: flex; flex-direction: column; align-items: flex-end; padding-left: 20px; border-left: 1px solid #334155;">
                             <span style="color: #94a3b8; font-size: 0.8rem; text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Balance Neto</span>
-                            <span style="color:  + "" + ; font-size: 1.6rem; font-weight: 900; text-shadow: 0 2px 4px rgba(0,0,0,0.3);"> + "" + </span>
+                            <span style="color: ; font-size: 1.6rem; font-weight: 900; text-shadow: 0 2px 4px rgba(0,0,0,0.3);"></span>
                         </div>
                     </div>
                 </div>
-            \;
+            ;
         }
 
         tbody.innerHTML = rowsHtml;
