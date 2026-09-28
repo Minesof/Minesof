@@ -5101,7 +5101,7 @@ window.moveAdminItem = function(type, id, direction) {
             return;
         }
 
-        let html = '';
+        let rowsHtml = '';
         let totalSales = 0;
         let totalExp = 0;
 
@@ -5113,7 +5113,7 @@ window.moveAdminItem = function(type, id, direction) {
             totalSales += data.sales;
             totalExp += data.expenses;
 
-            html += `
+            rowsHtml += `
                 <tr style="border-top: 1px solid var(--border-subtle); background: var(--bg-secondary);">
                     <td style="padding: 10px 12px; font-weight: 600; color: var(--text-primary);">${dateStr}</td>
                     <td style="padding: 10px 12px; text-align: right; color: var(--text-primary);">${formatPrice(data.sales)}</td>
@@ -5131,16 +5131,16 @@ window.moveAdminItem = function(type, id, direction) {
         const totalBalance = totalSales - totalExp;
         const totalColor = totalBalance >= 0 ? '#16a34a' : '#dc2626';
 
-        html += `
-            <tr style="border-top: 2px solid var(--border-subtle); background: var(--bg-tertiary);">
+        const totalsHtml = `
+            <tr style="border-top: 2px solid var(--border-subtle); border-bottom: 2px solid var(--border-subtle); background: var(--bg-tertiary);">
                 <td style="padding: 10px 12px; font-weight: 800; color: var(--text-primary);">TOTALES</td>
                 <td style="padding: 10px 12px; text-align: right; font-weight: 800; color: var(--text-primary);">${formatPrice(totalSales)}</td>
                 <td style="padding: 10px 12px; text-align: right; font-weight: 800; color: var(--text-primary);">${formatPrice(totalExp)}</td>
-                                <td style="padding: 10px 12px; text-align: right; font-weight: 800; color: ${totalColor};">${formatPrice(totalBalance)}</td>
+                                <td style="padding: 10px 12px; text-align: right; font-weight: 800; color: ${totalColor}; font-size: 1.1rem;">${formatPrice(totalBalance)}</td>
                 <td style="padding: 10px 12px;"></td>
             </tr>
         `;
-
+        tbody.innerHTML = totalsHtml + rowsHtml + totalsHtml;
         tbody.innerHTML = html;
     }
 
