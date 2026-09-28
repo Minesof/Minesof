@@ -5141,7 +5141,7 @@ window.moveAdminItem = function(type, id, direction) {
             </tr>
         `;
         tbody.innerHTML = totalsHtml + rowsHtml + totalsHtml;
-        tbody.innerHTML = html;
+
     }
 
         // Event listeners for Balance
