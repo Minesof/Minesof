@@ -1,4 +1,4 @@
-﻿// ============================================
+// ============================================
 // FoodX POS PRO - Multiple Client Rows System
 // ============================================
 
@@ -5131,13 +5131,18 @@ window.moveAdminItem = function(type, id, direction) {
         const totalBalance = totalSales - totalExp;
         const totalColor = totalBalance >= 0 ? '#16a34a' : '#dc2626';
 
+        const darkColor = totalBalance >= 0 ? '#4ade80' : '#f87171';
         const totalsHtml = `
-            <tr style="border-top: 2px solid var(--border-subtle); border-bottom: 2px solid var(--border-subtle); background: var(--bg-tertiary);">
-                <td style="padding: 10px 12px; font-weight: 800; color: var(--text-primary);">TOTALES</td>
-                <td style="padding: 10px 12px; text-align: right; font-weight: 800; color: var(--text-primary);">${formatPrice(totalSales)}</td>
-                <td style="padding: 10px 12px; text-align: right; font-weight: 800; color: var(--text-primary);">${formatPrice(totalExp)}</td>
-                                <td style="padding: 10px 12px; text-align: right; font-weight: 800; color: ${totalColor}; font-size: 1.1rem;">${formatPrice(totalBalance)}</td>
-                <td style="padding: 10px 12px;"></td>
+            <tr style="background: #0f172a; border-bottom: 2px solid #1e293b;">
+                <td style="padding: 16px 16px; font-weight: 700; color: #94a3b8; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <i data-lucide="pie-chart" style="width: 16px; height: 16px; color: #38bdf8;"></i> RESUMEN TOTAL
+                    </div>
+                </td>
+                <td style="padding: 16px 12px; text-align: right; font-weight: 600; color: #f8fafc; font-size: 1.1rem;">${formatPrice(totalSales)}</td>
+                <td style="padding: 16px 12px; text-align: right; font-weight: 600; color: #f8fafc; font-size: 1.1rem;">${formatPrice(totalExp)}</td>
+                <td style="padding: 16px 12px; text-align: right; font-weight: 800; color: ${darkColor}; font-size: 1.3rem;">${formatPrice(totalBalance)}</td>
+                <td style="padding: 16px 12px;"></td>
             </tr>
         `;
         tbody.innerHTML = totalsHtml + rowsHtml + totalsHtml;
