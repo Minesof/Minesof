@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // DATA MIGRATION (EXCEL IMPORT)
             window.downloadSalesTemplate = function() {
         if (typeof XLSX === 'undefined') {
-            showNotification('Error: Librería Excel no cargada', 'error');
+            showNotification('Error: LibrerÃ­a Excel no cargada', 'error');
             return;
         }
         const data = [
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.downloadExpensesTemplate = function() {
         if (typeof XLSX === 'undefined') {
-            showNotification('Error: Librería Excel no cargada', 'error');
+            showNotification('Error: LibrerÃ­a Excel no cargada', 'error');
             return;
         }
         const data = [
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function handleImportSales(file) {
         if (typeof XLSX === 'undefined') {
-            showNotification('Error: Librería Excel no cargada', 'error');
+            showNotification('Error: LibrerÃ­a Excel no cargada', 'error');
             return;
         }
         showNotification('Procesando ventas...', 'info');
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 
                 if (jsonData.length === 0) {
-                    showNotification('El Excel está vacío', 'error');
+                    showNotification('El Excel estÃ¡ vacÃ­o', 'error');
                     return;
                 }
                 
@@ -160,14 +160,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         paymentMethod: 'Efectivo',
                         checkoutPrinted: true,
                         createdBy: 'Migracion',
-                        items: [{ name: 'Venta Histórica Migrada', price: price, quantity: 1, total: price }]
+                        items: [{ name: 'Venta HistÃ³rica Migrada', price: price, quantity: 1, total: price }]
                     };
                     orders.push(newOrder);
                     importedCount++;
                 });
                 
                 StorageManager.saveOrders(orders);
-                showNotification('Éxito: ' + importedCount + ' ventas importadas');
+                showNotification('Ã‰xito: ' + importedCount + ' ventas importadas');
                 if (state.currentPage === 'history') renderHistoryPage();
             } catch (err) {
                 console.error(err);
@@ -274,7 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
                 
                 StorageManager.saveExpenses(expenses);
-                showNotification('Éxito: ' + importedCount + ' gastos importados');
+                showNotification('Ã‰xito: ' + importedCount + ' gastos importados');
                 if (state.currentPage === 'expenses') renderExpensesPage();
             } catch (err) {
                 console.error(err);
@@ -297,7 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const user = window.auth ? window.auth.currentUser : null;
             if (user) {
                 user.updatePassword(newPass).then(() => {
-                    showNotification('Contraseña de ingreso actualizada exitosamente. Reiniciando sistema...');
+                    showNotification('ContraseÃ±a de ingreso actualizada exitosamente. Reiniciando sistema...');
                     newAccountPassword.value = '';
                     setTimeout(() => window.location.reload(), 1500);
                 }).catch((error) => {
@@ -385,8 +385,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const saveBillingSystemBtn = document.getElementById('saveBillingSystemBtn');
     if (saveBillingSystemBtn) {
         saveBillingSystemBtn.addEventListener('click', () => {
-            window.minesofConfirm("ATENCIÓN: Cambiar el sistema de cobro modificará el flujo de tu negocio.\n\n¿Estás seguro de querer guardar este cambio?", () => {
-                window.minesofPrompt("Escribe CAMBIAR en mayúsculas para confirmar:", (confirmWord) => {
+            window.minesofConfirm("ATENCIÃ“N: Cambiar el sistema de cobro modificarÃ¡ el flujo de tu negocio.\n\nÂ¿EstÃ¡s seguro de querer guardar este cambio?", () => {
+                window.minesofPrompt("Escribe CAMBIAR en mayÃºsculas para confirmar:", (confirmWord) => {
                     if (confirmWord !== "CAMBIAR") {
                         showNotification("Cambio cancelado.", "error");
                         return;
@@ -526,7 +526,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Listen for config loaded from cloud
     window.addEventListener('configLoadedFromCloud', () => {
-        console.log('ðŸ”„ Config loaded from cloud, refreshing UI...');
+        console.log('Ã°Å¸â€â€ž Config loaded from cloud, refreshing UI...');
         renderPosCategories();
         renderPosProducts();
         renderPosCart();
@@ -829,7 +829,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         name: f.name,
                         price: f.price || 0,
                         category: catId,
-                        icon: '•',
+                        icon: 'â€¢',
                         active: true,
                         prodType: f.prodType || 'fixed'
                     });
@@ -920,7 +920,7 @@ window.removeClient = function(e, client) {
     e.stopPropagation();
     if (state.clients.length <= 1) return;
     
-    window.minesofConfirm(`¿Eliminar al cliente ${client} y todos sus productos seleccionados?`, () => {
+    window.minesofConfirm(`Â¿Eliminar al cliente ${client} y todos sus productos seleccionados?`, () => {
         state.clients = state.clients.filter(c => c !== client);
         state.cart = state.cart.filter(item => item.clientName !== client);
         
@@ -997,7 +997,7 @@ window.switchClient = function(client) {
         const label = document.getElementById('quantityModalProductLabel');
         
         if (!input || !modal) {
-            if(typeof showNotification === 'function') showNotification('Por favor, cierra sesión y recarga la página para actualizar', 'error');
+            if(typeof showNotification === 'function') showNotification('Por favor, cierra sesiÃ³n y recarga la pÃ¡gina para actualizar', 'error');
             return;
         }
 
@@ -1024,7 +1024,7 @@ window.switchClient = function(client) {
         const label = document.getElementById('openPriceModalProductLabel');
         
         if (!input || !modal) {
-            if(typeof showNotification === 'function') showNotification('Por favor, cierra sesión y recarga la página para actualizar', 'error');
+            if(typeof showNotification === 'function') showNotification('Por favor, cierra sesiÃ³n y recarga la pÃ¡gina para actualizar', 'error');
             return;
         }
 
@@ -1051,7 +1051,7 @@ window.switchClient = function(client) {
         const label = document.getElementById('textInputModalProductLabel');
 
         if (!input || !modal) {
-            if(typeof showNotification === 'function') showNotification('Por favor, cierra sesión y recarga la página para actualizar', 'error');
+            if(typeof showNotification === 'function') showNotification('Por favor, cierra sesiÃ³n y recarga la pÃ¡gina para actualizar', 'error');
             return;
         }
 
@@ -1289,8 +1289,8 @@ function renderSplitUI() {
         html = `
         <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; color: #94a3b8; text-align: center; padding: 40px;">
             <i data-lucide="package-open" style="width: 64px; height: 64px; margin-bottom: 16px; opacity: 0.5;"></i>
-            <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">¡Todo listo para empezar!</h3>
-            <p style="font-size: 0.95rem; max-width: 300px;">Aún no tienes el menú configurado. Crea tus categorías y productos en la opción <b style="color: var(--accent-primary);">Administrador</b>.</p>
+            <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">Â¡Todo listo para empezar!</h3>
+            <p style="font-size: 0.95rem; max-width: 300px;">AÃºn no tienes el menÃº configurado. Crea tus categorÃ­as y productos en la opciÃ³n <b style="color: var(--accent-primary);">Administrador</b>.</p>
         </div>`;
     }
 
@@ -1308,7 +1308,7 @@ function renderSplitUI() {
             renderSplitUI();
         };
         if (confirmClear) {
-            window.minesofConfirm('¿Estás seguro de vaciar todo el pedido actual?', performClear);
+            window.minesofConfirm('Â¿EstÃ¡s seguro de vaciar todo el pedido actual?', performClear);
         } else {
             performClear();
         }
@@ -1385,7 +1385,7 @@ function renderSplitUI() {
 
     async function submitOrder() {
         if (state.cart.length === 0) {
-            showNotification('âš ï¸ Agrega productos al pedido antes de enviar', 'error');
+            showNotification('Ã¢Å¡Â Ã¯Â¸Â Agrega productos al pedido antes de enviar', 'error');
             return;
         }
 
@@ -1396,7 +1396,7 @@ function renderSplitUI() {
         if (!state.serviceType) state.serviceType = 'salon';
 
         if (!state.appendingOrderId && state.clients.length === 0 && !locationText) {
-            showNotification('âš ï¸ Ingresa al menos un cliente en la orden', 'error');
+            showNotification('Ã¢Å¡Â Ã¯Â¸Â Ingresa al menos un cliente en la orden', 'error');
             return;
         }
 
@@ -1458,14 +1458,14 @@ function renderSplitUI() {
                     StorageManager.addOrder(partialOrder);
                     
                     if (config.billingSystem === 'direct') {
-                        showNotification(`Adición agregada y lista para cobro`);
+                        showNotification(`AdiciÃ³n agregada y lista para cobro`);
                         setTimeout(() => {
                             const checkoutDrawerItem = document.querySelector('.drawer-item[data-page="checkout"]');
                             if (checkoutDrawerItem) checkoutDrawerItem.click();
                             setTimeout(() => window.openPaymentModal(partialOrder.id), 150);
                         }, 50);
                     } else {
-                        showNotification(`Adición agregada al pedido ${originalOrder.orderNumber}`);
+                        showNotification(`AdiciÃ³n agregada al pedido ${originalOrder.orderNumber}`);
                     }
                 }
                 state.appendingOrderId = null;
@@ -1528,7 +1528,7 @@ function renderSplitUI() {
             renderPosClientTabs();
         } catch (err) {
             console.error('Error submitting order:', err);
-            showNotification('âš ï¸ Error al procesar pedido', 'error');
+            showNotification('Ã¢Å¡Â Ã¯Â¸Â Error al procesar pedido', 'error');
         } finally {
             if (submitBtn) {
                 submitBtn.innerHTML = origText;
@@ -1680,7 +1680,7 @@ function renderSplitUI() {
         if (elements.toPrintList) {
             elements.toPrintList.innerHTML = toPrint.length > 0 
                 ? toPrint.reverse().map(o => createCheckoutCard(o)).join('') 
-                : emptyStateHTML('No hay pedidos pendientes', 'Los pedidos activos aparecerán aquí.');
+                : emptyStateHTML('No hay pedidos pendientes', 'Los pedidos activos aparecerÃ¡n aquÃ­.');
         }
         
         if (elements.pendingPaymentList) {
@@ -1692,7 +1692,7 @@ function renderSplitUI() {
         if (elements.paidOrdersList) {
             elements.paidOrdersList.innerHTML = paid.length > 0 
                 ? paid.reverse().map(o => createCheckoutCard(o)).join('') 
-                : emptyStateHTML('No hay ventas cobradas hoy', 'Los pedidos pagados aparecerán aquí.');
+                : emptyStateHTML('No hay ventas cobradas hoy', 'Los pedidos pagados aparecerÃ¡n aquÃ­.');
         }
         
         if (typeof lucide !== 'undefined') lucide.createIcons();
@@ -1905,7 +1905,7 @@ function renderSplitUI() {
 
 
 
-        showNotification(`Añadiendo productos a la Orden ${order.orderNumber}`);
+        showNotification(`AÃ±adiendo productos a la Orden ${order.orderNumber}`);
         if (typeof lucide !== 'undefined') lucide.createIcons();
     };
 
@@ -1999,7 +1999,7 @@ function renderSplitUI() {
                 state.activeClient = state.clients[0];
                 
                 StorageManager.deleteOrder(selectedPaymentOrder.id);
-                showNotification('Pedido devuelto para corrección.');
+                showNotification('Pedido devuelto para correcciÃ³n.');
                 
                 // Return to new-order
                 const newOrderDrawerItem = document.querySelector('.drawer-item[data-page="new-order"]');
@@ -2128,7 +2128,7 @@ function renderSplitUI() {
                 const selectedRadio = document.querySelector('input[name="paymentMethod"]:checked');
 
                 if (!selectedRadio) {
-                    showNotification('âš ï¸ Selecciona un medio de pago', 'error');
+                    showNotification('Ã¢Å¡Â Ã¯Â¸Â Selecciona un medio de pago', 'error');
                     return;
                 }
 
@@ -2143,7 +2143,7 @@ function renderSplitUI() {
                     const total = efectivo + nequi + daviplata;
 
                     if (total < selectedPaymentOrder.totalPrice) {
-                        showNotification(`âš ï¸ Faltan $${formatPrice(selectedPaymentOrder.totalPrice - total).replace('$', '')} para completar el pago`, 'error');
+                        showNotification(`Ã¢Å¡Â Ã¯Â¸Â Faltan $${formatPrice(selectedPaymentOrder.totalPrice - total).replace('$', '')} para completar el pago`, 'error');
                         return;
                     }
 
@@ -2203,7 +2203,7 @@ function renderSplitUI() {
         if (totalEl && selectedPaymentOrder) {
             const diff = total - selectedPaymentOrder.totalPrice;
             if (diff >= 0) {
-                totalEl.innerHTML = `âœ“ Total: ${formatPrice(total)}`;
+                totalEl.innerHTML = `Ã¢Å“â€œ Total: ${formatPrice(total)}`;
                 totalEl.style.color = '#059669';
             } else {
                 totalEl.innerHTML = `Faltan: ${formatPrice(Math.abs(diff))}`;
@@ -2230,7 +2230,7 @@ function renderSplitUI() {
                 if (selectedPaymentOrder.isPartial) {
                     // If it's a partial order (addition), delete it after printing
                     StorageManager.deleteOrder(selectedPaymentOrder.id);
-                    showNotification(`Ticket de adición impreso`);
+                    showNotification(`Ticket de adiciÃ³n impreso`);
                 } else {
                     // Normal order: Set as printed for checkout
                     StorageManager.updateOrder(selectedPaymentOrder.id, { checkoutPrinted: true });
@@ -2249,7 +2249,7 @@ function renderSplitUI() {
             if (selectedPaymentOrder) {
                 if (selectedPaymentOrder.isPartial) {
                     StorageManager.deleteOrder(selectedPaymentOrder.id);
-                    showNotification('Adición procesada');
+                    showNotification('AdiciÃ³n procesada');
                 } else {
                     StorageManager.updateOrder(selectedPaymentOrder.id, { checkoutPrinted: true });
                     showNotification('Pedido ' + selectedPaymentOrder.orderNumber + ' marcado como listo');
@@ -2277,7 +2277,7 @@ function renderSplitUI() {
             if (!selectedPaymentOrder) return;
 
             const performDelete = () => {
-                window.minesofConfirm(`¿Estás seguro de que deseas eliminar permanentemente el pedido ${selectedPaymentOrder.orderNumber}?`, async () => {
+                window.minesofConfirm(`Â¿EstÃ¡s seguro de que deseas eliminar permanentemente el pedido ${selectedPaymentOrder.orderNumber}?`, async () => {
                     await StorageManager.deleteOrder(selectedPaymentOrder.id);
                     showNotification(`Pedido ${selectedPaymentOrder.orderNumber} eliminado`);
                     elements.paymentModal.classList.add('hidden');
@@ -3034,7 +3034,7 @@ function renderSplitUI() {
             if (!selectedHistoryOrder) return;
 
             const performDelete = () => {
-                window.minesofConfirm(`¿Estás seguro de que deseas eliminar permanentemente el pedido ${selectedHistoryOrder.orderNumber}?`, async () => {
+                window.minesofConfirm(`Â¿EstÃ¡s seguro de que deseas eliminar permanentemente el pedido ${selectedHistoryOrder.orderNumber}?`, async () => {
                     await StorageManager.deleteOrder(selectedHistoryOrder.id);
                     showNotification(`Pedido ${selectedHistoryOrder.orderNumber} eliminado`);
                     elements.historyOrderModal.classList.add('hidden');
@@ -3062,8 +3062,8 @@ function renderSplitUI() {
             container.innerHTML = `
             <div style="grid-column: 1 / -1; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 20px; color: #94a3b8; text-align: center;">
                 <i data-lucide="receipt" style="width: 64px; height: 64px; margin-bottom: 16px; opacity: 0.5;"></i>
-                <h3 style="font-size: 1.1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">Aún no hay ventas</h3>
-                <p style="font-size: 0.9rem; max-width: 250px;">Las ventas pagadas aparecerán aquí para que lleves tu historial.</p>
+                <h3 style="font-size: 1.1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">AÃºn no hay ventas</h3>
+                <p style="font-size: 0.9rem; max-width: 250px;">Las ventas pagadas aparecerÃ¡n aquÃ­ para que lleves tu historial.</p>
             </div>`;
             if (typeof lucide !== 'undefined') lucide.createIcons();
             return;
@@ -3459,7 +3459,7 @@ function renderSplitUI() {
                 statusEl.style.background = '#dcfce7';
                 statusEl.style.color = '#16a34a';
             } else if (netBalance < 0) {
-                statusEl.textContent = 'Déficit';
+                statusEl.textContent = 'DÃ©ficit';
                 statusEl.style.background = '#fee2e2';
                 statusEl.style.color = '#dc2626';
             } else {
@@ -3476,7 +3476,7 @@ function renderSplitUI() {
             summaryEl.innerHTML = Object.entries(categoryTotals)
                 .sort((a, b) => b[1] - a[1])
                 .map(([catId, amount]) => {
-                    const cat = CATS[catId] || { label: catId, emoji: '📌' };
+                    const cat = CATS[catId] || { label: catId, emoji: 'ðŸ“Œ' };
                     const idx = allCatsForColors.findIndex(c => c.id === catId);
                     const color = expenseCatColors[idx % expenseCatColors.length] || '#6b7280';
                     return `
@@ -3505,8 +3505,8 @@ function renderSplitUI() {
                         <thead>
                             <tr style="background: var(--bg-tertiary);">
                                 <th style="padding: 10px 12px; text-align: left; color: var(--text-muted); font-weight: 600; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px;">Fecha</th>
-                                <th style="padding: 10px 12px; text-align: left; color: var(--text-muted); font-weight: 600; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px;">Categoría</th>
-                                <th style="padding: 10px 12px; text-align: left; color: var(--text-muted); font-weight: 600; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px;">Descripción</th>
+                                <th style="padding: 10px 12px; text-align: left; color: var(--text-muted); font-weight: 600; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px;">CategorÃ­a</th>
+                                <th style="padding: 10px 12px; text-align: left; color: var(--text-muted); font-weight: 600; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px;">DescripciÃ³n</th>
                                 <th style="padding: 10px 12px; text-align: center; color: var(--text-muted); font-weight: 600; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px;">Cant.</th>
                                 <th style="padding: 10px 12px; text-align: right; color: var(--text-muted); font-weight: 600; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px;">Unit.</th>
                                 <th style="padding: 10px 12px; text-align: right; color: var(--text-muted); font-weight: 600; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px;">Total</th>
@@ -3517,7 +3517,7 @@ function renderSplitUI() {
                 `;
 
                 expenses.forEach(expense => {
-                    const cat = CATS[expense.category] || { label: 'Otros', emoji: '📌' };
+                    const cat = CATS[expense.category] || { label: 'Otros', emoji: 'ðŸ“Œ' };
                     const dateObj = new Date(expense.date || expense.createdAt);
                     const dateStr = dateObj.toLocaleDateString([], { day: '2-digit', month: '2-digit', year: '2-digit' });
                     const qty = expense.qty || 1;
@@ -3581,7 +3581,7 @@ function renderSplitUI() {
             <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem;">
                 <thead>
                     <tr style="background: var(--bg-tertiary);">
-                        <th style="padding: 8px 12px; text-align: left; color: var(--text-muted); font-weight: 600; font-size: 0.7rem; text-transform: uppercase;">Nombre de categoría</th>
+                        <th style="padding: 8px 12px; text-align: left; color: var(--text-muted); font-weight: 600; font-size: 0.7rem; text-transform: uppercase;">Nombre de categorÃ­a</th>
                         <th style="padding: 8px 6px; width: 60px; text-align: center; color: var(--text-muted); font-weight: 600; font-size: 0.7rem; text-transform: uppercase;">Acciones</th>
                     </tr>
                 </thead>
@@ -3617,7 +3617,7 @@ function renderSplitUI() {
         // Add new category form
         html += `
             <div style="display: flex; gap: var(--space-xs); align-items: center;">
-                <input type="text" autocomplete="off" id="newExpenseCatLabel" placeholder="Nombre de categoría"
+                <input type="text" autocomplete="off" id="newExpenseCatLabel" placeholder="Nombre de categorÃ­a"
                     style="flex: 1; padding: 8px 12px; background: var(--bg-tertiary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); color: var(--text-primary); font-size: 0.85rem; box-sizing: border-box;">
                 <button onclick="window.addExpenseCategory()"
                     style="padding: 8px 14px; background: var(--accent-primary); color: var(--bg-primary); border: none; border-radius: var(--radius-md); font-weight: 700; font-size: 0.8rem; cursor: pointer; white-space: nowrap;">
@@ -3654,7 +3654,7 @@ function renderSplitUI() {
         const label = document.getElementById('newExpenseCatLabel')?.value.trim();
 
         if (!label) {
-            showNotification('âš ï¸ Ingresa un nombre para la categoría', 'error');
+            showNotification('Ã¢Å¡Â Ã¯Â¸Â Ingresa un nombre para la categorÃ­a', 'error');
             return;
         }
 
@@ -3662,13 +3662,13 @@ function renderSplitUI() {
         const id = label.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9_]/g, '');
 
         if (cats.find(c => c.id === id)) {
-            showNotification('âš ï¸ Ya existe una categoría con ese nombre', 'error');
+            showNotification('Ã¢Å¡Â Ã¯Â¸Â Ya existe una categorÃ­a con ese nombre', 'error');
             return;
         }
 
-        cats.push({ id, label, emoji: '📌' });
+        cats.push({ id, label, emoji: 'ðŸ“Œ' });
         StorageManager.saveExpenseCategories(cats);
-        showNotification(`Categoría "${label}" creada`);
+        showNotification(`CategorÃ­a "${label}" creada`);
         renderExpenseCategoriesManager();
     };
 
@@ -3677,21 +3677,21 @@ function renderSplitUI() {
         const cat = cats.find(c => c.id === catId);
         if (!cat) return;
 
-        window.minesofPrompt('Nombre de la categoría:', (newLabel) => {
+        window.minesofPrompt('Nombre de la categorÃ­a:', (newLabel) => {
             if (newLabel === null) return;
             cat.label = newLabel.trim() || cat.label;
             StorageManager.saveExpenseCategories(cats);
-            showNotification(`Categoría actualizada: ${cat.label}`);
+            showNotification(`CategorÃ­a actualizada: ${cat.label}`);
             renderExpenseCategoriesManager();
         }, cat.label);
     };
 
     window.deleteExpenseCategory = function (catId) {
         const performDelete = () => {
-            window.minesofConfirm('¿Eliminar esta categoría de Gasto?', () => {
+            window.minesofConfirm('Â¿Eliminar esta categorÃ­a de Gasto?', () => {
                 const cats = StorageManager.getExpenseCategories().filter(c => c.id !== catId);
                 StorageManager.saveExpenseCategories(cats);
-                showNotification('Categoría eliminada');
+                showNotification('CategorÃ­a eliminada');
                 renderExpenseCategoriesManager();
             });
         };
@@ -3717,17 +3717,17 @@ function renderSplitUI() {
             const date = document.getElementById('expenseDate').value;
 
             if (!amount || amount <= 0) {
-                showNotification('âš ï¸ Ingresa un monto válido', 'error');
+                showNotification('Ã¢Å¡Â Ã¯Â¸Â Ingresa un monto vÃ¡lido', 'error');
                 return;
             }
 
             if (!date) {
-                showNotification('âš ï¸ Selecciona una fecha', 'error');
+                showNotification('Ã¢Å¡Â Ã¯Â¸Â Selecciona una fecha', 'error');
                 return;
             }
 
             const CATS = getExpenseCatMap();
-            const cat = CATS[category] || { label: 'Otros', emoji: '📌' };
+            const cat = CATS[category] || { label: 'Otros', emoji: 'ðŸ“Œ' };
 
             StorageManager.addExpense({
                 category: category,
@@ -3794,7 +3794,7 @@ function renderSplitUI() {
     // Delete expense (global handler)
     window.deleteExpense = function (expenseId) {
         const performDelete = () => {
-            window.minesofConfirm('¿Eliminar este Gasto?', async () => {
+            window.minesofConfirm('Â¿Eliminar este Gasto?', async () => {
                 await StorageManager.deleteExpense(expenseId);
                 showNotification('Gasto eliminado');
                 renderExpensesPage();
@@ -3842,7 +3842,7 @@ function renderSplitUI() {
         }
 
         if (expenses.length === 0) {
-            showNotification('âš ï¸ No hay Gastos para descargar', 'error');
+            showNotification('Ã¢Å¡Â Ã¯Â¸Â No hay Gastos para descargar', 'error');
             return;
         }
 
@@ -3856,12 +3856,12 @@ function renderSplitUI() {
 
         const CATS = getExpenseCatMap();
 
-        // Build data rows matching the table: Fecha | Categoría | Descripción | Cant. | V. Unit. | Total
-        const rows = [['Fecha', 'Categoría', 'Descripción', 'Cant.', 'V. Unit.', 'Total']];
+        // Build data rows matching the table: Fecha | CategorÃ­a | DescripciÃ³n | Cant. | V. Unit. | Total
+        const rows = [['Fecha', 'CategorÃ­a', 'DescripciÃ³n', 'Cant.', 'V. Unit.', 'Total']];
 
         let total = 0;
         expenses.forEach(expense => {
-            const cat = CATS[expense.category] || { label: 'Otros', emoji: '📌' };
+            const cat = CATS[expense.category] || { label: 'Otros', emoji: 'ðŸ“Œ' };
             const dateObj = new Date(expense.date || expense.createdAt);
             const dateStr = dateObj.toLocaleDateString('es-CO', { day: '2-digit', month: '2-digit', year: 'numeric' });
             const qty = expense.qty || 1;
@@ -3888,8 +3888,8 @@ function renderSplitUI() {
         // Set column widths
         ws['!cols'] = [
             { wch: 12 },  // Fecha
-            { wch: 20 },  // Categoría
-            { wch: 30 },  // Descripción
+            { wch: 20 },  // CategorÃ­a
+            { wch: 30 },  // DescripciÃ³n
             { wch: 8 },   // Cant.
             { wch: 12 },  // V. Unit.
             { wch: 12 }   // Total
@@ -3904,7 +3904,7 @@ function renderSplitUI() {
 
         XLSX.writeFile(wb, `Gastos_${periodLabel}_${dateFile}.xlsx`);
 
-        showNotification('ðŸ“¥ Excel descargado');
+        showNotification('Ã°Å¸â€œÂ¥ Excel descargado');
     };
 
     // ============================================
@@ -3961,7 +3961,7 @@ function renderSplitUI() {
                     <option value="fixed">Precio Fijo (Normal)</option>
                     <option value="open_price">Precio Abierto (Ingresar al cobrar)</option>
                     <option value="quantity">Selector de Cantidad (+ / -)</option>
-                    <option value="text">Texto Libre (Observación)</option>
+                    <option value="text">Texto Libre (ObservaciÃ³n)</option>
                 </select>
             </div>
             <div class="form-group" id="editPriceGroup"><label>Precio Unitario ($)</label><input type="number" autocomplete="off" id="editPrice" placeholder="4500" value="0"></div>
@@ -4032,8 +4032,8 @@ window.moveAdminItem = function(type, id, direction) {
             elements.adminCategoriesList.innerHTML = `
             <div style="grid-column: 1 / -1; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 20px; color: #94a3b8; text-align: center;">
                 <i data-lucide="layers" style="width: 64px; height: 64px; margin-bottom: 16px; opacity: 0.5;"></i>
-                <h3 style="font-size: 1.1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">Aún no hay menú</h3>
-                <p style="font-size: 0.9rem; max-width: 250px;">Comienza creando tu primera categoría con el botón "+ Nueva Categoría".</p>
+                <h3 style="font-size: 1.1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">AÃºn no hay menÃº</h3>
+                <p style="font-size: 0.9rem; max-width: 250px;">Comienza creando tu primera categorÃ­a con el botÃ³n "+ Nueva CategorÃ­a".</p>
             </div>`;
             if (typeof lucide !== 'undefined') lucide.createIcons();
             return;
@@ -4044,7 +4044,7 @@ window.moveAdminItem = function(type, id, direction) {
             
             let productsHtml = '';
             if (catProducts.length === 0) {
-                productsHtml = `<div style="padding: 20px; text-align: center; color: #94a3b8; font-size: 0.85rem;"><i data-lucide="package-x" style="width: 24px; height: 24px; margin-bottom: 8px; opacity: 0.6;"></i><br>No hay productos en esta categoría</div>`;
+                productsHtml = `<div style="padding: 20px; text-align: center; color: #94a3b8; font-size: 0.85rem;"><i data-lucide="package-x" style="width: 24px; height: 24px; margin-bottom: 8px; opacity: 0.6;"></i><br>No hay productos en esta categorÃ­a</div>`;
             } else {
                 productsHtml = catProducts.map(f => `
                     <div class="admin-item" style="background: rgba(0,0,0,0.03); margin-bottom: 5px; border-radius: 4px; border-left: 3px solid var(--accent-royal);">
@@ -4199,13 +4199,13 @@ window.moveAdminItem = function(type, id, direction) {
     window.editAdminItem = function (type, id, parentId = null) {
         adminEditContext = { type, id, parentId };
         const config = StorageManager.getConfig();
-        const displayType = type === 'flavor' ? 'Producto' : (type === 'category' ? 'Categoría' : (type === 'extra' ? 'Adicional' : 'Observación'));
+        const displayType = type === 'flavor' ? 'Producto' : (type === 'category' ? 'CategorÃ­a' : (type === 'extra' ? 'Adicional' : 'ObservaciÃ³n'));
         elements.adminModalTitle.textContent = `Editar ${displayType}`;
         let html = '';
         if (type === 'category') {
             const item = config.categories.find(c => c.id === id);
             const itemType = (item && item.type) ? item.type : 'comida';
-            html = '<div class="form-group"><label>Nombre de categoría</label><input type="text" autocomplete="off" id="editName" value="' + item.name + '"></div>';;
+            html = '<div class="form-group"><label>Nombre de categorÃ­a</label><input type="text" autocomplete="off" id="editName" value="' + item.name + '"></div>';;
         } else if (type === 'flavor') {
             const allProds = getActiveProductsList(config);
             const item = allProds.find(p => p.id === id) || (config.flavors[parentId] && config.flavors[parentId].find(f => f.id === id)) || { name: '', price: 0, prodType: 'fixed' };
@@ -4217,7 +4217,7 @@ window.moveAdminItem = function(type, id, direction) {
                             <option value="fixed" ${pt === 'fixed' ? 'selected' : ''}>Precio Fijo (Normal)</option>
                             <option value="open_price" ${pt === 'open_price' ? 'selected' : ''}>Precio Abierto (Ingresar al cobrar)</option>
                             <option value="quantity" ${pt === 'quantity' ? 'selected' : ''}>Selector de Cantidad (+ / -)</option>
-                            <option value="text" ${pt === 'text' ? 'selected' : ''}>Texto Libre (Observación)</option>
+                            <option value="text" ${pt === 'text' ? 'selected' : ''}>Texto Libre (ObservaciÃ³n)</option>
                         </select>
                     </div>
                     <div class="form-group" id="editPriceGroup" style="display: ${pt === 'open_price' || pt === 'text' ? 'none' : 'block'};"><label>Precio Unitario ($)</label><input type="number" autocomplete="off" id="editPrice" value="${item.price || 0}"></div>`;
@@ -4227,7 +4227,7 @@ window.moveAdminItem = function(type, id, direction) {
                     <div class="form-group"><label>Precio ($)</label><input type="number" autocomplete="off" id="editPrice" value="${item.price}"></div>`;
         } else if (type === 'observation') {
             const item = config.observations[parentId].find(o => o.id === id);
-            html = `<div class="form-group"><label>Descripción / Nota</label><input type="text" autocomplete="off" id="editName" value="${item.name}"></div>
+            html = `<div class="form-group"><label>DescripciÃ³n / Nota</label><input type="text" autocomplete="off" id="editName" value="${item.name}"></div>
                     <div class="form-group"><label>Precio Extra si aplica ($)</label><input type="number" autocomplete="off" id="editPrice" value="${item.price || 0}"></div>`;
         }
         elements.adminModalBody.innerHTML = html;
@@ -4248,7 +4248,7 @@ window.moveAdminItem = function(type, id, direction) {
     };
 
     window.deleteAdminItem = function (type, id, pId) {
-        window.minesofConfirm('¿Seguro que quieres eliminar este elemento?', () => {
+        window.minesofConfirm('Â¿Seguro que quieres eliminar este elemento?', () => {
             const config = StorageManager.getConfig();
             if (type === 'category') {
                 config.categories = config.categories.filter(c => c.id !== id);
@@ -4282,7 +4282,7 @@ window.moveAdminItem = function(type, id, direction) {
             const { type, id, parentId } = adminEditContext;
             const name = document.getElementById('editName').value.trim();
             if (!name) {
-                showNotification('Ingresa un nombre válido', 'error');
+                showNotification('Ingresa un nombre vÃ¡lido', 'error');
                 return;
             }
 
@@ -4373,8 +4373,8 @@ window.moveAdminItem = function(type, id, direction) {
     if (elements.addCategoryBtn) {
         elements.addCategoryBtn.onclick = () => {
             adminEditContext = { type: 'category', id: null };
-            elements.adminModalTitle.textContent = 'Nueva Categoría';
-            elements.adminModalBody.innerHTML = '<div class="form-group"><label>Nombre de categoría</label><input type="text" autocomplete="off" id="editName" placeholder="Ej: Comida, Bebidas, Combos"></div>';
+            elements.adminModalTitle.textContent = 'Nueva CategorÃ­a';
+            elements.adminModalBody.innerHTML = '<div class="form-group"><label>Nombre de categorÃ­a</label><input type="text" autocomplete="off" id="editName" placeholder="Ej: Comida, Bebidas, Combos"></div>';
             elements.adminModal.classList.add('open');
         };
     }
@@ -4407,7 +4407,7 @@ window.moveAdminItem = function(type, id, direction) {
         elements.addObsBtn.onclick = () => {
             const catId = elements.adminCategorySelectObs.value;
             adminEditContext = { type: 'observation', id: null, parentId: catId };
-            elements.adminModalTitle.textContent = 'Nueva Observación';
+            elements.adminModalTitle.textContent = 'Nueva ObservaciÃ³n';
             elements.adminModalBody.innerHTML = `
                 <div class="form-group"><label>Nombre</label><input type="text" autocomplete="off" id="editName"></div>
                 <div class="form-group"><label>Precio</label><input type="number" autocomplete="off" id="editPrice" value="0"></div>
@@ -4470,12 +4470,12 @@ window.moveAdminItem = function(type, id, direction) {
             const confirmPass = elements.confirmAdminPassword.value;
 
             if (newPass.length < 4) {
-                showNotification('La contraseña debe tener al menos 4 caracteres', 'error');
+                showNotification('La contraseÃ±a debe tener al menos 4 caracteres', 'error');
                 return;
             }
 
             if (newPass !== confirmPass) {
-                showNotification('Las contraseñas no coinciden', 'error');
+                showNotification('Las contraseÃ±as no coinciden', 'error');
                 return;
             }
 
@@ -4483,7 +4483,7 @@ window.moveAdminItem = function(type, id, direction) {
             config.adminPassword = newPass;
             StorageManager.saveConfig(config);
 
-            showNotification('Contraseña actualizada correctamente');
+            showNotification('ContraseÃ±a actualizada correctamente');
             elements.newAdminPassword.value = '';
             elements.confirmAdminPassword.value = '';
         });
@@ -4594,7 +4594,7 @@ window.moveAdminItem = function(type, id, direction) {
             }
 
             if (isNaN(price) || price < 0) {
-                showNotification('Ingresa un valor válido', 'error');
+                showNotification('Ingresa un valor vÃ¡lido', 'error');
                 return;
             }
             if (!activeOpenPriceProductId) return;
@@ -4726,7 +4726,7 @@ window.moveAdminItem = function(type, id, direction) {
 
     if (resetOrderCounterBtn) {
         resetOrderCounterBtn.addEventListener('click', () => {
-            window.minesofConfirm('¿Estás seguro que deseas reiniciar el contador de pedidos a #001?', async () => {
+            window.minesofConfirm('Â¿EstÃ¡s seguro que deseas reiniciar el contador de pedidos a #001?', async () => {
                 await resetOrderCounter();
             });
         });
@@ -4938,11 +4938,11 @@ window.moveAdminItem = function(type, id, direction) {
     // System Data Management
     // ============================================
     window.clearSystemData = function() {
-        const msg1 = "ADVERTENCIA CRÍTICA \n\n¿Estás seguro de querer BORRAR TODO el historial de pedidos y gastos?\n\n- Esta acción es irreversible.\n- Tu catálogo (productos, categorías) NO se borrará.\n- Tu contador de pedidos volverá a cero.";
+        const msg1 = "ADVERTENCIA CRÃTICA \n\nÂ¿EstÃ¡s seguro de querer BORRAR TODO el historial de pedidos y gastos?\n\n- Esta acciÃ³n es irreversible.\n- Tu catÃ¡logo (productos, categorÃ­as) NO se borrarÃ¡.\n- Tu contador de pedidos volverÃ¡ a cero.";
         window.minesofConfirm(msg1, async () => {
-            window.minesofPrompt("Escribe BORRAR en mayúsculas para confirmar la eliminación:", async (confirmWord) => {
+            window.minesofPrompt("Escribe BORRAR en mayÃºsculas para confirmar la eliminaciÃ³n:", async (confirmWord) => {
                 if (confirmWord !== "BORRAR") {
-                    showNotification("Eliminación cancelada.", "error");
+                    showNotification("EliminaciÃ³n cancelada.", "error");
                     return;
                 }
 
@@ -4960,7 +4960,7 @@ window.moveAdminItem = function(type, id, direction) {
         overlay.innerHTML = `
             <div style="border: 4px solid rgba(255,255,255,0.2); border-top: 4px solid white; border-radius: 50%; width: 50px; height: 50px; animation: spinLoader 1s linear infinite; margin-bottom: 20px;"></div>
             <h2 id="wipeProgressText" style="margin: 0; padding: 0;">Limpiando la nube...</h2>
-            <p style="margin-top: 10px; color: #ccc;">No cierres la aplicación</p>
+            <p style="margin-top: 10px; color: #ccc;">No cierres la aplicaciÃ³n</p>
             <style>@keyframes spinLoader { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }</style>
         `;
         document.body.appendChild(overlay);
@@ -5006,7 +5006,7 @@ window.moveAdminItem = function(type, id, direction) {
                 } catch(e) {}
             }
 
-            document.getElementById('wipeProgressText').textContent = '¡Listo!';
+            document.getElementById('wipeProgressText').textContent = 'Â¡Listo!';
             showNotification("Todo el historial ha sido borrado.");
             setTimeout(() => {
                 window.location.reload();
@@ -5134,21 +5134,34 @@ window.moveAdminItem = function(type, id, direction) {
         const totalColor = totalBalance >= 0 ? '#16a34a' : '#dc2626';
 
         const darkColor = totalBalance >= 0 ? '#4ade80' : '#f87171';
-        const totalsHtml = `
-            <tr style="background: #0f172a; border-bottom: 2px solid #1e293b;">
-                <td style="padding: 16px 16px; font-weight: 700; color: #94a3b8; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                        <i data-lucide="pie-chart" style="width: 16px; height: 16px; color: #38bdf8;"></i> RESUMEN TOTAL
+        
+        const summaryBlock = document.getElementById('balanceSummaryBlock');
+        if (summaryBlock) {
+            summaryBlock.innerHTML = \
+                <div style="background: #0f172a; border-radius: 12px; padding: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                    <div style="display: flex; align-items: center; gap: 12px; color: #94a3b8; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">
+                        <i data-lucide="pie-chart" style="width: 24px; height: 24px; color: #38bdf8;"></i> 
+                        <span style="font-size: 1rem;">RESUMEN TOTAL</span>
                     </div>
-                </td>
-                <td style="padding: 16px 12px; text-align: right; font-weight: 600; color: #f8fafc; font-size: 1.1rem;">${formatPrice(totalSales)}</td>
-                <td style="padding: 16px 12px; text-align: right; font-weight: 600; color: #f8fafc; font-size: 1.1rem;">${formatPrice(totalExp)}</td>
-                <td style="padding: 16px 12px; text-align: right; font-weight: 800; color: ${darkColor}; font-size: 1.3rem;">${formatPrice(totalBalance)}</td>
-                <td style="padding: 16px 12px;"></td>
-            </tr>
-        `;
-        tbody.innerHTML = totalsHtml + rowsHtml + totalsHtml;
+                    <div style="display: flex; gap: 40px; flex-wrap: wrap; align-items: center;">
+                        <div style="display: flex; flex-direction: column;">
+                            <span style="color: #94a3b8; font-size: 0.8rem; text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Ventas Totales</span>
+                            <span style="color: #f8fafc; font-size: 1.25rem; font-weight: 700;"> + "" + </span>
+                        </div>
+                        <div style="display: flex; flex-direction: column;">
+                            <span style="color: #94a3b8; font-size: 0.8rem; text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Gastos</span>
+                            <span style="color: #f8fafc; font-size: 1.25rem; font-weight: 700;"> + "" + </span>
+                        </div>
+                        <div style="display: flex; flex-direction: column; align-items: flex-end; padding-left: 20px; border-left: 1px solid #334155;">
+                            <span style="color: #94a3b8; font-size: 0.8rem; text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Balance Neto</span>
+                            <span style="color:  + "" + ; font-size: 1.6rem; font-weight: 900; text-shadow: 0 2px 4px rgba(0,0,0,0.3);"> + "" + </span>
+                        </div>
+                    </div>
+                </div>
+            \;
+        }
 
+        tbody.innerHTML = rowsHtml;
     }
 
         // Event listeners for Balance
