@@ -5185,6 +5185,8 @@ window.moveAdminItem = function(type, id, direction) {
                 balOptions.onClick = commonOptions.onClick;
                 balOptions.scales.x.ticks.callback = commonOptions.scales.x.ticks.callback;
 
+                const balPointColors = balData.map(v => v < 0 ? '#ef4444' : '#10b981');
+
                 window.chartsMap.bal = new Chart(ctxBal, {
                     type: 'line',
                     data: {
@@ -5195,6 +5197,10 @@ window.moveAdminItem = function(type, id, direction) {
                             borderColor: '#10b981',
                             backgroundColor: 'rgba(16, 185, 129, 0.1)',
                             borderWidth: 2,
+                            pointBackgroundColor: balPointColors,
+                            pointBorderColor: balPointColors,
+                            pointRadius: 5,
+                            pointHoverRadius: 7,
                             fill: true,
                             tension: 0.3
                         }]
