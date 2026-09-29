@@ -5146,7 +5146,7 @@ window.moveAdminItem = function(type, id, direction) {
                         const dateObj = new Date(parseInt(parts[2]), parseInt(parts[1]) - 1, parseInt(parts[0]));
                         const shortYear = parts[2].slice(-2);
                         const dayName = daysOfWeek[dateObj.getDay()];
-                        return ${parts[0]}// ();
+                        return `${parts[0]}/${parts[1]}/${shortYear} (${dayName})`;
                     }
                     return d;
                 });
