@@ -1295,8 +1295,8 @@ function renderSplitUI() {
         html = `
         <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; color: #94a3b8; text-align: center; padding: 40px;">
             <i data-lucide="package-open" style="width: 64px; height: 64px; margin-bottom: 16px; opacity: 0.5;"></i>
-            <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡Todo listo para empezar!</h3>
-            <p style="font-size: 0.95rem; max-width: 300px;">AÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âºn no tienes el menÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âº configurado. Crea tus categorÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­as y productos en la opciÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³n <b style="color: var(--accent-primary);">Administrador</b>.</p>
+            <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">Todo listo para empezar!</h3>
+            <p style="font-size: 0.95rem; max-width: 300px;">Aun no tienes el menu configurado. Crea tus categorias y productos en la opcion <b style="color: var(--accent-primary);">Administrador</b>.</p>
         </div>`;
     }
 
