@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // DATA MIGRATION (EXCEL IMPORT)
             window.downloadSalesTemplate = function() {
         if (typeof XLSX === 'undefined') {
-            showNotification('Error: LibrerÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­a Excel no cargada', 'error');
+            showNotification('Error: Libreria Excel no cargada', 'error');
             return;
         }
         const data = [
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.downloadExpensesTemplate = function() {
         if (typeof XLSX === 'undefined') {
-            showNotification('Error: LibrerÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­a Excel no cargada', 'error');
+            showNotification('Error: Libreria Excel no cargada', 'error');
             return;
         }
         const data = [
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function handleImportSales(file) {
         if (typeof XLSX === 'undefined') {
-            showNotification('Error: LibrerÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­a Excel no cargada', 'error');
+            showNotification('Error: Libreria Excel no cargada', 'error');
             return;
         }
         showNotification('Procesando ventas...', 'info');
@@ -392,7 +392,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (saveBillingSystemBtn) {
         saveBillingSystemBtn.addEventListener('click', () => {
             window.minesofConfirm("ATENCIÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“N: Cambiar el sistema de cobro modificarÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ el flujo de tu negocio.\n\nÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿EstÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡s seguro de querer guardar este cambio?", () => {
-                window.minesofPrompt("Escribe CAMBIAR en mayÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âºsculas para confirmar:", (confirmWord) => {
+                window.minesofPrompt("Escribe CAMBIAR en mayusculas para confirmar:", (confirmWord) => {
                     if (confirmWord !== "CAMBIAR") {
                         showNotification("Cambio cancelado.", "error");
                         return;
@@ -1314,7 +1314,7 @@ function renderSplitUI() {
             renderSplitUI();
         };
         if (confirmClear) {
-            window.minesofConfirm('ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿EstÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡s seguro de vaciar todo el pedido actual?', performClear);
+            window.minesofConfirm('ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿Estas seguro de vaciar todo el pedido actual?', performClear);
         } else {
             performClear();
         }
@@ -2283,7 +2283,7 @@ function renderSplitUI() {
             if (!selectedPaymentOrder) return;
 
             const performDelete = () => {
-                window.minesofConfirm(`ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿EstÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡s seguro de que deseas eliminar permanentemente el pedido ${selectedPaymentOrder.orderNumber}?`, async () => {
+                window.minesofConfirm(`ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿Estas seguro de que deseas eliminar permanentemente el pedido ${selectedPaymentOrder.orderNumber}?`, async () => {
                     await StorageManager.deleteOrder(selectedPaymentOrder.id);
                     showNotification(`Pedido ${selectedPaymentOrder.orderNumber} eliminado`);
                     elements.paymentModal.classList.add('hidden');
@@ -3040,7 +3040,7 @@ function renderSplitUI() {
             if (!selectedHistoryOrder) return;
 
             const performDelete = () => {
-                window.minesofConfirm(`ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿EstÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡s seguro de que deseas eliminar permanentemente el pedido ${selectedHistoryOrder.orderNumber}?`, async () => {
+                window.minesofConfirm(`ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿Estas seguro de que deseas eliminar permanentemente el pedido ${selectedHistoryOrder.orderNumber}?`, async () => {
                     await StorageManager.deleteOrder(selectedHistoryOrder.id);
                     showNotification(`Pedido ${selectedHistoryOrder.orderNumber} eliminado`);
                     elements.historyOrderModal.classList.add('hidden');
@@ -3683,7 +3683,7 @@ function renderSplitUI() {
         const cat = cats.find(c => c.id === catId);
         if (!cat) return;
 
-        window.minesofPrompt('Nombre de la categorÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­a:', (newLabel) => {
+        window.minesofPrompt('Nombre de la categoria:', (newLabel) => {
             if (newLabel === null) return;
             cat.label = newLabel.trim() || cat.label;
             StorageManager.saveExpenseCategories(cats);
@@ -3694,7 +3694,7 @@ function renderSplitUI() {
 
     window.deleteExpenseCategory = function (catId) {
         const performDelete = () => {
-            window.minesofConfirm('ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿Eliminar esta categorÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­a de Gasto?', () => {
+            window.minesofConfirm('ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿Eliminar esta categoria de Gasto?', () => {
                 const cats = StorageManager.getExpenseCategories().filter(c => c.id !== catId);
                 StorageManager.saveExpenseCategories(cats);
                 showNotification('CategorÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­a eliminada');
@@ -4732,7 +4732,7 @@ window.moveAdminItem = function(type, id, direction) {
 
     if (resetOrderCounterBtn) {
         resetOrderCounterBtn.addEventListener('click', () => {
-            window.minesofConfirm('ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿EstÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡s seguro que deseas reiniciar el contador de pedidos a #001?', async () => {
+            window.minesofConfirm('ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿Estas seguro que deseas reiniciar el contador de pedidos a #001?', async () => {
                 await resetOrderCounter();
             });
         });
@@ -4946,9 +4946,9 @@ window.moveAdminItem = function(type, id, direction) {
     window.clearSystemData = function() {
         const msg1 = "ADVERTENCIA CRÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚ÂTICA \n\nÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿EstÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡s seguro de querer BORRAR TODO el historial de pedidos y gastos?\n\n- Esta acciÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³n es irreversible.\n- Tu catÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡logo (productos, categorÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­as) NO se borrarÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡.\n- Tu contador de pedidos volverÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ a cero.";
         window.minesofConfirm(msg1, async () => {
-            window.minesofPrompt("Escribe BORRAR en mayÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âºsculas para confirmar la eliminaciÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³n:", async (confirmWord) => {
+            window.minesofPrompt("Escribe BORRAR en mayusculas para confirmar la eliminacion:", async (confirmWord) => {
                 if (confirmWord !== "BORRAR") {
-                    showNotification("EliminaciÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³n cancelada.", "error");
+                    showNotification("Eliminacion cancelada.", "error");
                     return;
                 }
 
