@@ -5350,33 +5350,32 @@ window.moveAdminItem = function(type, id, direction) {
                 spacer.innerHTML = "<th colspan='5' style='border: none;'></th>";
                 thead.insertBefore(spacer, tRow.nextSibling);
             }
-            tRow.innerHTML = `
-                <th style="padding: 20px 16px; text-align: left;">
-                    <div style="display: flex; align-items: center; gap: 12px; color: #94a3b8; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
-                        <i data-lucide="pie-chart" style="width: 20px; height: 20px; color: #38bdf8;"></i>
-                        <span style="font-size: 0.95rem;">RESUMEN TOTAL</span>
+                        tRow.innerHTML = 
+                <th style="width: 22%; padding: 15px 10px; text-align: left; box-sizing: border-box;">
+                    <div style="display: flex; align-items: center; gap: 8px; color: #94a3b8; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
+                        <i data-lucide="pie-chart" style="width: 16px; height: 16px; color: #38bdf8;"></i>
+                        <span style="font-size: 0.85rem;">RESUMEN TOTAL</span>
                     </div>
                 </th>
-                <th style="padding: 16px 12px; text-align: right;">
-                    <div style="display: flex; flex-direction: column; align-items: flex-end;">
-                        <span style="color: #94a3b8; font-size: 0.75rem; text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Ventas</span>
-                        <span style="color: #f8fafc; font-size: 1.05rem; font-weight: 700;">${formatPrice(totalSales)}</span>
+                <th style="width: 22%; padding: 15px 10px; text-align: right; box-sizing: border-box;">
+                    <div style="display: flex; flex-direction: column; align-items: flex-end; overflow: hidden;">
+                        <span style="color: #94a3b8; font-size: 0.7rem; text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Ventas</span>
+                        <span style="color: #f8fafc; font-size: 0.95rem; font-weight: 700; white-space: nowrap;">${formatPrice(totalSales)}</span>
                     </div>
                 </th>
-                <th style="padding: 16px 12px; text-align: right;">
-                    <div style="display: flex; flex-direction: column; align-items: flex-end;">
-                        <span style="color: #94a3b8; font-size: 0.75rem; text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Gastos</span>
-                        <span style="color: #f8fafc; font-size: 1.05rem; font-weight: 700;">${formatPrice(totalExp)}</span>
+                <th style="width: 22%; padding: 15px 10px; text-align: right; box-sizing: border-box;">
+                    <div style="display: flex; flex-direction: column; align-items: flex-end; overflow: hidden;">
+                        <span style="color: #94a3b8; font-size: 0.7rem; text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Gastos</span>
+                        <span style="color: #f8fafc; font-size: 0.95rem; font-weight: 700; white-space: nowrap;">${formatPrice(totalExp)}</span>
                     </div>
                 </th>
-                <th colspan="2" style="padding: 16px 12px; text-align: right;">
-                      <div style="display: flex; flex-direction: column; align-items: flex-end; padding-right: 15px;">
-                          <span style="color: #94a3b8; font-size: 0.75rem; text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Balance</span>
-                          <span style="color: ${darkColor}; font-size: 1.25rem; font-weight: 900; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">${formatPrice(totalBalance)}</span>
+                <th colspan="2" style="width: 34%; padding: 15px 10px; text-align: right; box-sizing: border-box;">
+                      <div style="display: flex; flex-direction: column; align-items: flex-end; padding-right: 5px; overflow: hidden;">
+                          <span style="color: #94a3b8; font-size: 0.7rem; text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Balance</span>
+                          <span style="color: ${darkColor}; font-size: 1.15rem; font-weight: 900; text-shadow: 0 2px 4px rgba(0,0,0,0.3); white-space: nowrap;">${formatPrice(totalBalance)}</span>
                       </div>
-                  </th>
-                <th style="padding: 16px 12px;"></th>
-            `;
+                </th>
+            ;
         }
         tbody.innerHTML = rowsHtml;
     }
