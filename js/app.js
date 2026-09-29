@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
                 
                 StorageManager.saveOrders(orders);
-                showNotification('ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â°xito: ' + importedCount + ' ventas importadas');
+                showNotification('Exito: ' + importedCount + ' ventas importadas');
                 if (state.currentPage === 'history') renderHistoryPage();
             } catch (err) {
                 console.error(err);
@@ -280,7 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
                 
                 StorageManager.saveExpenses(expenses);
-                showNotification('ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â°xito: ' + importedCount + ' gastos importados');
+                showNotification('Exito: ' + importedCount + ' gastos importados');
                 if (state.currentPage === 'expenses') renderExpensesPage();
             } catch (err) {
                 console.error(err);
