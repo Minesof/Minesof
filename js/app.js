@@ -5110,6 +5110,10 @@ window.moveAdminItem = function(type, id, direction) {
         sortedDates.forEach((dateStr, idx) => {
             const data = dailyData[dateStr];
             const balance = data.sales - data.expenses;
+            
+            totalSales += data.sales;
+            totalExp += data.expenses;
+            
             const balanceColor = balance >= 0 ? '#16a34a' : '#dc2626';
             const rowBg = idx % 2 === 0 ? 'var(--bg-primary, #ffffff)' : 'rgba(241, 245, 249, 0.4)';
 
@@ -5120,8 +5124,8 @@ window.moveAdminItem = function(type, id, direction) {
                     <td style="padding: 10px 12px; text-align: right; color: var(--text-primary);">${formatPrice(data.expenses)}</td>
                     <td style="padding: 10px 12px; text-align: right; font-weight: 800; color: ${balanceColor};">${formatPrice(balance)}</td>
                     <td style="padding: 10px 12px; text-align: center;">
-                        <button onclick="window.openBalanceDetails('${dateStr}')" style="background: linear-gradient(135deg, #3b82f6, #2563eb); border: none; border-radius: 20px; box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2), inset 0 -2px 0 rgba(0,0,0,0.1), inset 0 2px 4px rgba(255,255,255,0.3); color: white; padding: 6px 14px; font-size: 0.75rem; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; gap: 4px; cursor: pointer; transition: transform 0.1s ease, box-shadow 0.1s ease;">
-                            <i data-lucide="eye" style="width: 14px; height: 14px;"></i> Ver
+                        <button onclick="window.openBalanceDetails('${dateStr}')" style="background: linear-gradient(135deg, #3b82f6, #2563eb); border: none; border-radius: 20px; box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2), inset 0 -2px 0 rgba(0,0,0,0.1), inset 0 2px 4px rgba(255,255,255,0.3); color: white; width: 60px; height: 26px; font-size: 0.75rem; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.1s ease, box-shadow 0.1s ease;">
+                            Ver
                         </button>
                     </td>
                 </tr>
