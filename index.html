@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -148,7 +148,7 @@
                         <i data-lucide="user" style="width:14px; height:14px; flex-shrink:0;"></i>
                         <span id="currentUserEmailDisplay" style="font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">...</span>
                     </div>
-                    <span style="font-size:0.7rem; opacity:0.7;">Versión 429</span>
+                    <span style="font-size:0.7rem; opacity:0.7;">Versión 430</span>
                 </div>
             </div>
         </div>
@@ -639,10 +639,10 @@
                 </div>
                 <div>
                                         <!-- Balance Filter -->
-                    <div class="reports-filter" style="margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 15px; align-items: flex-end; justify-content: space-between;">
-                        <div class="filter-group" style="flex: 1; min-width: 0;">
-                            <label style="font-size: 0.75rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><i data-lucide="calendar" style="width: 14px; height: 14px; margin-right: 4px; display: inline-block; vertical-align: middle;"></i> PERIODO:</label>
-                            <select id="balancePeriodSelect" class="date-picker-input" style="width: 100%; padding: 8px 10px; font-size: 0.85rem;">
+                    <div class="reports-filter">
+                        <div class="filter-group">
+                            <label><i data-lucide="calendar" style="width: 16px; height: 16px; margin-right: 4px; display: inline-block; vertical-align: middle;"></i> Periodo de Balance:</label>
+                            <select id="balancePeriodSelect" class="date-picker-input">
                                 <option value="today">Hoy</option>
                                 <option value="date">D&iacute;a Espec&iacute;fico</option>
                                 <option value="month">Mes Actual</option>
@@ -661,10 +661,9 @@
                             Consultar
                         </button>
                         
-                        <div class="filter-group" style="flex: 1; min-width: 0;">
-                            
-                            <label style="display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><i data-lucide="eye" style="width: 14px; height: 14px; margin-right: 4px; display: inline-block; vertical-align: middle;"></i> VISTA:</label>
-                            <select id="balanceViewSelect" class="date-picker-input" style="width: 100%; border-color: #38bdf8; background-color: rgba(56, 189, 248, 0.05); padding: 8px 10px; font-weight: 600; font-size: 0.85rem;">
+                        <div class="filter-group" style="margin-left: auto;">
+                            <label style="display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted);"><i data-lucide="eye" style="width: 14px; height: 14px; margin-right: 4px; display: inline-block; vertical-align: middle;"></i> Visualizaci&oacute;n:</label>
+                            <select id="balanceViewSelect" class="date-picker-input" style="border-color: #38bdf8; background-color: rgba(56, 189, 248, 0.05); padding: 8px 15px; font-weight: 600;">
                                 <option value="table">📊 Ver Tabla</option>
                                 <option value="charts">📈 Ver Gráficas</option>
                             </select>
@@ -1256,11 +1255,11 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Scripts -->
-    <script src="js/data.js?v=429"></script>
+    <script src="js/data.js?v=430"></script>
     
-    <script src="js/storage.js?v=429"></script>
-    <script src="js/auth.js?v=429"></script>
-    <script src="js/app.js?v=429"></script>
+    <script src="js/storage.js?v=430"></script>
+    <script src="js/auth.js?v=430"></script>
+    <script src="js/app.js?v=430"></script>
     <script>
         // Disable Service Worker and clear cache to force internet-only mode
         if ('serviceWorker' in navigator) {
