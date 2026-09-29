@@ -1,4 +1,4 @@
-﻿// ============================================
+// ============================================
 // FoodX POS PRO - Multiple Client Rows System
 // ============================================
 
@@ -5192,19 +5192,20 @@ window.moveAdminItem = function(type, id, direction) {
     const balMonthPickerGroup = document.getElementById('balanceMonthPickerGroup');
     const searchBalanceBtn = document.getElementById('searchBalanceBtn');
 
-    const toggleChartsBtn = document.getElementById('toggleChartsBtn');
+    const balanceViewSelect = document.getElementById('balanceViewSelect');
     const chartsContainer = document.getElementById('balanceChartsContainer');
-    if (toggleChartsBtn && chartsContainer) {
-        toggleChartsBtn.addEventListener('click', () => {
-            if (chartsContainer.style.display === 'none') {
+    const tableContainer = document.getElementById('balanceTableContainer');
+    
+    if (balanceViewSelect && chartsContainer && tableContainer) {
+        balanceViewSelect.addEventListener('change', (e) => {
+            if (e.target.value === 'charts') {
                 chartsContainer.style.display = 'flex';
-                toggleChartsBtn.innerHTML = '<i data-lucide="line-chart"></i> Ocultar Gráficas';
+                tableContainer.style.display = 'none';
                 if (window.chartsMap) Object.values(window.chartsMap).forEach(c => c.resize());
             } else {
                 chartsContainer.style.display = 'none';
-                toggleChartsBtn.innerHTML = '<i data-lucide="line-chart"></i> Ver Gráficas';
+                tableContainer.style.display = 'block';
             }
-            if (typeof lucide !== 'undefined') lucide.createIcons();
         });
     }
     
