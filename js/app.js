@@ -163,6 +163,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         items: [{ name: 'Venta HistÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³rica Migrada', price: price, quantity: 1, total: price }]
                     };
                     orders.push(newOrder);
+                    if (typeof StorageManager.syncOrderToCloud === 'function') {
+                        StorageManager.syncOrderToCloud(newOrder);
+                    }
                     importedCount++;
                 });
                 
@@ -270,6 +273,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         createdAt: dateStr
                     };
                     expenses.push(newExpense);
+                    if (typeof StorageManager.syncExpenseToCloud === 'function') {
+                        StorageManager.syncExpenseToCloud(newExpense);
+                    }
                     importedCount++;
                 });
                 
