@@ -5139,22 +5139,22 @@ window.moveAdminItem = function(type, id, direction) {
         
         const summaryBlock = document.getElementById("balanceSummaryBlock");
         if (summaryBlock) {
-            summaryBlock.innerHTML = 
+            summaryBlock.innerHTML = `
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 20px;">
                     <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
                         <span style="color: #94a3b8; font-size: 0.8rem; text-transform: uppercase; font-weight: 700; margin-bottom: 5px;">Ventas Totales</span>
-                        <span style="color: #38bdf8; font-size: 1.8rem; font-weight: 800;"> + formatPrice(totalSales) + </span>
+                        <span style="color: #38bdf8; font-size: 1.8rem; font-weight: 800;">${formatPrice(totalSales)}</span>
                     </div>
                     <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
                         <span style="color: #94a3b8; font-size: 0.8rem; text-transform: uppercase; font-weight: 700; margin-bottom: 5px;">Gastos Totales</span>
-                        <span style="color: #f43f5e; font-size: 1.8rem; font-weight: 800;"> + formatPrice(totalExp) + </span>
+                        <span style="color: #f43f5e; font-size: 1.8rem; font-weight: 800;">${formatPrice(totalExp)}</span>
                     </div>
                     <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
                         <span style="color: #94a3b8; font-size: 0.8rem; text-transform: uppercase; font-weight: 700; margin-bottom: 5px;">Balance Neto</span>
-                        <span style="color:  + darkColor + ; font-size: 1.8rem; font-weight: 800;"> + formatPrice(totalBalance) + </span>
+                        <span style="color: ${darkColor}; font-size: 1.8rem; font-weight: 800;">${formatPrice(totalBalance)}</span>
                     </div>
                 </div>
-            ;
+            `;
             const viewSelect = document.getElementById('balanceViewSelect');
             if (viewSelect && viewSelect.value === 'charts') {
                 summaryBlock.style.display = 'block';
