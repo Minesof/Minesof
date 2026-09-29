@@ -5149,48 +5149,42 @@ window.moveAdminItem = function(type, id, direction) {
         window.chartsMap = {};
 
         if (typeof Chart !== 'undefined' && chartDates.length > 0) {
-            const ctxSales = document.getElementById('chartVentas');
-            if (ctxSales) {
-                window.chartsMap.sales = new Chart(ctxSales, {
-                    type: 'line',
-                    data: {
-                        labels: chartDates,
-                        datasets: [{
-                            label: 'Ventas Totales ($)',
-                            data: salesData,
-                            borderColor: '#38bdf8',
-                            backgroundColor: 'rgba(56, 189, 248, 0.1)',
-                            borderWidth: 2,
-                            fill: true,
-                            tension: 0.3
-                        }]
+            const commonOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                onClick: (e, elements) => {
+                    if (elements.length > 0) {
+                        const index = elements[0].index;
+                        if (typeof window.openBalanceDetails === 'function') {
+                            window.openBalanceDetails(chartDates[index]);
+                        }
+                    }
+                },
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: {
+                        ticks: {
+                            callback: function(val, index) {
+                                return chartDates[index].split('/')[0];
+                            }
+                        }
                     },
-                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, title: { display: true, text: 'Comportamiento de Ventas', color: '#94a3b8' } }, scales: { y: { beginAtZero: true } } }
-                });
-            }
-
-            const ctxExp = document.getElementById('chartGastos');
-            if (ctxExp) {
-                window.chartsMap.exp = new Chart(ctxExp, {
-                    type: 'line',
-                    data: {
-                        labels: chartDates,
-                        datasets: [{
-                            label: 'Gastos ($)',
-                            data: expData,
-                            borderColor: '#f43f5e',
-                            backgroundColor: 'rgba(244, 63, 94, 0.1)',
-                            borderWidth: 2,
-                            fill: true,
-                            tension: 0.3
-                        }]
-                    },
-                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, title: { display: true, text: 'Comportamiento de Gastos', color: '#94a3b8' } }, scales: { y: { beginAtZero: true } } }
-                });
-            }
+                    y: { beginAtZero: true }
+                }
+            };
 
             const ctxBal = document.getElementById('chartBalance');
             if (ctxBal) {
+                const balOptions = JSON.parse(JSON.stringify(commonOptions));
+                balOptions.plugins.title = { display: true, text: 'Comportamiento del Balance', color: '#94a3b8' };
+                balOptions.scales.y.grid = {
+                    color: (ctx) => ctx.tick.value === 0 ? '#ef4444' : 'rgba(0,0,0,0.1)',
+                    lineWidth: (ctx) => ctx.tick.value === 0 ? 2 : 1
+                };
+                // We must copy functions because JSON stringify lost them
+                balOptions.onClick = commonOptions.onClick;
+                balOptions.scales.x.ticks.callback = commonOptions.scales.x.ticks.callback;
+
                 window.chartsMap.bal = new Chart(ctxBal, {
                     type: 'line',
                     data: {
@@ -5205,7 +5199,57 @@ window.moveAdminItem = function(type, id, direction) {
                             tension: 0.3
                         }]
                     },
-                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, title: { display: true, text: 'Comportamiento del Balance', color: '#94a3b8' } }, scales: { y: { beginAtZero: true } } }
+                    options: balOptions
+                });
+            }
+
+            const ctxSales = document.getElementById('chartVentas');
+            if (ctxSales) {
+                const salesOptions = JSON.parse(JSON.stringify(commonOptions));
+                salesOptions.plugins.title = { display: true, text: 'Comportamiento de Ventas', color: '#94a3b8' };
+                salesOptions.onClick = commonOptions.onClick;
+                salesOptions.scales.x.ticks.callback = commonOptions.scales.x.ticks.callback;
+
+                window.chartsMap.sales = new Chart(ctxSales, {
+                    type: 'line',
+                    data: {
+                        labels: chartDates,
+                        datasets: [{
+                            label: 'Ventas Totales ($)',
+                            data: salesData,
+                            borderColor: '#38bdf8',
+                            backgroundColor: 'rgba(56, 189, 248, 0.1)',
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.3
+                        }]
+                    },
+                    options: salesOptions
+                });
+            }
+
+            const ctxExp = document.getElementById('chartGastos');
+            if (ctxExp) {
+                const expOptions = JSON.parse(JSON.stringify(commonOptions));
+                expOptions.plugins.title = { display: true, text: 'Comportamiento de Gastos', color: '#94a3b8' };
+                expOptions.onClick = commonOptions.onClick;
+                expOptions.scales.x.ticks.callback = commonOptions.scales.x.ticks.callback;
+
+                window.chartsMap.exp = new Chart(ctxExp, {
+                    type: 'line',
+                    data: {
+                        labels: chartDates,
+                        datasets: [{
+                            label: 'Gastos ($)',
+                            data: expData,
+                            borderColor: '#f43f5e',
+                            backgroundColor: 'rgba(244, 63, 94, 0.1)',
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.3
+                        }]
+                    },
+                    options: expOptions
                 });
             }
         }
