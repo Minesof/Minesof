@@ -148,7 +148,7 @@
                         <i data-lucide="user" style="width:14px; height:14px; flex-shrink:0;"></i>
                         <span id="currentUserEmailDisplay" style="font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">...</span>
                     </div>
-                    <span style="font-size:0.7rem; opacity:0.7;">Versión 441</span>
+                    <span style="font-size:0.7rem; opacity:0.7;">Versión 442</span>
                 </div>
             </div>
         </div>
@@ -504,8 +504,12 @@
                             <i data-lucide="calendar" style="width: 16px; height: 16px; color: var(--text-muted);"></i>
                         </div>
                     </div>
-                    <div class="filter-group hidden" id="reportMonthPickerGroup">
-                        <input type="month" id="reportMonthPicker" class="date-picker-input">
+                    <div class="filter-group hidden" id="reportMonthPickerGroup" style="position: relative;">
+                        <input type="month" id="reportMonthPicker" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; border: 0;" title="Seleccionar Mes" onchange="var s = document.getElementById('reportMonthText'); if(this.value) { var p = this.value.split('-'); var m = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']; s.textContent = m[parseInt(p[1])-1] + '/' + p[0]; s.style.color = 'var(--text-primary)'; } else { s.textContent = 'Mes'; s.style.color = 'var(--text-muted)'; }">
+                        <div class="date-picker-input" style="display: flex; align-items: center; width: 140px; box-sizing: border-box; justify-content: space-between; cursor: pointer;" onclick="try{document.getElementById('reportMonthPicker').showPicker()}catch(e){}">
+                            <span id="reportMonthText" style="color: var(--text-muted);">Mes</span>
+                            <i data-lucide="calendar" style="width: 16px; height: 16px; color: var(--text-muted);"></i>
+                        </div>
                     </div>
                     <button class="search-date-btn" id="searchReportBtn">
                         <i data-lucide="search"></i>
@@ -1267,11 +1271,11 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Scripts -->
-    <script src="js/data.js?v=441"></script>
+    <script src="js/data.js?v=442"></script>
     
-    <script src="js/storage.js?v=441"></script>
-    <script src="js/auth.js?v=441"></script>
-    <script src="js/app.js?v=441"></script>
+    <script src="js/storage.js?v=442"></script>
+    <script src="js/auth.js?v=442"></script>
+    <script src="js/app.js?v=442"></script>
     <script>
         // Disable Service Worker and clear cache to force internet-only mode
         if ('serviceWorker' in navigator) {
