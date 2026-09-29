@@ -4944,7 +4944,7 @@ window.moveAdminItem = function(type, id, direction) {
     // System Data Management
     // ============================================
     window.clearSystemData = function() {
-        const msg1 = "ADVERTENCIA CRÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚ÂTICA \n\nÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿EstÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡s seguro de querer BORRAR TODO el historial de pedidos y gastos?\n\n- Esta acciÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³n es irreversible.\n- Tu catÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡logo (productos, categorÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­as) NO se borrarÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡.\n- Tu contador de pedidos volverÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ a cero.";
+        const msg1 = "ADVERTENCIA CRITICA \n\nEstas seguro de querer BORRAR TODO el historial de pedidos y gastos?\n\n- Esta accion es irreversible.\n- Tu catalogo (productos, categorias) NO se borrara.\n- Tu contador de pedidos volvera a cero.";
         window.minesofConfirm(msg1, async () => {
             window.minesofPrompt("Escribe BORRAR en mayusculas para confirmar la eliminacion:", async (confirmWord) => {
                 if (confirmWord !== "BORRAR") {
