@@ -5179,7 +5179,7 @@ window.moveAdminItem = function(type, id, direction) {
         window.chartsMap = {};
 
         if (typeof Chart !== 'undefined' && chartDates.length > 0) {
-            const dynamicWidth = Math.max(chartDates.length * 50, 100) + 'px';
+            const dynamicWidth = (chartDates.length * 20) + 'px';
             const wBal = document.getElementById('wrapperBalance'); if (wBal) wBal.style.width = dynamicWidth;
             const wVen = document.getElementById('wrapperVentas'); if (wVen) wVen.style.width = dynamicWidth;
             const wGas = document.getElementById('wrapperGastos'); if (wGas) wGas.style.width = dynamicWidth;
