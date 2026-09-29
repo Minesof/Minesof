@@ -926,7 +926,7 @@ window.removeClient = function(e, client) {
     e.stopPropagation();
     if (state.clients.length <= 1) return;
     
-    window.minesofConfirm(`ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿Eliminar al cliente ${client} y todos sus productos seleccionados?`, () => {
+    window.minesofConfirm(`Eliminar al cliente ${client} y todos sus productos seleccionados?`, () => {
         state.clients = state.clients.filter(c => c !== client);
         state.cart = state.cart.filter(item => item.clientName !== client);
         
@@ -1314,7 +1314,7 @@ function renderSplitUI() {
             renderSplitUI();
         };
         if (confirmClear) {
-            window.minesofConfirm('ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿Estas seguro de vaciar todo el pedido actual?', performClear);
+            window.minesofConfirm('Estas seguro de vaciar todo el pedido actual?', performClear);
         } else {
             performClear();
         }
@@ -2283,7 +2283,7 @@ function renderSplitUI() {
             if (!selectedPaymentOrder) return;
 
             const performDelete = () => {
-                window.minesofConfirm(`ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿Estas seguro de que deseas eliminar permanentemente el pedido ${selectedPaymentOrder.orderNumber}?`, async () => {
+                window.minesofConfirm(`Estas seguro de que deseas eliminar permanentemente el pedido ${selectedPaymentOrder.orderNumber}?`, async () => {
                     await StorageManager.deleteOrder(selectedPaymentOrder.id);
                     showNotification(`Pedido ${selectedPaymentOrder.orderNumber} eliminado`);
                     elements.paymentModal.classList.add('hidden');
@@ -3040,7 +3040,7 @@ function renderSplitUI() {
             if (!selectedHistoryOrder) return;
 
             const performDelete = () => {
-                window.minesofConfirm(`ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿Estas seguro de que deseas eliminar permanentemente el pedido ${selectedHistoryOrder.orderNumber}?`, async () => {
+                window.minesofConfirm(`Estas seguro de que deseas eliminar permanentemente el pedido ${selectedHistoryOrder.orderNumber}?`, async () => {
                     await StorageManager.deleteOrder(selectedHistoryOrder.id);
                     showNotification(`Pedido ${selectedHistoryOrder.orderNumber} eliminado`);
                     elements.historyOrderModal.classList.add('hidden');
@@ -3694,7 +3694,7 @@ function renderSplitUI() {
 
     window.deleteExpenseCategory = function (catId) {
         const performDelete = () => {
-            window.minesofConfirm('ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿Eliminar esta categoria de Gasto?', () => {
+            window.minesofConfirm('Eliminar esta categoria de Gasto?', () => {
                 const cats = StorageManager.getExpenseCategories().filter(c => c.id !== catId);
                 StorageManager.saveExpenseCategories(cats);
                 showNotification('CategorÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­a eliminada');
@@ -3800,7 +3800,7 @@ function renderSplitUI() {
     // Delete expense (global handler)
     window.deleteExpense = function (expenseId) {
         const performDelete = () => {
-            window.minesofConfirm('ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿Eliminar este Gasto?', async () => {
+            window.minesofConfirm('Eliminar este Gasto?', async () => {
                 await StorageManager.deleteExpense(expenseId);
                 showNotification('Gasto eliminado');
                 renderExpensesPage();
@@ -4732,7 +4732,7 @@ window.moveAdminItem = function(type, id, direction) {
 
     if (resetOrderCounterBtn) {
         resetOrderCounterBtn.addEventListener('click', () => {
-            window.minesofConfirm('ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿Estas seguro que deseas reiniciar el contador de pedidos a #001?', async () => {
+            window.minesofConfirm('Estas seguro que deseas reiniciar el contador de pedidos a #001?', async () => {
                 await resetOrderCounter();
             });
         });
