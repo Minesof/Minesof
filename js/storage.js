@@ -294,7 +294,6 @@ const StorageManager = {
         // 2. Escuchar Pedidos (Para no descargar todo el historial, escuchamos los recientes)
         this.unsubOrders = getDbCollection(STORAGE_KEYS.ORDERS)
             .orderBy('createdAt', 'desc')
-            .limit(150)
             .onSnapshot(snapshot => {
                 let localOrders = this.getOrders();
                 let changed = false;
@@ -325,7 +324,6 @@ const StorageManager = {
         // 3. Escuchar Egresos
         this.unsubExpenses = getDbCollection(STORAGE_KEYS.EXPENSES)
             .orderBy('createdAt', 'desc')
-            .limit(100)
             .onSnapshot(snapshot => {
                 let local = this.getExpenses();
                 let changed = false;
