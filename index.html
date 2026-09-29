@@ -148,7 +148,7 @@
                         <i data-lucide="user" style="width:14px; height:14px; flex-shrink:0;"></i>
                         <span id="currentUserEmailDisplay" style="font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">...</span>
                     </div>
-                    <span style="font-size:0.7rem; opacity:0.7;">Versión 437</span>
+                    <span style="font-size:0.7rem; opacity:0.7;">Versión 438</span>
                 </div>
             </div>
         </div>
@@ -497,8 +497,12 @@
                             <option value="total">Histórico Total</option>
                         </select>
                     </div>
-                    <div class="filter-group hidden" id="reportDatePickerGroup">
-                        <input type="date" id="reportDatePicker" class="date-picker-input">
+                    <div class="filter-group hidden" id="reportDatePickerGroup" style="position: relative;">
+                        <input type="date" id="reportDatePicker" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; border: 0;" title="Seleccionar Fecha" onchange="var s = document.getElementById('reportDateText'); if(this.value) { var p = this.value.split('-'); s.textContent = p[2] + '/' + p[1] + '/' + p[0].substring(2); s.style.color = 'var(--text-primary)'; } else { s.textContent = 'Día'; s.style.color = 'var(--text-muted)'; }">
+                        <div class="date-picker-input" style="display: flex; align-items: center; width: 140px; box-sizing: border-box; justify-content: space-between; cursor: pointer;" onclick="try{document.getElementById('reportDatePicker').showPicker()}catch(e){}">
+                            <span id="reportDateText" style="color: var(--text-muted);">D&iacute;a</span>
+                            <i data-lucide="calendar" style="width: 16px; height: 16px; color: var(--text-muted);"></i>
+                        </div>
                     </div>
                     <div class="filter-group hidden" id="reportMonthPickerGroup">
                         <input type="month" id="reportMonthPicker" class="date-picker-input">
@@ -651,8 +655,12 @@
                                     <option value="total">Hist&oacute;rico Total</option>
                                 </select>
                             </div>
-                            <div class="filter-group hidden" id="balanceDatePickerGroup">
-                                <input type="date" id="balanceDatePicker" class="date-picker-input">
+                            <div class="filter-group hidden" id="balanceDatePickerGroup" style="position: relative;">
+                                <input type="date" id="balanceDatePicker" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; border: 0;" title="Seleccionar Fecha" onchange="var s = document.getElementById('balanceDateText'); if(this.value) { var p = this.value.split('-'); s.textContent = p[2] + '/' + p[1] + '/' + p[0].substring(2); s.style.color = 'var(--text-primary)'; } else { s.textContent = 'Día'; s.style.color = 'var(--text-muted)'; }">
+                                <div class="date-picker-input" style="display: flex; align-items: center; width: 140px; box-sizing: border-box; justify-content: space-between; cursor: pointer;" onclick="try{document.getElementById('balanceDatePicker').showPicker()}catch(e){}">
+                                    <span id="balanceDateText" style="color: var(--text-muted);">D&iacute;a</span>
+                                    <i data-lucide="calendar" style="width: 16px; height: 16px; color: var(--text-muted);"></i>
+                                </div>
                             </div>
                             <div class="filter-group hidden" id="balanceMonthPickerGroup" style="position: relative;">
                                 <input type="month" id="balanceMonthPicker" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; border: 0;" title="Seleccionar Mes" onchange="var s = document.getElementById('balanceMonthText'); if(this.value) { var p = this.value.split('-'); var m = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']; s.textContent = m[parseInt(p[1])-1] + '/' + p[0]; s.style.color = 'var(--text-primary)'; } else { s.textContent = 'Mes'; s.style.color = 'var(--text-muted)'; }">
@@ -1259,11 +1267,11 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Scripts -->
-    <script src="js/data.js?v=437"></script>
+    <script src="js/data.js?v=438"></script>
     
-    <script src="js/storage.js?v=437"></script>
-    <script src="js/auth.js?v=437"></script>
-    <script src="js/app.js?v=437"></script>
+    <script src="js/storage.js?v=438"></script>
+    <script src="js/auth.js?v=438"></script>
+    <script src="js/app.js?v=438"></script>
     <script>
         // Disable Service Worker and clear cache to force internet-only mode
         if ('serviceWorker' in navigator) {
