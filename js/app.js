@@ -5308,7 +5308,7 @@ window.moveAdminItem = function(type, id, direction) {
                     </div>
                 </th>
                 <th style="padding: 16px 12px; text-align: right;">
-                    <div style="display: flex; flex-direction: column; align-items: flex-end; padding-left: 15px; border-left: 1px solid #334155;">
+                    <div style="display: flex; flex-direction: column; align-items: flex-end; padding-left: 15px;">
                         <span style="color: #94a3b8; font-size: 0.75rem; text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Balance</span>
                         <span style="color: ${darkColor}; font-size: 1.4rem; font-weight: 900; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">${formatPrice(totalBalance)}</span>
                     </div>
