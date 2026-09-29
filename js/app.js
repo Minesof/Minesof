@@ -284,11 +284,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     if (isNaN(amount)) return;
                     
+                    let matchedCatId = 'gastos_generales';
+                    if (rawCat) {
+                        const searchName = rawCat.toString().toLowerCase().trim();
+                        const allCats = StorageManager.getExpenseCategories();
+                        const found = allCats.find(c => c.label.toLowerCase().trim() === searchName);
+                        matchedCatId = found ? found.id : rawCat.toString().trim();
+                    }
+                    
                     const newExpense = {
                         id: 'mig_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9),
-                        description: rawDesc ? rawDesc.toString() : 'Gasto Migrado',
+                        description: rawDesc ? rawDesc.toString().trim() : 'Gasto Migrado',
                         amount: amount,
-                        category: rawCat ? rawCat.toString() : 'Gastos Generales',
+                        category: matchedCatId,
                         date: dateStr.split('T')[0],
                         createdAt: dateStr
                     };
