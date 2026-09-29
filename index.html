@@ -148,7 +148,7 @@
                         <i data-lucide="user" style="width:14px; height:14px; flex-shrink:0;"></i>
                         <span id="currentUserEmailDisplay" style="font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">...</span>
                     </div>
-                    <span style="font-size:0.7rem; opacity:0.7;">Versión 436</span>
+                    <span style="font-size:0.7rem; opacity:0.7;">Versión 437</span>
                 </div>
             </div>
         </div>
@@ -654,9 +654,9 @@
                             <div class="filter-group hidden" id="balanceDatePickerGroup">
                                 <input type="date" id="balanceDatePicker" class="date-picker-input">
                             </div>
-                            <div class="filter-group hidden" id="balanceMonthPickerGroup" style="position: relative; width: 140px;">
-                                <input type="month" id="balanceMonthPicker" style="position: absolute; opacity: 0; width: 100%; height: 100%; cursor: pointer; z-index: 2;" title="Seleccionar Mes" onchange="var s = document.getElementById('balanceMonthText'); if(this.value) { var p = this.value.split('-'); var m = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']; s.textContent = m[parseInt(p[1])-1] + '/' + p[0]; s.style.color = 'var(--text-primary)'; } else { s.textContent = 'Mes'; s.style.color = 'var(--text-muted)'; }">
-                                <div class="date-picker-input" style="display: flex; align-items: center; width: 100%; justify-content: space-between;">
+                            <div class="filter-group hidden" id="balanceMonthPickerGroup" style="position: relative;">
+                                <input type="month" id="balanceMonthPicker" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; border: 0;" title="Seleccionar Mes" onchange="var s = document.getElementById('balanceMonthText'); if(this.value) { var p = this.value.split('-'); var m = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']; s.textContent = m[parseInt(p[1])-1] + '/' + p[0]; s.style.color = 'var(--text-primary)'; } else { s.textContent = 'Mes'; s.style.color = 'var(--text-muted)'; }">
+                                <div class="date-picker-input" style="display: flex; align-items: center; width: 140px; box-sizing: border-box; justify-content: space-between; cursor: pointer;" onclick="try{document.getElementById('balanceMonthPicker').showPicker()}catch(e){}">
                                     <span id="balanceMonthText" style="color: var(--text-muted);">Mes</span>
                                     <i data-lucide="calendar" style="width: 16px; height: 16px; color: var(--text-muted);"></i>
                                 </div>
@@ -1259,11 +1259,11 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Scripts -->
-    <script src="js/data.js?v=436"></script>
+    <script src="js/data.js?v=437"></script>
     
-    <script src="js/storage.js?v=436"></script>
-    <script src="js/auth.js?v=436"></script>
-    <script src="js/app.js?v=436"></script>
+    <script src="js/storage.js?v=437"></script>
+    <script src="js/auth.js?v=437"></script>
+    <script src="js/app.js?v=437"></script>
     <script>
         // Disable Service Worker and clear cache to force internet-only mode
         if ('serviceWorker' in navigator) {
