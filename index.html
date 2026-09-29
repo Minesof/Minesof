@@ -148,7 +148,7 @@
                         <i data-lucide="user" style="width:14px; height:14px; flex-shrink:0;"></i>
                         <span id="currentUserEmailDisplay" style="font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">...</span>
                     </div>
-                    <span style="font-size:0.7rem; opacity:0.7;">Versión 423</span>
+                    <span style="font-size:0.7rem; opacity:0.7;">Versión 425</span>
                 </div>
             </div>
         </div>
@@ -639,8 +639,8 @@
                 </div>
                 <div>
                                         <!-- Balance Filter -->
-                    <div class="reports-filter" style="margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-end; justify-content: space-between;">
-                        <div class="filter-group" style="flex: 1; min-width: 130px;">
+                    <div class="reports-filter" style="margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 15px; align-items: flex-end; justify-content: space-between;">
+                        <div class="filter-group" style="flex: 1; min-width: 0;">
                             <label style="font-size: 0.75rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><i data-lucide="calendar" style="width: 14px; height: 14px; margin-right: 4px; display: inline-block; vertical-align: middle;"></i> PERIODO:</label>
                             <select id="balancePeriodSelect" class="date-picker-input" style="width: 100%; padding: 8px 10px; font-size: 0.85rem;">
                                 <option value="today">Hoy</option>
@@ -661,7 +661,7 @@
                             Consultar
                         </button>
                         
-                        <div class="filter-group" style="flex: 1; min-width: 130px;">
+                        <div class="filter-group" style="flex: 1; min-width: 0;">
                             
                             <label style="display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><i data-lucide="eye" style="width: 14px; height: 14px; margin-right: 4px; display: inline-block; vertical-align: middle;"></i> VISTA:</label>
                             <select id="balanceViewSelect" class="date-picker-input" style="width: 100%; border-color: #38bdf8; background-color: rgba(56, 189, 248, 0.05); padding: 8px 10px; font-weight: 600; font-size: 0.85rem;">
@@ -912,7 +912,7 @@
                             <h4><i data-lucide="database"></i> Importar Ventas Antiguas</h4>
                             <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 15px;">Para importar, primero descarga la plantilla oficial, pega ahí tus datos y luego súbela.</p>
                             
-                            <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+                            <div style="display: flex; gap: 15px; margin-bottom: 10px;">
                                 <button class="btn-primary" onclick="downloadSalesTemplate()" style="flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; background-color: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: all 0.2s;">
                                     <i data-lucide="download" style="width: 18px;"></i> 1. Descargar Plantilla
                                 </button>
@@ -928,7 +928,7 @@
                             <h4><i data-lucide="wallet"></i> Importar Gastos Antiguos</h4>
                             <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 15px;">Descarga la plantilla de gastos, pega tu historial contable y súbelo al sistema.</p>
                             
-                            <div style="display: flex; gap: 10px;">
+                            <div style="display: flex; gap: 15px;">
                                 <button class="btn-primary" onclick="downloadExpensesTemplate()" style="flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; background-color: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: all 0.2s;">
                                     <i data-lucide="download" style="width: 18px;"></i> 1. Descargar Plantilla
                                 </button>
@@ -1256,11 +1256,11 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Scripts -->
-    <script src="js/data.js?v=423"></script>
+    <script src="js/data.js?v=425"></script>
     
-    <script src="js/storage.js?v=423"></script>
-    <script src="js/auth.js?v=423"></script>
-    <script src="js/app.js?v=423"></script>
+    <script src="js/storage.js?v=425"></script>
+    <script src="js/auth.js?v=425"></script>
+    <script src="js/app.js?v=425"></script>
     <script>
         // Disable Service Worker and clear cache to force internet-only mode
         if ('serviceWorker' in navigator) {
