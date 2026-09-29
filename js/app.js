@@ -5141,13 +5141,13 @@ window.moveAdminItem = function(type, id, direction) {
         if (summaryBlock) summaryBlock.innerHTML = "";
         
         const cBal = document.getElementById("chartTotalBalance");
-        if (cBal) cBal.innerHTML = `<span style="display:block; color:#94a3b8; font-size:0.8rem; font-weight:700; text-transform:uppercase;">Comportamiento del Balance</span><span style="display:block; color:${darkColor}; font-size:1.6rem; font-weight:800;">${formatPrice(totalBalance)}</span>`;
+        if (cBal) cBal.innerHTML = `<span style="display:block; color:${darkColor}; font-size:1.6rem; font-weight:800;">${formatPrice(totalBalance)}</span>`;
         
         const cVen = document.getElementById("chartTotalVentas");
-        if (cVen) cVen.innerHTML = `<span style="display:block; color:#94a3b8; font-size:0.8rem; font-weight:700; text-transform:uppercase;">Comportamiento de Ventas</span><span style="display:block; color:#38bdf8; font-size:1.6rem; font-weight:800;">${formatPrice(totalSales)}</span>`;
+        if (cVen) cVen.innerHTML = `<span style="display:block; color:#38bdf8; font-size:1.6rem; font-weight:800;">${formatPrice(totalSales)}</span>`;
         
         const cGas = document.getElementById("chartTotalGastos");
-        if (cGas) cGas.innerHTML = `<span style="display:block; color:#94a3b8; font-size:0.8rem; font-weight:700; text-transform:uppercase;">Comportamiento de Gastos</span><span style="display:block; color:#f43f5e; font-size:1.6rem; font-weight:800;">${formatPrice(totalExp)}</span>`;
+        if (cGas) cGas.innerHTML = `<span style="display:block; color:#f43f5e; font-size:1.6rem; font-weight:800;">${formatPrice(totalExp)}</span>`;
         
                                 const chartDates = [...sortedDates].reverse();
                 const daysOfWeek = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
@@ -5198,7 +5198,7 @@ window.moveAdminItem = function(type, id, direction) {
             const ctxBal = document.getElementById('chartBalance');
             if (ctxBal) {
                 const balOptions = JSON.parse(JSON.stringify(commonOptions));
-                balOptions.plugins.title = { display: false };
+                balOptions.plugins.title = { display: true, text: 'Comportamiento del Balance', color: '#94a3b8' };
                 balOptions.scales.y.grid = {
                     color: (ctx) => ctx.tick.value === 0 ? '#ef4444' : 'rgba(0,0,0,0.1)',
                     lineWidth: (ctx) => ctx.tick.value === 0 ? 2 : 1
@@ -5234,7 +5234,7 @@ window.moveAdminItem = function(type, id, direction) {
             const ctxSales = document.getElementById('chartVentas');
             if (ctxSales) {
                 const salesOptions = JSON.parse(JSON.stringify(commonOptions));
-                salesOptions.plugins.title = { display: false };
+                salesOptions.plugins.title = { display: true, text: 'Comportamiento de Ventas', color: '#94a3b8' };
                 salesOptions.onClick = commonOptions.onClick;
                 salesOptions.scales.x.ticks.callback = commonOptions.scales.x.ticks.callback;
 
@@ -5259,7 +5259,7 @@ window.moveAdminItem = function(type, id, direction) {
             const ctxExp = document.getElementById('chartGastos');
             if (ctxExp) {
                 const expOptions = JSON.parse(JSON.stringify(commonOptions));
-                expOptions.plugins.title = { display: false };
+                expOptions.plugins.title = { display: true, text: 'Comportamiento de Gastos', color: '#94a3b8' };
                 expOptions.onClick = commonOptions.onClick;
                 expOptions.scales.x.ticks.callback = commonOptions.scales.x.ticks.callback;
 
