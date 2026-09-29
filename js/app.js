@@ -5097,7 +5097,7 @@ window.moveAdminItem = function(type, id, direction) {
         const sortedDates = Object.keys(dailyData).sort((a, b) => dailyData[b].timestamp - dailyData[a].timestamp);
 
         if (sortedDates.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; padding: 2rem; color: var(--text-muted);">No hay datos en este periodo</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 2rem; color: var(--text-muted);">No hay datos en este periodo</td></tr>';
             const sumBlock = document.getElementById('balanceSummaryBlock');
             if (sumBlock) sumBlock.innerHTML = '';
             return;
