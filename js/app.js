@@ -3432,6 +3432,11 @@ function renderSplitUI() {
                 expenses = StorageManager.getTodayExpenses();
                 income = StorageManager.getTodaySales();
                 break;
+            case 'date':
+                const filterDate = document.getElementById('expenseDatePicker')?.value;
+                expenses = filterDate ? StorageManager.getExpensesByDate(filterDate) : StorageManager.getTodayExpenses();
+                income = filterDate ? StorageManager.getSalesByDate(filterDate) : StorageManager.getTodaySales();
+                break;
             case 'month':
                 expenses = StorageManager.getCurrentMonthExpenses();
                 income = StorageManager.getCurrentMonthSales();
@@ -3803,11 +3808,17 @@ function renderSplitUI() {
     if (expensePeriodSelect) {
         expensePeriodSelect.addEventListener('change', (e) => {
             const val = e.target.value;
-            const picker = document.getElementById('expenseMonthPickerWrapper') || document.getElementById('expenseMonthPicker');
+            const monthPicker = document.getElementById('expenseMonthPickerWrapper') || document.getElementById('expenseMonthPicker');
+            const datePicker = document.getElementById('expenseDatePickerWrapper') || document.getElementById('expenseDatePicker');
+            
+            if (monthPicker) monthPicker.classList.add('hidden');
+            if (datePicker) datePicker.classList.add('hidden');
+
             if (val === 'specific-month') {
-                picker?.classList.remove('hidden');
+                monthPicker?.classList.remove('hidden');
+            } else if (val === 'date') {
+                datePicker?.classList.remove('hidden');
             } else {
-                picker?.classList.add('hidden');
                 renderExpensesPage();
             }
         });
@@ -3816,6 +3827,13 @@ function renderSplitUI() {
     const expenseMonthPicker = document.getElementById('expenseMonthPicker');
     if (expenseMonthPicker) {
         expenseMonthPicker.addEventListener('change', () => {
+            renderExpensesPage();
+        });
+    }
+
+    const expenseDatePicker = document.getElementById('expenseDatePicker');
+    if (expenseDatePicker) {
+        expenseDatePicker.addEventListener('change', () => {
             renderExpensesPage();
         });
     }
@@ -3858,6 +3876,11 @@ function renderSplitUI() {
             case 'today':
                 expenses = StorageManager.getTodayExpenses();
                 periodLabel = 'Hoy';
+                break;
+            case 'date':
+                const exFilterDate = document.getElementById('expenseDatePicker')?.value;
+                expenses = exFilterDate ? StorageManager.getExpensesByDate(exFilterDate) : StorageManager.getTodayExpenses();
+                periodLabel = exFilterDate || 'Dia_Especifico';
                 break;
             case 'month':
                 expenses = StorageManager.getCurrentMonthExpenses();

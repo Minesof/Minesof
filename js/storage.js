@@ -45,6 +45,9 @@ const StorageManager = {
     getTodaySales() {
         return this.getTodayOrders().filter(o => o.paid && !o.isPartial).reduce((sum, o) => sum + (o.totalPrice || 0), 0);
     },
+    getSalesByDate(dateStr) {
+        return this.getOrdersByDate(dateStr).filter(o => o.paid && !o.isPartial).reduce((sum, o) => sum + (o.totalPrice || 0), 0);
+    },
 
     getCurrentMonthSales() {
         return this.getCurrentMonthOrders().filter(o => o.paid && !o.isPartial).reduce((sum, o) => sum + (o.totalPrice || 0), 0);
