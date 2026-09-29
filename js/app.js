@@ -4254,7 +4254,7 @@ window.moveAdminItem = function(type, id, direction) {
     };
 
     window.deleteAdminItem = function (type, id, pId) {
-        window.minesofConfirm('ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿Seguro que quieres eliminar este elemento?', () => {
+        window.minesofConfirm('Seguro que quieres eliminar este elemento?', () => {
             const config = StorageManager.getConfig();
             if (type === 'category') {
                 config.categories = config.categories.filter(c => c.id !== id);
