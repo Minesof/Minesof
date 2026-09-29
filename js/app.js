@@ -4717,7 +4717,8 @@ window.moveAdminItem = function(type, id, direction) {
             if (typeof db !== 'undefined') {
                 try {
                     await getDbCollection(STORAGE_KEYS.SETTINGS).doc('global_config').set({
-                        orderCounter: 0
+                        orderCounter: 0,
+                        lastWipe: Date.now()
                     }, { merge: true });
                 } catch(e) {}
             }
@@ -5007,7 +5008,8 @@ window.moveAdminItem = function(type, id, direction) {
             if (typeof db !== 'undefined') {
                 try {
                     await getDbCollection(STORAGE_KEYS.SETTINGS).doc('global_config').set({
-                        orderCounter: 0
+                        orderCounter: 0,
+                        lastWipe: Date.now()
                     }, { merge: true });
                 } catch(e) {}
             }

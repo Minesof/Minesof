@@ -265,6 +265,16 @@ const StorageManager = {
         this.unsubConfig = getDbCollection(STORAGE_KEYS.SETTINGS).doc('global_config').onSnapshot(doc => {
             if (doc.exists) {
                 const data = doc.data();
+                if (data.lastWipe) {
+                    const localWipe = localStorage.getItem('galeria_last_wipe');
+                    if (!localWipe || data.lastWipe > parseInt(localWipe)) {
+                        localStorage.removeItem(STORAGE_KEYS.ORDERS);
+                        localStorage.removeItem(STORAGE_KEYS.EXPENSES);
+                        localStorage.setItem('galeria_last_wipe', data.lastWipe.toString());
+                        setTimeout(() => window.location.reload(), 500);
+                        return;
+                    }
+                }
                 if (data.categories) localStorage.setItem(STORAGE_KEYS.CATEGORIES, JSON.stringify(data.categories));
                 if (data.products) localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(data.products));
                 if (data.flavors) localStorage.setItem(STORAGE_KEYS.FLAVORS, JSON.stringify(data.flavors));
