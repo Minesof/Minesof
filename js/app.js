@@ -5377,7 +5377,16 @@ window.moveAdminItem = function(type, id, direction) {
 
 
     window.openBalanceDetails = function(dateStr) {
-        document.getElementById('balanceDetailTitle').textContent = 'Detalles - ' + dateStr;
+        const parts = dateStr.split('/');
+        let displayStr = dateStr;
+        if (parts.length === 3) {
+            const dateObj = new Date(parseInt(parts[2]), parseInt(parts[1]) - 1, parseInt(parts[0]));
+            const shortYear = parts[2].slice(-2);
+            const daysOfWeek = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+            const dayName = daysOfWeek[dateObj.getDay()];
+            displayStr = `${parts[0]}/${parts[1]}/${shortYear} (${dayName})`;
+        }
+        document.getElementById('balanceDetailTitle').textContent = 'Detalles - ' + displayStr;
         const sList = document.getElementById('balanceDetailSalesList');
         const eList = document.getElementById('balanceDetailExpensesList');
         
