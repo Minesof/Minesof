@@ -391,7 +391,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const saveBillingSystemBtn = document.getElementById('saveBillingSystemBtn');
     if (saveBillingSystemBtn) {
         saveBillingSystemBtn.addEventListener('click', () => {
-            window.minesofConfirm("ATENCIÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“N: Cambiar el sistema de cobro modificarÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ el flujo de tu negocio.\n\nÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿EstÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡s seguro de querer guardar este cambio?", () => {
+            window.minesofConfirm("ATENCION: Cambiar el sistema de cobro modificara el flujo de tu negocio.\n\nEstas seguro de querer guardar este cambio?", () => {
                 window.minesofPrompt("Escribe CAMBIAR en mayusculas para confirmar:", (confirmWord) => {
                     if (confirmWord !== "CAMBIAR") {
                         showNotification("Cambio cancelado.", "error");
