@@ -440,6 +440,12 @@ const StorageManager = {
         return this.getExpenses().filter(e => new Date(e.date || e.createdAt).toDateString() === today);
     },
 
+    getExpensesByDate(dateStr) {
+        if (!dateStr) return [];
+        const searchDate = new Date(dateStr + 'T00:00:00').toDateString();
+        return this.getExpenses().filter(e => new Date(e.date || e.createdAt).toDateString() === searchDate);
+    },
+
     getCurrentMonthExpenses() {
         const now = new Date();
         const currentMonth = now.getMonth();
