@@ -3803,7 +3803,7 @@ function renderSplitUI() {
     if (expensePeriodSelect) {
         expensePeriodSelect.addEventListener('change', (e) => {
             const val = e.target.value;
-            const picker = document.getElementById('expenseMonthPicker');
+            const picker = document.getElementById('expenseMonthPickerWrapper') || document.getElementById('expenseMonthPicker');
             if (val === 'specific-month') {
                 picker?.classList.remove('hidden');
             } else {

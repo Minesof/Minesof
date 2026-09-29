@@ -148,7 +148,7 @@
                         <i data-lucide="user" style="width:14px; height:14px; flex-shrink:0;"></i>
                         <span id="currentUserEmailDisplay" style="font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">...</span>
                     </div>
-                    <span style="font-size:0.7rem; opacity:0.7;">Versión 442</span>
+                    <span style="font-size:0.7rem; opacity:0.7;">Versión 443</span>
                 </div>
             </div>
         </div>
@@ -809,8 +809,13 @@
                             <option value="specific-month">Mes Específico</option>
                             <option value="total">Todo</option>
                         </select>
-                        <input type="month" id="expenseMonthPicker" class="hidden"
-                            style="flex: 1; padding: 10px 12px; background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); color: var(--text-primary); font-size: 0.85rem;">
+                        <div id="expenseMonthPickerWrapper" class="hidden" style="flex: 1; position: relative;">
+                            <input type="month" id="expenseMonthPicker" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; border: 0;" title="Seleccionar Mes" onchange="var s = document.getElementById('expenseMonthText'); if(this.value) { var p = this.value.split('-'); var m = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']; s.textContent = m[parseInt(p[1])-1] + '/' + p[0]; s.style.color = 'var(--text-primary)'; } else { s.textContent = 'Mes'; s.style.color = 'var(--text-muted)'; }">
+                            <div style="display: flex; align-items: center; width: 100%; box-sizing: border-box; justify-content: space-between; cursor: pointer; padding: 10px 12px; background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); font-size: 0.85rem;" onclick="try{document.getElementById('expenseMonthPicker').showPicker()}catch(e){}">
+                                <span id="expenseMonthText" style="color: var(--text-muted);">Mes</span>
+                                <i data-lucide="calendar" style="width: 16px; height: 16px; color: var(--text-muted);"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -1271,11 +1276,11 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Scripts -->
-    <script src="js/data.js?v=442"></script>
+    <script src="js/data.js?v=443"></script>
     
-    <script src="js/storage.js?v=442"></script>
-    <script src="js/auth.js?v=442"></script>
-    <script src="js/app.js?v=442"></script>
+    <script src="js/storage.js?v=443"></script>
+    <script src="js/auth.js?v=443"></script>
+    <script src="js/app.js?v=443"></script>
     <script>
         // Disable Service Worker and clear cache to force internet-only mode
         if ('serviceWorker' in navigator) {
