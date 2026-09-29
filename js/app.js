@@ -5100,6 +5100,14 @@ window.moveAdminItem = function(type, id, direction) {
             tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 2rem; color: var(--text-muted);">No hay datos en este periodo</td></tr>';
             const sumBlock = document.getElementById('balanceSummaryBlock');
             if (sumBlock) sumBlock.innerHTML = '';
+            if (window.chartsMap) {
+                Object.values(window.chartsMap).forEach(c => c.destroy());
+                window.chartsMap = {};
+            }
+            ['chartTotalBalance', 'chartTotalVentas', 'chartTotalGastos'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.innerHTML = '';
+            });
             return;
         }
 
@@ -5171,6 +5179,11 @@ window.moveAdminItem = function(type, id, direction) {
         window.chartsMap = {};
 
         if (typeof Chart !== 'undefined' && chartDates.length > 0) {
+            const dynamicWidth = Math.max(chartDates.length * 50, 100) + 'px';
+            const wBal = document.getElementById('wrapperBalance'); if (wBal) wBal.style.width = dynamicWidth;
+            const wVen = document.getElementById('wrapperVentas'); if (wVen) wVen.style.width = dynamicWidth;
+            const wGas = document.getElementById('wrapperGastos'); if (wGas) wGas.style.width = dynamicWidth;
+
             const commonOptions = {
                 responsive: true,
                 maintainAspectRatio: false,
