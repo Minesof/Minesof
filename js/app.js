@@ -1295,7 +1295,7 @@ function renderSplitUI() {
         html = `
         <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; color: #94a3b8; text-align: center; padding: 40px;">
             <i data-lucide="package-open" style="width: 64px; height: 64px; margin-bottom: 16px; opacity: 0.5;"></i>
-            <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">Todo listo para empezar!</h3>
+            <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">Todo listo para empezar!</h3>
             <p style="font-size: 0.95rem; max-width: 300px;">Aun no tienes el menu configurado. Crea tus categorias y productos en la opcion <b style="color: var(--accent-primary);">Administrador</b>.</p>
         </div>`;
     }
@@ -5328,21 +5328,21 @@ window.moveAdminItem = function(type, id, direction) {
                 <th style="padding: 16px 12px; text-align: right;">
                     <div style="display: flex; flex-direction: column; align-items: flex-end;">
                         <span style="color: #94a3b8; font-size: 0.75rem; text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Ventas</span>
-                        <span style="color: #f8fafc; font-size: 1.2rem; font-weight: 700;">${formatPrice(totalSales)}</span>
+                        <span style="color: #f8fafc; font-size: 1.05rem; font-weight: 700;">${formatPrice(totalSales)}</span>
                     </div>
                 </th>
                 <th style="padding: 16px 12px; text-align: right;">
                     <div style="display: flex; flex-direction: column; align-items: flex-end;">
                         <span style="color: #94a3b8; font-size: 0.75rem; text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Gastos</span>
-                        <span style="color: #f8fafc; font-size: 1.2rem; font-weight: 700;">${formatPrice(totalExp)}</span>
+                        <span style="color: #f8fafc; font-size: 1.05rem; font-weight: 700;">${formatPrice(totalExp)}</span>
                     </div>
                 </th>
-                <th style="padding: 16px 12px; text-align: right;">
-                    <div style="display: flex; flex-direction: column; align-items: flex-end; padding-left: 15px;">
-                        <span style="color: #94a3b8; font-size: 0.75rem; text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Balance</span>
-                        <span style="color: ${darkColor}; font-size: 1.4rem; font-weight: 900; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">${formatPrice(totalBalance)}</span>
-                    </div>
-                </th>
+                <th colspan="2" style="padding: 16px 12px; text-align: right;">
+                      <div style="display: flex; flex-direction: column; align-items: flex-end; padding-right: 15px;">
+                          <span style="color: #94a3b8; font-size: 0.75rem; text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Balance</span>
+                          <span style="color: ${darkColor}; font-size: 1.25rem; font-weight: 900; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">${formatPrice(totalBalance)}</span>
+                      </div>
+                  </th>
                 <th style="padding: 16px 12px;"></th>
             `;
         }
