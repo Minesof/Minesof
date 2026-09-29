@@ -3587,7 +3587,7 @@ function renderSplitUI() {
             <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem;">
                 <thead>
                     <tr style="background: var(--bg-tertiary);">
-                        <th style="padding: 8px 12px; text-align: left; color: var(--text-muted); font-weight: 600; font-size: 0.7rem; text-transform: uppercase;">Nombre de categorÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­a</th>
+                        <th style="padding: 8px 12px; text-align: left; color: var(--text-muted); font-weight: 600; font-size: 0.7rem; text-transform: uppercase;">Nombre de categoria</th>
                         <th style="padding: 8px 6px; width: 60px; text-align: center; color: var(--text-muted); font-weight: 600; font-size: 0.7rem; text-transform: uppercase;">Acciones</th>
                     </tr>
                 </thead>
@@ -3623,7 +3623,7 @@ function renderSplitUI() {
         // Add new category form
         html += `
             <div style="display: flex; gap: var(--space-xs); align-items: center;">
-                <input type="text" autocomplete="off" id="newExpenseCatLabel" placeholder="Nombre de categorÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­a"
+                <input type="text" autocomplete="off" id="newExpenseCatLabel" placeholder="Nombre de categoria"
                     style="flex: 1; padding: 8px 12px; background: var(--bg-tertiary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); color: var(--text-primary); font-size: 0.85rem; box-sizing: border-box;">
                 <button onclick="window.addExpenseCategory()"
                     style="padding: 8px 14px; background: var(--accent-primary); color: var(--bg-primary); border: none; border-radius: var(--radius-md); font-weight: 700; font-size: 0.8rem; cursor: pointer; white-space: nowrap;">
@@ -3967,7 +3967,7 @@ function renderSplitUI() {
                     <option value="fixed">Precio Fijo (Normal)</option>
                     <option value="open_price">Precio Abierto (Ingresar al cobrar)</option>
                     <option value="quantity">Selector de Cantidad (+ / -)</option>
-                    <option value="text">Texto Libre (ObservaciÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³n)</option>
+                    <option value="text">Texto Libre (Observacion)</option>
                 </select>
             </div>
             <div class="form-group" id="editPriceGroup"><label>Precio Unitario ($)</label><input type="number" autocomplete="off" id="editPrice" placeholder="4500" value="0"></div>
@@ -4205,13 +4205,13 @@ window.moveAdminItem = function(type, id, direction) {
     window.editAdminItem = function (type, id, parentId = null) {
         adminEditContext = { type, id, parentId };
         const config = StorageManager.getConfig();
-        const displayType = type === 'flavor' ? 'Producto' : (type === 'category' ? 'CategorÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­a' : (type === 'extra' ? 'Adicional' : 'ObservaciÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³n'));
+        const displayType = type === 'flavor' ? 'Producto' : (type === 'category' ? 'CategorÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­a' : (type === 'extra' ? 'Adicional' : 'Observacion'));
         elements.adminModalTitle.textContent = `Editar ${displayType}`;
         let html = '';
         if (type === 'category') {
             const item = config.categories.find(c => c.id === id);
             const itemType = (item && item.type) ? item.type : 'comida';
-            html = '<div class="form-group"><label>Nombre de categorÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­a</label><input type="text" autocomplete="off" id="editName" value="' + item.name + '"></div>';;
+            html = '<div class="form-group"><label>Nombre de categoria</label><input type="text" autocomplete="off" id="editName" value="' + item.name + '"></div>';;
         } else if (type === 'flavor') {
             const allProds = getActiveProductsList(config);
             const item = allProds.find(p => p.id === id) || (config.flavors[parentId] && config.flavors[parentId].find(f => f.id === id)) || { name: '', price: 0, prodType: 'fixed' };
@@ -4223,7 +4223,7 @@ window.moveAdminItem = function(type, id, direction) {
                             <option value="fixed" ${pt === 'fixed' ? 'selected' : ''}>Precio Fijo (Normal)</option>
                             <option value="open_price" ${pt === 'open_price' ? 'selected' : ''}>Precio Abierto (Ingresar al cobrar)</option>
                             <option value="quantity" ${pt === 'quantity' ? 'selected' : ''}>Selector de Cantidad (+ / -)</option>
-                            <option value="text" ${pt === 'text' ? 'selected' : ''}>Texto Libre (ObservaciÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³n)</option>
+                            <option value="text" ${pt === 'text' ? 'selected' : ''}>Texto Libre (Observacion)</option>
                         </select>
                     </div>
                     <div class="form-group" id="editPriceGroup" style="display: ${pt === 'open_price' || pt === 'text' ? 'none' : 'block'};"><label>Precio Unitario ($)</label><input type="number" autocomplete="off" id="editPrice" value="${item.price || 0}"></div>`;
@@ -4379,8 +4379,8 @@ window.moveAdminItem = function(type, id, direction) {
     if (elements.addCategoryBtn) {
         elements.addCategoryBtn.onclick = () => {
             adminEditContext = { type: 'category', id: null };
-            elements.adminModalTitle.textContent = 'Nueva CategorÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­a';
-            elements.adminModalBody.innerHTML = '<div class="form-group"><label>Nombre de categorÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­a</label><input type="text" autocomplete="off" id="editName" placeholder="Ej: Comida, Bebidas, Combos"></div>';
+            elements.adminModalTitle.textContent = 'Nueva Categoria';
+            elements.adminModalBody.innerHTML = '<div class="form-group"><label>Nombre de categoria</label><input type="text" autocomplete="off" id="editName" placeholder="Ej: Comida, Bebidas, Combos"></div>';
             elements.adminModal.classList.add('open');
         };
     }
@@ -4413,7 +4413,7 @@ window.moveAdminItem = function(type, id, direction) {
         elements.addObsBtn.onclick = () => {
             const catId = elements.adminCategorySelectObs.value;
             adminEditContext = { type: 'observation', id: null, parentId: catId };
-            elements.adminModalTitle.textContent = 'Nueva ObservaciÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³n';
+            elements.adminModalTitle.textContent = 'Nueva Observacion';
             elements.adminModalBody.innerHTML = `
                 <div class="form-group"><label>Nombre</label><input type="text" autocomplete="off" id="editName"></div>
                 <div class="form-group"><label>Precio</label><input type="number" autocomplete="off" id="editPrice" value="0"></div>
