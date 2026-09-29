@@ -4038,7 +4038,7 @@ window.moveAdminItem = function(type, id, direction) {
             elements.adminCategoriesList.innerHTML = `
             <div style="grid-column: 1 / -1; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 20px; color: #94a3b8; text-align: center;">
                 <i data-lucide="layers" style="width: 64px; height: 64px; margin-bottom: 16px; opacity: 0.5;"></i>
-                <h3 style="font-size: 1.1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">AÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âºn no hay menÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âº</h3>
+                <h3 style="font-size: 1.1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">Aun no hay menu</h3>
                 <p style="font-size: 0.9rem; max-width: 250px;">Comienza creando tu primera categoria con el boton "+ Nueva Categoria".</p>
             </div>`;
             if (typeof lucide !== 'undefined') lucide.createIcons();
