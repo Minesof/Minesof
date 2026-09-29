@@ -5138,6 +5138,10 @@ window.moveAdminItem = function(type, id, direction) {
             tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 2rem; color: var(--text-muted);">No hay datos en este periodo</td></tr>';
             const sumBlock = document.getElementById('balanceSummaryBlock');
             if (sumBlock) sumBlock.innerHTML = '';
+            const tRow = document.getElementById('balanceTotalsRow');
+            if (tRow) tRow.remove();
+            const tSpacer = document.getElementById('balanceTotalsSpacer');
+            if (tSpacer) tSpacer.remove();
             if (window.chartsMap) {
                 Object.values(window.chartsMap).forEach(c => c.destroy());
                 window.chartsMap = {};
