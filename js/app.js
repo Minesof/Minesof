@@ -1686,7 +1686,7 @@ function renderSplitUI() {
         if (elements.toPrintList) {
             elements.toPrintList.innerHTML = toPrint.length > 0 
                 ? toPrint.reverse().map(o => createCheckoutCard(o)).join('') 
-                : emptyStateHTML('No hay pedidos pendientes', 'Los pedidos activos aparecerÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡n aquÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­.');
+                : emptyStateHTML('No hay pedidos pendientes', 'Los pedidos activos apareceran aqui.');
         }
         
         if (elements.pendingPaymentList) {
@@ -1698,7 +1698,7 @@ function renderSplitUI() {
         if (elements.paidOrdersList) {
             elements.paidOrdersList.innerHTML = paid.length > 0 
                 ? paid.reverse().map(o => createCheckoutCard(o)).join('') 
-                : emptyStateHTML('No hay ventas cobradas hoy', 'Los pedidos pagados aparecerÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡n aquÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­.');
+                : emptyStateHTML('No hay ventas cobradas hoy', 'Los pedidos pagados apareceran aqui.');
         }
         
         if (typeof lucide !== 'undefined') lucide.createIcons();
