@@ -148,7 +148,7 @@
                         <i data-lucide="user" style="width:14px; height:14px; flex-shrink:0;"></i>
                         <span id="currentUserEmailDisplay" style="font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">...</span>
                     </div>
-                    <span style="font-size:0.7rem; opacity:0.7;">Versión 433</span>
+                    <span style="font-size:0.7rem; opacity:0.7;">Versión 434</span>
                 </div>
             </div>
         </div>
@@ -638,38 +638,38 @@
                     <h2>Balance General</h2>
                 </div>
                 <div>
-                                        <!-- Balance Filter -->
-                    <div class="reports-filter">
-                        <div class="filter-group">
-                            <label><i data-lucide="calendar" style="width: 16px; height: 16px; margin-right: 4px; display: inline-block; vertical-align: middle;"></i> Periodo de Balance:</label>
-                            <select id="balancePeriodSelect" class="date-picker-input">
-                                <option value="today">Hoy</option>
-                                <option value="date">D&iacute;a Espec&iacute;fico</option>
-                                <option value="month">Mes Actual</option>
-                                <option value="specific-month">Mes Espec&iacute;fico</option>
-                                <option value="total">Hist&oacute;rico Total</option>
-                            </select>
+                                                                                <!-- Balance Filter -->
+                    <div class="reports-filter" style="display: flex; flex-direction: column; gap: 15px; align-items: flex-start;">
+                        <div style="display: flex; flex-wrap: wrap; gap: 15px; align-items: flex-end;">
+                            <div class="filter-group">
+                                <label><i data-lucide="calendar" style="width: 16px; height: 16px; margin-right: 4px; display: inline-block; vertical-align: middle;"></i> Periodo de Balance:</label>
+                                <select id="balancePeriodSelect" class="date-picker-input">
+                                    <option value="today">Hoy</option>
+                                    <option value="date">D&iacute;a Espec&iacute;fico</option>
+                                    <option value="month">Mes Actual</option>
+                                    <option value="specific-month">Mes Espec&iacute;fico</option>
+                                    <option value="total">Hist&oacute;rico Total</option>
+                                </select>
+                            </div>
+                            <div class="filter-group hidden" id="balanceDatePickerGroup">
+                                <input type="date" id="balanceDatePicker" class="date-picker-input">
+                            </div>
+                            <div class="filter-group hidden" id="balanceMonthPickerGroup">
+                                <input type="month" id="balanceMonthPicker" class="date-picker-input">
+                            </div>
+                            <button class="search-date-btn hidden" id="searchBalanceBtn">
+                                <i data-lucide="search"></i>
+                                Consultar
+                            </button>
                         </div>
-                        <div class="filter-group hidden" id="balanceDatePickerGroup">
-                            <input type="date" id="balanceDatePicker" class="date-picker-input">
-                        </div>
-                        <div class="filter-group hidden" id="balanceMonthPickerGroup">
-                            <input type="month" id="balanceMonthPicker" class="date-picker-input">
-                        </div>
-                        <button class="search-date-btn" id="searchBalanceBtn">
-                            <i data-lucide="search"></i>
-                            Consultar
-                        </button>
                         
-                        <div class="filter-group" style="margin-left: auto;">
+                        <div class="filter-group">
                             <label style="display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted);"><i data-lucide="eye" style="width: 14px; height: 14px; margin-right: 4px; display: inline-block; vertical-align: middle;"></i> Visualizaci&oacute;n:</label>
                             <select id="balanceViewSelect" class="date-picker-input" style="border-color: #38bdf8; background-color: rgba(56, 189, 248, 0.05); padding: 8px 15px; font-weight: 600;">
-                                <option value="table">📊 Ver Tabla</option>
-                                <option value="charts">📈 Ver Gráficas</option>
+                                <option value="table">&#128202; Ver Tabla</option>
+                                <option value="charts">&#128200; Ver Gr&aacute;ficas</option>
                             </select>
-
                         </div>
-
                     </div>
 
                     <div id="balanceChartsContainer" style="display: none; flex-direction: column; gap: 20px; margin-bottom: 20px;">
@@ -1255,11 +1255,11 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Scripts -->
-    <script src="js/data.js?v=433"></script>
+    <script src="js/data.js?v=434"></script>
     
-    <script src="js/storage.js?v=433"></script>
-    <script src="js/auth.js?v=433"></script>
-    <script src="js/app.js?v=433"></script>
+    <script src="js/storage.js?v=434"></script>
+    <script src="js/auth.js?v=434"></script>
+    <script src="js/app.js?v=434"></script>
     <script>
         // Disable Service Worker and clear cache to force internet-only mode
         if ('serviceWorker' in navigator) {
