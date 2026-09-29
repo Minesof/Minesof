@@ -5375,7 +5375,7 @@ window.moveAdminItem = function(type, id, direction) {
                           <span style="color: ${darkColor}; font-size: 1.15rem; font-weight: 900; text-shadow: 0 2px 4px rgba(0,0,0,0.3); white-space: nowrap;">${formatPrice(totalBalance)}</span>
                       </div>
                 </th>
-            ;
+            `;
         }
         tbody.innerHTML = rowsHtml;
     }
