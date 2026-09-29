@@ -5138,7 +5138,18 @@ window.moveAdminItem = function(type, id, direction) {
         const summaryBlock = document.getElementById("balanceSummaryBlock");
         if (summaryBlock) summaryBlock.style.display = "none";
         
-                const chartDates = [...sortedDates].reverse();
+                                const chartDates = [...sortedDates].reverse();
+                const daysOfWeek = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+                const chartLabels = chartDates.map(d => {
+                    const parts = d.split('/');
+                    if (parts.length === 3) {
+                        const dateObj = new Date(parseInt(parts[2]), parseInt(parts[1]) - 1, parseInt(parts[0]));
+                        const shortYear = parts[2].slice(-2);
+                        const dayName = daysOfWeek[dateObj.getDay()];
+                        return ${parts[0]}// ();
+                    }
+                    return d;
+                });
         const salesData = chartDates.map(d => dailyData[d].sales);
         const expData = chartDates.map(d => dailyData[d].expenses);
         const balData = chartDates.map(d => dailyData[d].sales - dailyData[d].expenses);
@@ -5190,7 +5201,7 @@ window.moveAdminItem = function(type, id, direction) {
                 window.chartsMap.bal = new Chart(ctxBal, {
                     type: 'line',
                     data: {
-                        labels: chartDates,
+                        labels: chartLabels,
                         datasets: [{
                             label: 'Balance Neto ($)',
                             data: balData,
@@ -5219,7 +5230,7 @@ window.moveAdminItem = function(type, id, direction) {
                 window.chartsMap.sales = new Chart(ctxSales, {
                     type: 'line',
                     data: {
-                        labels: chartDates,
+                        labels: chartLabels,
                         datasets: [{
                             label: 'Ventas Totales ($)',
                             data: salesData,
@@ -5244,7 +5255,7 @@ window.moveAdminItem = function(type, id, direction) {
                 window.chartsMap.exp = new Chart(ctxExp, {
                     type: 'line',
                     data: {
-                        labels: chartDates,
+                        labels: chartLabels,
                         datasets: [{
                             label: 'Gastos ($)',
                             data: expData,
