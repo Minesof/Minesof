@@ -5138,6 +5138,78 @@ window.moveAdminItem = function(type, id, direction) {
         const summaryBlock = document.getElementById("balanceSummaryBlock");
         if (summaryBlock) summaryBlock.style.display = "none";
         
+                const chartDates = [...sortedDates].reverse();
+        const salesData = chartDates.map(d => dailyData[d].sales);
+        const expData = chartDates.map(d => dailyData[d].expenses);
+        const balData = chartDates.map(d => dailyData[d].sales - dailyData[d].expenses);
+
+        if (window.chartsMap) {
+            Object.values(window.chartsMap).forEach(c => c.destroy());
+        }
+        window.chartsMap = {};
+
+        if (typeof Chart !== 'undefined' && chartDates.length > 0) {
+            const ctxSales = document.getElementById('chartVentas');
+            if (ctxSales) {
+                window.chartsMap.sales = new Chart(ctxSales, {
+                    type: 'line',
+                    data: {
+                        labels: chartDates,
+                        datasets: [{
+                            label: 'Ventas Totales ($)',
+                            data: salesData,
+                            borderColor: '#38bdf8',
+                            backgroundColor: 'rgba(56, 189, 248, 0.1)',
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.3
+                        }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, title: { display: true, text: 'Comportamiento de Ventas', color: '#94a3b8' } }, scales: { y: { beginAtZero: true } } }
+                });
+            }
+
+            const ctxExp = document.getElementById('chartGastos');
+            if (ctxExp) {
+                window.chartsMap.exp = new Chart(ctxExp, {
+                    type: 'line',
+                    data: {
+                        labels: chartDates,
+                        datasets: [{
+                            label: 'Gastos ($)',
+                            data: expData,
+                            borderColor: '#f43f5e',
+                            backgroundColor: 'rgba(244, 63, 94, 0.1)',
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.3
+                        }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, title: { display: true, text: 'Comportamiento de Gastos', color: '#94a3b8' } }, scales: { y: { beginAtZero: true } } }
+                });
+            }
+
+            const ctxBal = document.getElementById('chartBalance');
+            if (ctxBal) {
+                window.chartsMap.bal = new Chart(ctxBal, {
+                    type: 'line',
+                    data: {
+                        labels: chartDates,
+                        datasets: [{
+                            label: 'Balance Neto ($)',
+                            data: balData,
+                            borderColor: '#10b981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.3
+                        }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, title: { display: true, text: 'Comportamiento del Balance', color: '#94a3b8' } }, scales: { y: { beginAtZero: true } } }
+                });
+            }
+        }
+
         const thead = document.querySelector("#balanceTable thead");
         if (thead) {
             let tRow = document.getElementById("balanceTotalsRow");
