@@ -117,6 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const rawNumber = getCol(['numero', 'num', 'pedido', 'order', 'factura']);
                     
                     if (rawTotal === null || rawTotal === undefined) return;
+                    if (typeof rawDate === 'string' && rawDate.toLowerCase().includes('total')) return;
                     
                                         let dateStr = new Date().toISOString();
                     if (rawDate) {
@@ -242,6 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const rawCat = getCol(['cat', 'rubro']);
                     
                     if (rawAmount === null || rawAmount === undefined) return;
+                    if (typeof rawDate === 'string' && rawDate.toLowerCase().includes('total')) return;
                     
                                         let dateStr = new Date().toISOString();
                     if (rawDate) {
