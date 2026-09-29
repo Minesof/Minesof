@@ -1,4 +1,4 @@
-﻿document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     const mapAuthError = (code) => {
         switch (code) {
             case 'auth/user-not-found':
@@ -58,6 +58,43 @@
                             return;
                         }
                         tenantDocRef.set({ lastLogin: firebase.firestore.FieldValue.serverTimestamp() }, { merge: true }).catch(e => console.error(e));
+                        
+                        // TRIAL LOGIC
+                        let isExpired = false;
+                        let remainingDays = 0;
+                        const data = tenantDoc.data();
+                        
+                        let expirationDate = null;
+                        if (data.trialEndsAt && typeof data.trialEndsAt.toDate === 'function') {
+                            expirationDate = data.trialEndsAt.toDate();
+                        } else if (data.createdAt && typeof data.createdAt.toDate === 'function') {
+                            expirationDate = new Date(data.createdAt.toDate().getTime() + (15 * 24 * 60 * 60 * 1000));
+                        }
+
+                        if (expirationDate) {
+                            const now = new Date();
+                            const diffMs = expirationDate.getTime() - now.getTime();
+                            remainingDays = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+                            if (remainingDays < 0) remainingDays = 0;
+                            
+                            if (now > expirationDate) {
+                                isExpired = true;
+                            }
+                        } else {
+                            // Si es una cuenta tan nueva que an no tiene createdAt procesado en el servidor
+                            remainingDays = 15;
+                        }
+
+                        if (isExpired) {
+                            const trialOverlay = document.getElementById('trialExpiredOverlay');
+                            if (trialOverlay) trialOverlay.style.display = 'flex';
+                            if (loginOverlay) loginOverlay.style.display = 'none';
+                            if (appContainer) appContainer.style.display = 'none';
+                            return; // Stop loading app
+                        } else {
+                            const counter = document.getElementById('trialRemainingCounter');
+                            if (counter) counter.innerHTML = "Quedan <b>" + remainingDays + " d&iacute;as</b> de prueba";
+                        }
                     } else {
                         // First login: register tenant metadata for the Super Admin panel
                         await tenantDocRef.set({
@@ -66,6 +103,8 @@
                             lastLogin: firebase.firestore.FieldValue.serverTimestamp(),
                             status: 'active'
                         }, { merge: true });
+                        const counter = document.getElementById('trialRemainingCounter');
+                        if (counter) counter.innerHTML = "Quedan <b>15 d&iacute;as</b> de prueba";
                     }
                 }
             } catch(e) {
