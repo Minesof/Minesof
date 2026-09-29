@@ -5138,30 +5138,16 @@ window.moveAdminItem = function(type, id, direction) {
         const darkColor = totalBalance >= 0 ? '#4ade80' : '#f87171';
         
         const summaryBlock = document.getElementById("balanceSummaryBlock");
-        if (summaryBlock) {
-            summaryBlock.innerHTML = `
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 20px;">
-                    <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-                        <span style="color: #94a3b8; font-size: 0.8rem; text-transform: uppercase; font-weight: 700; margin-bottom: 5px;">Ventas Totales</span>
-                        <span style="color: #38bdf8; font-size: 1.8rem; font-weight: 800;">${formatPrice(totalSales)}</span>
-                    </div>
-                    <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-                        <span style="color: #94a3b8; font-size: 0.8rem; text-transform: uppercase; font-weight: 700; margin-bottom: 5px;">Gastos Totales</span>
-                        <span style="color: #f43f5e; font-size: 1.8rem; font-weight: 800;">${formatPrice(totalExp)}</span>
-                    </div>
-                    <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-                        <span style="color: #94a3b8; font-size: 0.8rem; text-transform: uppercase; font-weight: 700; margin-bottom: 5px;">Balance Neto</span>
-                        <span style="color: ${darkColor}; font-size: 1.8rem; font-weight: 800;">${formatPrice(totalBalance)}</span>
-                    </div>
-                </div>
-            `;
-            const viewSelect = document.getElementById('balanceViewSelect');
-            if (viewSelect && viewSelect.value === 'charts') {
-                summaryBlock.style.display = 'block';
-            } else {
-                summaryBlock.style.display = 'none';
-            }
-        }
+        if (summaryBlock) summaryBlock.innerHTML = "";
+        
+        const cBal = document.getElementById("chartTotalBalance");
+        if (cBal) cBal.innerHTML = `<span style="display:block; color:#94a3b8; font-size:0.8rem; font-weight:700; text-transform:uppercase;">Comportamiento del Balance</span><span style="display:block; color:${darkColor}; font-size:1.6rem; font-weight:800;">${formatPrice(totalBalance)}</span>`;
+        
+        const cVen = document.getElementById("chartTotalVentas");
+        if (cVen) cVen.innerHTML = `<span style="display:block; color:#94a3b8; font-size:0.8rem; font-weight:700; text-transform:uppercase;">Comportamiento de Ventas</span><span style="display:block; color:#38bdf8; font-size:1.6rem; font-weight:800;">${formatPrice(totalSales)}</span>`;
+        
+        const cGas = document.getElementById("chartTotalGastos");
+        if (cGas) cGas.innerHTML = `<span style="display:block; color:#94a3b8; font-size:0.8rem; font-weight:700; text-transform:uppercase;">Comportamiento de Gastos</span><span style="display:block; color:#f43f5e; font-size:1.6rem; font-weight:800;">${formatPrice(totalExp)}</span>`;
         
                                 const chartDates = [...sortedDates].reverse();
                 const daysOfWeek = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
@@ -5212,7 +5198,7 @@ window.moveAdminItem = function(type, id, direction) {
             const ctxBal = document.getElementById('chartBalance');
             if (ctxBal) {
                 const balOptions = JSON.parse(JSON.stringify(commonOptions));
-                balOptions.plugins.title = { display: true, text: 'Comportamiento del Balance', color: '#94a3b8' };
+                balOptions.plugins.title = { display: false };
                 balOptions.scales.y.grid = {
                     color: (ctx) => ctx.tick.value === 0 ? '#ef4444' : 'rgba(0,0,0,0.1)',
                     lineWidth: (ctx) => ctx.tick.value === 0 ? 2 : 1
@@ -5248,7 +5234,7 @@ window.moveAdminItem = function(type, id, direction) {
             const ctxSales = document.getElementById('chartVentas');
             if (ctxSales) {
                 const salesOptions = JSON.parse(JSON.stringify(commonOptions));
-                salesOptions.plugins.title = { display: true, text: 'Comportamiento de Ventas', color: '#94a3b8' };
+                salesOptions.plugins.title = { display: false };
                 salesOptions.onClick = commonOptions.onClick;
                 salesOptions.scales.x.ticks.callback = commonOptions.scales.x.ticks.callback;
 
@@ -5273,7 +5259,7 @@ window.moveAdminItem = function(type, id, direction) {
             const ctxExp = document.getElementById('chartGastos');
             if (ctxExp) {
                 const expOptions = JSON.parse(JSON.stringify(commonOptions));
-                expOptions.plugins.title = { display: true, text: 'Comportamiento de Gastos', color: '#94a3b8' };
+                expOptions.plugins.title = { display: false };
                 expOptions.onClick = commonOptions.onClick;
                 expOptions.scales.x.ticks.callback = commonOptions.scales.x.ticks.callback;
 

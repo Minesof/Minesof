@@ -148,7 +148,7 @@
                         <i data-lucide="user" style="width:14px; height:14px; flex-shrink:0;"></i>
                         <span id="currentUserEmailDisplay" style="font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">...</span>
                     </div>
-                    <span style="font-size:0.7rem; opacity:0.7;">Versión 388</span>
+                    <span style="font-size:0.7rem; opacity:0.7;">Versión 389</span>
                 </div>
             </div>
         </div>
@@ -675,12 +675,15 @@
 
                     <div id="balanceChartsContainer" style="display: none; flex-direction: column; gap: 20px; margin-bottom: 20px;">
                         <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 15px; height: 300px; position: relative;">
+                            <div id="chartTotalBalance" style="position: absolute; top: 15px; left: 20px; z-index: 10;"></div>
                             <canvas id="chartBalance"></canvas>
                         </div>
                         <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 15px; height: 300px; position: relative;">
+                            <div id="chartTotalVentas" style="position: absolute; top: 15px; left: 20px; z-index: 10;"></div>
                             <canvas id="chartVentas"></canvas>
                         </div>
                         <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 15px; height: 300px; position: relative;">
+                            <div id="chartTotalGastos" style="position: absolute; top: 15px; left: 20px; z-index: 10;"></div>
                             <canvas id="chartGastos"></canvas>
                         </div>
                     </div>
@@ -1241,11 +1244,11 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Scripts -->
-    <script src="js/data.js?v=388"></script>
+    <script src="js/data.js?v=389"></script>
     
-    <script src="js/storage.js?v=388"></script>
-    <script src="js/auth.js?v=388"></script>
-    <script src="js/app.js?v=388"></script>
+    <script src="js/storage.js?v=389"></script>
+    <script src="js/auth.js?v=389"></script>
+    <script src="js/app.js?v=389"></script>
     <script>
         // Disable Service Worker and clear cache to force internet-only mode
         if ('serviceWorker' in navigator) {
