@@ -5350,7 +5350,7 @@ window.moveAdminItem = function(type, id, direction) {
                 spacer.innerHTML = "<th colspan='5' style='border: none;'></th>";
                 thead.insertBefore(spacer, tRow.nextSibling);
             }
-                        tRow.innerHTML = 
+                        tRow.innerHTML = `
                 <th style="width: 22%; padding: 15px 10px; text-align: left; box-sizing: border-box;">
                     <div style="display: flex; align-items: center; gap: 8px; color: #94a3b8; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
                         <i data-lucide="pie-chart" style="width: 16px; height: 16px; color: #38bdf8;"></i>
