@@ -803,9 +803,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function refreshOrderPageUI() {
         const locIn = document.getElementById('posLocationInput');
+        const typeIn = document.getElementById('posOrderTypeInput');
         if (locIn) {
             locIn.disabled = false;
             locIn.style.opacity = '1';
+        }
+        if (typeIn) {
+            typeIn.disabled = false;
+            typeIn.style.opacity = '1';
         }
         renderPosCategories();
         renderPosProducts();
@@ -1425,8 +1430,11 @@ function renderSplitUI() {
             return;
         }
 
+        const typeInput = document.getElementById('posOrderTypeInput');
         const locationInput = document.getElementById('posLocationInput');
-        const locationText = locationInput ? locationInput.value.trim().toUpperCase() : '';
+        const typeText = typeInput ? typeInput.value.toUpperCase() : '';
+        const rawLocText = locationInput ? locationInput.value.trim().toUpperCase() : '';
+        const locationText = rawLocText ? typeText + " - " + rawLocText : typeText;
         const customerText = ''; // Removed clients suffix as requested
 
         if (!state.serviceType) state.serviceType = 'salon';
@@ -1558,6 +1566,11 @@ function renderSplitUI() {
                 locationInput.value = '';
                 locationInput.disabled = false;
                 locationInput.style.opacity = '1';
+            }
+            if (typeInput) {
+                typeInput.value = 'Local';
+                typeInput.disabled = false;
+                typeInput.style.opacity = '1';
             }
             state.clients = ['P1'];
             state.activeClient = 'P1';
@@ -1929,10 +1942,15 @@ function renderSplitUI() {
         });
 
         const locIn = document.getElementById('posLocationInput');
+        const typeIn = document.getElementById('posOrderTypeInput');
         if (locIn) {
             locIn.value = order.customerInfo || '';
             locIn.disabled = true;
             locIn.style.opacity = '0.6';
+        }
+        if (typeIn) {
+            typeIn.disabled = true;
+            typeIn.style.opacity = '0.6';
         }
 
         // Show Footer
