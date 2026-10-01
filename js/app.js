@@ -2196,9 +2196,11 @@ function renderSplitUI() {
                     const daviplata = parseFloat(document.getElementById('combinedDaviplata').value) || 0;
                     const total = efectivo + nequi + daviplata;
 
-                    if (total < selectedPaymentOrder.totalPrice) {
-                        showNotification(Atención: Faltan {formatPrice(selectedPaymentOrder.totalPrice - total).replace('$', '')} para completar el pago, 'error');
+                    
+if (total < selectedPaymentOrder.totalPrice) {
+                        showNotification(`Atención: Faltan $$${formatPrice(selectedPaymentOrder.totalPrice - total).replace('$', '')} para completar el pago`, 'error');
                         return;
+
                     }
 
                     paymentDetails = {
