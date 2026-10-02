@@ -1898,6 +1898,10 @@ function renderSplitUI() {
         return createCheckoutCard(o);
     } catch(e) {
         console.error("Error creating card for order", o, e);
+        return '<div style="color:red; padding:10px; border:1px solid red;">Error renderizando orden ' + (o ? o.orderNumber : 'null') + ': ' + e.message + '</div>';
+    }
+} catch(e) {
+        console.error("Error creating card for order", o, e);
         return '';
     }
 }
