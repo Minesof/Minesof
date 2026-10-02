@@ -1529,7 +1529,7 @@ function renderSplitUI() {
                     StorageManager.addOrder(partialOrder);
                     
                     if (config.billingSystem === 'direct') {
-                        showNotification(Adición agregada y lista para cobro);
+                        showNotification(`Adición agregada y lista para cobro`);
                         setTimeout(() => window.openPaymentModal(partialOrder.id), 150);
                     } else {
                         showNotification(`Adición agregada al pedido ${originalOrder.orderNumber}`);
