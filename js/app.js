@@ -1900,10 +1900,6 @@ function renderSplitUI() {
         console.error("Error creating card for order", o, e);
         return '<div style="color:red; padding:10px; border:1px solid red;">Error renderizando orden ' + (o ? o.orderNumber : 'null') + ': ' + e.message + '</div>';
     }
-} catch(e) {
-        console.error("Error creating card for order", o, e);
-        return '';
-    }
 }
 function createCheckoutCard(order) {
         const labels = { pending: 'Pendiente', preparing: 'Preparando', ready: 'Listo', delivered: 'Entregado' };
