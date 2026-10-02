@@ -1542,11 +1542,13 @@ function renderSplitUI() {
                 
                 let orderIdentifier = seqNum;
                 if (locationText && customerText) {
-                    orderIdentifier = `${locationText} | ${customerText}`;
+                    orderIdentifier = ${locationText} | ;
                 } else if (locationText) {
                     orderIdentifier = locationText;
                 } else if (customerText) {
                     orderIdentifier = customerText;
+                } else {
+                    orderIdentifier = 'CLIENTE';
                 }
 
                 const newOrder = {
@@ -3305,7 +3307,11 @@ if (total < selectedPaymentOrder.totalPrice) {
         }
 
         if (order.customerInfo) {
-            t += justify('CLIENTE:', order.customerInfo.toUpperCase().substring(0, 23)) + '\n';
+            let cInfo = order.customerInfo.toUpperCase();
+            if (cInfo === order.sequenceNumber || cInfo === order.orderNumber) {
+                cInfo = 'CLIENTE';
+            }
+            t += justify('CLIENTE:', cInfo.substring(0, 23)) + '\n';
         }
         t += line + '\n';
 
@@ -3419,7 +3425,11 @@ if (total < selectedPaymentOrder.totalPrice) {
         }
 
         if (order.customerInfo) {
-            t += justify('CLIENTE:', order.customerInfo.toUpperCase().substring(0, 23)) + '\n';
+            let cInfo = order.customerInfo.toUpperCase();
+            if (cInfo === order.sequenceNumber || cInfo === order.orderNumber) {
+                cInfo = 'CLIENTE';
+            }
+            t += justify('CLIENTE:', cInfo.substring(0, 23)) + '\n';
         }
         t += line + '\n';
 
