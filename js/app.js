@@ -804,10 +804,38 @@ document.addEventListener('DOMContentLoaded', () => {
     function refreshOrderPageUI() {
         const locIn = document.getElementById('posLocationInput');
         const typeIn = document.getElementById('posOrderTypeInput');
-        if (locIn) {
-            locIn.disabled = false;
-            locIn.style.opacity = '1';
+        
+        // Only re-enable inputs if we are NOT appending to an existing order
+        if (!state.appendingOrderId) {
+            if (locIn) {
+                locIn.disabled = false;
+                locIn.style.opacity = '1';
+            }
+            if (typeIn) {
+                typeIn.disabled = false;
+                typeIn.style.opacity = '1';
+            }
         }
+
+        const headerBtn = document.getElementById('posCancelAppendHeaderBtn');
+        const sendBtnSpan = document.querySelector('#sendToKitchenBtn span');
+        const confirmBtn = document.getElementById('confirmTicket');
+
+        if (state.appendingOrderId) {
+            if (headerBtn) headerBtn.style.display = 'flex';
+            if (sendBtnSpan) sendBtnSpan.textContent = 'ADICIONAR';
+            if (confirmBtn) confirmBtn.innerHTML = '<i data-lucide="send"></i> ADICIONAR';
+        } else {
+            if (headerBtn) headerBtn.style.display = 'none';
+            if (sendBtnSpan) sendBtnSpan.textContent = 'GENERAR';
+            if (confirmBtn) confirmBtn.innerHTML = '<i data-lucide="send"></i> GENERAR';
+        }
+
+        renderPosCategories();
+        renderPosProducts();
+        renderPosCart();
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
         if (typeIn) {
             typeIn.disabled = false;
             typeIn.style.opacity = '1';
