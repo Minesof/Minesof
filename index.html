@@ -152,7 +152,7 @@
                         <i data-lucide="user" style="width:14px; height:14px; flex-shrink:0;"></i>
                         <span id="currentUserEmailDisplay" style="font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">...</span>
                     </div>
-                    <span style="font-size:0.7rem; opacity:0.7;">Versión 462</span>
+                    <span style="font-size:0.7rem; opacity:0.7;">Versión 463</span>
                 </div>
             </div>
         </div>
@@ -267,125 +267,7 @@
                     <!-- Paid orders will be rendered here -->
                 </div>
 
-                <!-- Payment Modal -->
-                <div class="payment-modal hidden" id="paymentModal">
-                    <div class="modal-overlay" id="paymentModalOverlay"></div>
-                    <div class="payment-modal-content">
-                        <div class="payment-header">
-                            <h3>Cobrar Pedido</h3>
-                            <span class="order-num" id="paymentOrderNum"></span>
-                        </div>
-                        <div class="payment-ticket">
-                            <pre class="ticket-content" id="paymentTicketContent"></pre>
-                        </div>
-
-
-
-
-                                                <div class="payment-total-row">
-                            <span>TOTAL A COBRAR:</span>
-                            <span class="payment-total" id="paymentTotal"></span>
-                        </div>
-                        <div class="payment-methods-container" style="margin: var(--space-md) 0;">
-                            <label
-                                style="display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">M&eacute;todo de Pago:</label>
-                            <div class="method-options" style="display: flex; gap: 8px; flex-wrap: wrap;">
-                                <label class="method-label" style="flex: 1; min-width: 60px; cursor: pointer;">
-                                    <input type="radio" name="paymentMethod" value="efectivo" class="payment-radio"
-                                        style="display: none;">
-                                    <div class="method-card"
-                                        style="padding: 10px; border: 1px solid #e5e7eb; border-color: var(--border-color, #e5e7eb); border-radius: var(--radius-sm); background: white; color: #000000; text-align: center; font-weight: 500; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                                        <i data-lucide="banknote"
-                                            style="margin-bottom: 4px; width: 20px; height: 20px;"></i>
-                                        EFECTIVO
-                                    </div>
-                                </label>
-                                <label class="method-label" style="flex: 1; min-width: 60px; cursor: pointer;">
-                                    <input type="radio" name="paymentMethod" value="nequi" class="payment-radio"
-                                        style="display: none;">
-                                    <div class="method-card"
-                                        style="padding: 10px; border: 1px solid #e5e7eb; border-color: var(--border-color, #e5e7eb); border-radius: var(--radius-sm); background: white; color: #000000; text-align: center; font-weight: 500; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                                        <i data-lucide="smartphone"
-                                            style="margin-bottom: 4px; width: 20px; height: 20px;"></i>
-                                        NEQUI
-                                    </div>
-                                </label>
-                                <label class="method-label" style="flex: 1; min-width: 60px; cursor: pointer;">
-                                    <input type="radio" name="paymentMethod" value="daviplata" class="payment-radio"
-                                        style="display: none;">
-                                    <div class="method-card"
-                                        style="padding: 10px; border: 1px solid #e5e7eb; border-color: var(--border-color, #e5e7eb); border-radius: var(--radius-sm); background: white; color: #000000; text-align: center; font-weight: 500; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                                        <i data-lucide="smartphone-charging"
-                                            style="margin-bottom: 4px; width: 20px; height: 20px;"></i>
-                                        DAVIPLATA
-                                    </div>
-                                </label>
-                                <label class="method-label" style="flex: 1; min-width: 60px; cursor: pointer;">
-                                    <input type="radio" name="paymentMethod" value="combinado" class="payment-radio"
-                                        style="display: none;">
-                                    <div class="method-card"
-                                        style="padding: 10px; border: 1px solid #e5e7eb; border-color: var(--border-color, #e5e7eb); border-radius: var(--radius-sm); background: white; color: #000000; text-align: center; font-weight: 500; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                                        <i data-lucide="split"
-                                            style="margin-bottom: 4px; width: 20px; height: 20px;"></i>
-                                        COMBINADO
-                                    </div>
-                                </label>
-                            </div>
-                            <!-- Combined Payment Panel -->
-                            <div id="combinedPaymentPanel"
-                                style="display: none; margin-top: 12px; padding: 12px; background: #f8f9fa; border-radius: 8px; border: 1px solid #e5e7eb;">
-                                <div style="font-size: 0.85rem; font-weight: 600; margin-bottom: 10px; color: #374151;">
-                                    Dividir pago:</div>
-                                <div style="display: flex; gap: 8px; margin-bottom: 8px;">
-                                    <div style="flex: 1;">
-                                        <label
-                                            style="display: block; font-size: 0.75rem; color: #6b7280; margin-bottom: 4px;">Efectivo</label>
-                                        <input type="number" autocomplete="off" id="combinedEfectivo" placeholder="0"
-                                            style="width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.9rem; text-align: center;">
-                                    </div>
-                                    <div style="flex: 1;">
-                                        <label
-                                            style="display: block; font-size: 0.75rem; color: #6b7280; margin-bottom: 4px;">Nequi</label>
-                                        <input type="number" autocomplete="off" id="combinedNequi" placeholder="0"
-                                            style="width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.9rem; text-align: center;">
-                                    </div>
-                                    <div style="flex: 1;">
-                                        <label
-                                            style="display: block; font-size: 0.75rem; color: #6b7280; margin-bottom: 4px;">Daviplata</label>
-                                        <input type="number" autocomplete="off" id="combinedDaviplata" placeholder="0"
-                                            style="width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.9rem; text-align: center;">
-                                    </div>
-                                </div>
-                                <div id="combinedTotal"
-                                    style="font-size: 0.8rem; color: #059669; font-weight: 600; text-align: right;">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="payment-actions">
-                            <button class="btn-pay" id="confirmPayment">
-                                <i data-lucide="banknote"></i>
-                                Marcar como Pagado
-                            </button>
-                            <button class="btn-print-checkout" id="printPaymentTicket">
-                                <i data-lucide="printer"></i>
-                                Imprimir
-                            </button>
-                            <button class="btn-ready" id="markReadyBtn" style="background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; font-weight: 600; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; gap: 8px;">
-                                <i data-lucide="check"></i>
-                                Listo
-                            </button>
-                            <button class="btn-invoice" id="invoicePaymentTicket">
-                                <i data-lucide="receipt"></i>
-                                Factura
-                            </button>
-                            <button class="btn-cancel" id="cancelPayment">Volver</button>
-                            <button class="btn-delete-order" id="deleteOrderBtn" style="display: flex !important;">
-                                <i data-lucide="trash-2"></i>
-                                Eliminar Pedido
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
 
 
@@ -1294,11 +1176,131 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Scripts -->
-    <script src="js/data.js?v=462"></script>
+    <!-- Payment Modal -->
+                <div class="payment-modal hidden" id="paymentModal">
+                    <div class="modal-overlay" id="paymentModalOverlay"></div>
+                    <div class="payment-modal-content">
+                        <div class="payment-header">
+                            <h3>Cobrar Pedido</h3>
+                            <span class="order-num" id="paymentOrderNum"></span>
+                        </div>
+                        <div class="payment-ticket">
+                            <pre class="ticket-content" id="paymentTicketContent"></pre>
+                        </div>
+
+
+
+
+                                                <div class="payment-total-row">
+                            <span>TOTAL A COBRAR:</span>
+                            <span class="payment-total" id="paymentTotal"></span>
+                        </div>
+                        <div class="payment-methods-container" style="margin: var(--space-md) 0;">
+                            <label
+                                style="display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">M&eacute;todo de Pago:</label>
+                            <div class="method-options" style="display: flex; gap: 8px; flex-wrap: wrap;">
+                                <label class="method-label" style="flex: 1; min-width: 60px; cursor: pointer;">
+                                    <input type="radio" name="paymentMethod" value="efectivo" class="payment-radio"
+                                        style="display: none;">
+                                    <div class="method-card"
+                                        style="padding: 10px; border: 1px solid #e5e7eb; border-color: var(--border-color, #e5e7eb); border-radius: var(--radius-sm); background: white; color: #000000; text-align: center; font-weight: 500; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                                        <i data-lucide="banknote"
+                                            style="margin-bottom: 4px; width: 20px; height: 20px;"></i>
+                                        EFECTIVO
+                                    </div>
+                                </label>
+                                <label class="method-label" style="flex: 1; min-width: 60px; cursor: pointer;">
+                                    <input type="radio" name="paymentMethod" value="nequi" class="payment-radio"
+                                        style="display: none;">
+                                    <div class="method-card"
+                                        style="padding: 10px; border: 1px solid #e5e7eb; border-color: var(--border-color, #e5e7eb); border-radius: var(--radius-sm); background: white; color: #000000; text-align: center; font-weight: 500; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                                        <i data-lucide="smartphone"
+                                            style="margin-bottom: 4px; width: 20px; height: 20px;"></i>
+                                        NEQUI
+                                    </div>
+                                </label>
+                                <label class="method-label" style="flex: 1; min-width: 60px; cursor: pointer;">
+                                    <input type="radio" name="paymentMethod" value="daviplata" class="payment-radio"
+                                        style="display: none;">
+                                    <div class="method-card"
+                                        style="padding: 10px; border: 1px solid #e5e7eb; border-color: var(--border-color, #e5e7eb); border-radius: var(--radius-sm); background: white; color: #000000; text-align: center; font-weight: 500; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                                        <i data-lucide="smartphone-charging"
+                                            style="margin-bottom: 4px; width: 20px; height: 20px;"></i>
+                                        DAVIPLATA
+                                    </div>
+                                </label>
+                                <label class="method-label" style="flex: 1; min-width: 60px; cursor: pointer;">
+                                    <input type="radio" name="paymentMethod" value="combinado" class="payment-radio"
+                                        style="display: none;">
+                                    <div class="method-card"
+                                        style="padding: 10px; border: 1px solid #e5e7eb; border-color: var(--border-color, #e5e7eb); border-radius: var(--radius-sm); background: white; color: #000000; text-align: center; font-weight: 500; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                                        <i data-lucide="split"
+                                            style="margin-bottom: 4px; width: 20px; height: 20px;"></i>
+                                        COMBINADO
+                                    </div>
+                                </label>
+                            </div>
+                            <!-- Combined Payment Panel -->
+                            <div id="combinedPaymentPanel"
+                                style="display: none; margin-top: 12px; padding: 12px; background: #f8f9fa; border-radius: 8px; border: 1px solid #e5e7eb;">
+                                <div style="font-size: 0.85rem; font-weight: 600; margin-bottom: 10px; color: #374151;">
+                                    Dividir pago:</div>
+                                <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+                                    <div style="flex: 1;">
+                                        <label
+                                            style="display: block; font-size: 0.75rem; color: #6b7280; margin-bottom: 4px;">Efectivo</label>
+                                        <input type="number" autocomplete="off" id="combinedEfectivo" placeholder="0"
+                                            style="width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.9rem; text-align: center;">
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <label
+                                            style="display: block; font-size: 0.75rem; color: #6b7280; margin-bottom: 4px;">Nequi</label>
+                                        <input type="number" autocomplete="off" id="combinedNequi" placeholder="0"
+                                            style="width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.9rem; text-align: center;">
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <label
+                                            style="display: block; font-size: 0.75rem; color: #6b7280; margin-bottom: 4px;">Daviplata</label>
+                                        <input type="number" autocomplete="off" id="combinedDaviplata" placeholder="0"
+                                            style="width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.9rem; text-align: center;">
+                                    </div>
+                                </div>
+                                <div id="combinedTotal"
+                                    style="font-size: 0.8rem; color: #059669; font-weight: 600; text-align: right;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="payment-actions">
+                            <button class="btn-pay" id="confirmPayment">
+                                <i data-lucide="banknote"></i>
+                                Marcar como Pagado
+                            </button>
+                            <button class="btn-print-checkout" id="printPaymentTicket">
+                                <i data-lucide="printer"></i>
+                                Imprimir
+                            </button>
+                            <button class="btn-ready" id="markReadyBtn" style="background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; font-weight: 600; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; gap: 8px;">
+                                <i data-lucide="check"></i>
+                                Listo
+                            </button>
+                            <button class="btn-invoice" id="invoicePaymentTicket">
+                                <i data-lucide="receipt"></i>
+                                Factura
+                            </button>
+                            <button class="btn-cancel" id="cancelPayment">Volver</button>
+                            <button class="btn-delete-order" id="deleteOrderBtn" style="display: flex !important;">
+                                <i data-lucide="trash-2"></i>
+                                Eliminar Pedido
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+    <script src="js/data.js?v=463"></script>
     
-    <script src="js/storage.js?v=462"></script>
-    <script src="js/auth.js?v=462"></script>
-    <script src="js/app.js?v=462"></script>
+    <script src="js/storage.js?v=463"></script>
+    <script src="js/auth.js?v=463"></script>
+    <script src="js/app.js?v=463"></script>
     <script>
         // Disable Service Worker and clear cache to force internet-only mode
         if ('serviceWorker' in navigator) {
