@@ -1459,9 +1459,10 @@ function renderSplitUI() {
 
         const typeInput = document.getElementById('posOrderTypeInput');
         const locationInput = document.getElementById('posLocationInput');
-        const typeText = typeInput ? typeInput.value.toUpperCase() : '';
+        const config = StorageManager.getConfig();
+        const typeText = (typeInput && config.billingSystem !== 'direct') ? typeInput.value.toUpperCase() : '';
         const rawLocText = locationInput ? locationInput.value.trim().toUpperCase() : '';
-        const locationText = rawLocText ? typeText + " - " + rawLocText : typeText;
+        const locationText = (typeText && rawLocText) ? typeText + " - " + rawLocText : (rawLocText || typeText);
         const customerText = ''; // Removed clients suffix as requested
 
         if (!state.serviceType) state.serviceType = 'salon';
