@@ -1502,7 +1502,464 @@ function renderSplitUI() {
                     StorageManager.addOrder(partialOrder);
                     
                     if (config.billingSystem === 'direct') {
-                        showNotification(`Agregando productos a la Orden ${order.orderNumber}`);
+                        showNotification(`AdiciÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³n agregada y lista para cobro`);
+                        setTimeout(() => {
+                            const checkoutDrawerItem = document.querySelector('.drawer-item[data-page="checkout"]');
+                            if (checkoutDrawerItem) checkoutDrawerItem.click();
+                            setTimeout(() => window.openPaymentModal(partialOrder.id), 150);
+                        }, 50);
+                    } else {
+                        showNotification(`AdiciÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³n agregada al pedido ${originalOrder.orderNumber}`);
+                    }
+                }
+                state.appendingOrderId = null;
+                        } else {
+                const seqNum = await generateOrderNumber();
+                
+                let orderIdentifier = seqNum;
+                if (locationText && customerText) {
+                    orderIdentifier = `${locationText} | ${customerText}`;
+                } else if (locationText) {
+                    orderIdentifier = locationText;
+                } else if (customerText) {
+                    orderIdentifier = customerText;
+                }
+
+                const newOrder = {
+                    orderNumber: orderIdentifier,
+                    sequenceNumber: seqNum,
+                    serviceType: state.serviceType,
+                    customerInfo: orderIdentifier,
+                    customerName: orderIdentifier,
+                    items: items,
+                    status: 'pending',
+                    totalPrice: items.reduce((sum, item) => sum + item.price, 0),
+                    createdBy: localStorage.getItem('minesof_deviceUser') || 'Cajero 1',
+                    needsPrint: true,
+                    printed: false,
+                    checkoutPrinted: config.billingSystem === 'direct' ? true : false,
+                    isAppending: false,
+                    createdAt: new Date().toISOString()
+                };
+
+                StorageManager.addOrder(newOrder);
+                
+                if (config.billingSystem === 'direct') {
+                    showNotification('Pedido ' + newOrder.orderNumber + ' listo para cobro');
+                    
+                    // Delay switching to checkout page and opening modal slightly
+                    setTimeout(() => {
+                        const checkoutDrawerItem = document.querySelector('.drawer-item[data-page="checkout"]');
+                        if (checkoutDrawerItem) checkoutDrawerItem.click();
+                        
+                        setTimeout(() => {
+                            window.openPaymentModal(newOrder.id);
+                        }, 150);
+                    }, 50);
+                } else {
+                    showNotification('Pedido ' + newOrder.orderNumber + ' generado');
+                }
+            }
+
+            clearPosCart(false);
+            if (locationInput) {
+                locationInput.value = '';
+                locationInput.disabled = false;
+                locationInput.style.opacity = '1';
+            }
+            if (typeInput) {
+                typeInput.value = 'Local';
+                typeInput.disabled = false;
+                typeInput.style.opacity = '1';
+            }
+            state.clients = ['P1'];
+            state.activeClient = 'P1';
+            renderPosClientTabs();
+        } catch (err) {
+            console.error('Error submitting order:', err);
+            showNotification('ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â Error al procesar pedido', 'error');
+        } finally {
+            if (submitBtn) {
+                submitBtn.innerHTML = origText;
+                submitBtn.disabled = false;
+                updateSubmitButtonText();
+                if (typeof lucide !== 'undefined') lucide.createIcons();
+            }
+        }
+    }
+
+    if (elements.posSubmitOrderBtn) elements.posSubmitOrderBtn.addEventListener('click', submitOrder);
+    if (elements.sendToKitchenBtn) elements.sendToKitchenBtn.addEventListener('click', submitOrder);
+
+    // Initial render of POS workspace
+    renderPosCategories();
+    renderPosProducts();
+    renderPosCart();
+
+    function showTicketModal(order) {
+        if (!elements.ticketModal) return;
+        elements.ticketContent.innerHTML = generateTicketText(order);
+        elements.ticketModal.classList.add('open');
+    }
+
+    function closeTicketModal() {
+        if (elements.ticketModal) {
+            elements.ticketModal.classList.remove('open');
+            pendingOrder = null;
+        }
+    }
+
+    if (elements.cancelTicket) elements.cancelTicket.addEventListener('click', closeTicketModal);
+    if (elements.cancelTicketFooter) elements.cancelTicketFooter.addEventListener('click', closeTicketModal);
+    if (elements.closeTicketModal) elements.closeTicketModal.addEventListener('click', closeTicketModal);
+
+    if (elements.printTicket) {
+        elements.printTicket.addEventListener('click', () => {
+            if (pendingOrder) {
+                if (pendingOrder.isAppending) {
+                    const originalOrder = StorageManager.getOrders().find(o => o.id == pendingOrder.id);
+                    if (originalOrder) {
+                        const updatedItems = [...originalOrder.items, ...pendingOrder.newItems];
+                        const updatedTotalPrice = updatedItems.reduce((sum, item) => sum + item.price, 0);
+                        StorageManager.updateOrder(pendingOrder.id, {
+                            items: updatedItems,
+                            totalPrice: updatedTotalPrice,
+                            checkoutPrinted: false
+                        });
+                    }
+                    state.appendingOrderId = null;
+                } else {
+                    pendingOrder.printed = true;
+                    StorageManager.addOrder(pendingOrder);
+                }
+                window.print();
+                showNotification(`Pedido ${pendingOrder.orderNumber} impreso y enviado`);
+                closeTicketModal();
+                resetAllCategories();
+            }
+        });
+    }
+
+    if (elements.confirmTicket) {
+        elements.confirmTicket.addEventListener('click', () => {
+            if (pendingOrder) {
+                if (pendingOrder.isAppending) {
+                    const originalOrder = StorageManager.getOrders().find(o => o.id == pendingOrder.id);
+                    if (originalOrder) {
+                        const updatedItems = [...originalOrder.items, ...pendingOrder.newItems];
+                        const updatedTotalPrice = updatedItems.reduce((sum, item) => sum + item.price, 0);
+                        StorageManager.updateOrder(pendingOrder.id, {
+                            items: updatedItems,
+                            totalPrice: updatedTotalPrice,
+                            checkoutPrinted: false
+                        });
+                    }
+                    state.appendingOrderId = null;
+                } else {
+                    StorageManager.addOrder(pendingOrder);
+                }
+                showNotification(`Pedido ${pendingOrder.orderNumber} enviado a cocina`);
+                closeTicketModal();
+                resetAllCategories();
+            }
+        });
+    }
+
+    function resetAllCategories() {
+        Object.keys(state.categoryData).forEach(category => {
+            state.categoryData[category].rows = [];
+            const section = document.querySelector(`.category-section[data-category="${category}"]`);
+            if (section) {
+                const container = section.querySelector('.category-rows-container');
+                container.innerHTML = '';
+
+                // Reset category total to $0
+                const priceEl = section.querySelector('.category-total-price');
+                if (priceEl) {
+                    priceEl.textContent = '$0';
+                    priceEl.dataset.value = '0';
+                }
+            }
+        });
+
+        // Reset Service Type
+        state.serviceType = 'salon';
+        elements.serviceTabs.forEach(tab => {
+            tab.classList.remove('active');
+            if (tab.dataset.service === 'salon') tab.classList.add('active');
+        });
+
+        // Reset order total
+        state.orderTotal = 0;
+        if(typeof updateOrderTotal === "function") updateOrderTotal(); else renderPosCart();
+    }
+    
+
+
+
+    // ============================================
+    // Checkout / Payment
+    // ============================================
+
+    let selectedPaymentOrder = null;
+
+    function renderCheckoutPage() {
+        const orders = StorageManager.getOrders();
+
+        // Filter logic:
+        // to-print: Not paid AND NOT printed for checkout
+        // pending: Not paid AND printed for checkout
+        // paid: Paid
+        const today = new Date().toDateString();
+        const toPrint = orders.filter(o => o.paid !== true && o.checkoutPrinted !== true);
+        const pending = orders.filter(o => o.paid !== true && o.checkoutPrinted === true);
+        const paid = orders.filter(o => o.paid === true && new Date(o.createdAt).toDateString() === today);
+
+        if (elements.toPrintCount) elements.toPrintCount.textContent = toPrint.length;
+        if (elements.pendingPaymentCount) elements.pendingPaymentCount.textContent = pending.length;
+        if (elements.paidOrdersCount) elements.paidOrdersCount.textContent = paid.length;
+
+        const emptyStateHTML = (msg, submsg) => `
+            <div style="grid-column: 1 / -1; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 20px; color: #94a3b8; text-align: center;">
+                <i data-lucide="inbox" style="width: 64px; height: 64px; margin-bottom: 16px; opacity: 0.5;"></i>
+                <h3 style="font-size: 1.1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">${msg}</h3>
+                <p style="font-size: 0.9rem; max-width: 250px; margin: 0;">${submsg}</p>
+            </div>`;
+
+        if (elements.toPrintList) {
+            elements.toPrintList.innerHTML = toPrint.length > 0 
+                ? toPrint.reverse().map(o => createCheckoutCard(o)).join('') 
+                : emptyStateHTML('No hay pedidos pendientes', 'Los pedidos activos apareceran aqui.');
+        }
+        
+        if (elements.pendingPaymentList) {
+            elements.pendingPaymentList.innerHTML = pending.length > 0 
+                ? pending.reverse().map(o => createCheckoutCard(o)).join('') 
+                : emptyStateHTML('No hay pedidos por cobrar', 'No hay pedidos esperando por cobrar en caja.');
+        }
+        
+        if (elements.paidOrdersList) {
+            elements.paidOrdersList.innerHTML = paid.length > 0 
+                ? paid.reverse().map(o => createCheckoutCard(o)).join('') 
+                : emptyStateHTML('No hay ventas cobradas hoy', 'Los pedidos pagados apareceran aqui.');
+        }
+        
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+
+        // Visibility toggle
+        const lists = {
+            'to-print': elements.toPrintList,
+            'pending': elements.pendingPaymentList,
+            'paid': elements.paidOrdersList
+        };
+
+        Object.keys(lists).forEach(mode => {
+            if (lists[mode]) {
+                if (mode === checkoutMode) {
+                    lists[mode].classList.remove('hidden');
+                } else {
+                    lists[mode].classList.add('hidden');
+                }
+            }
+        });
+
+        document.querySelectorAll('.order-list-card[data-order-id]').forEach(card => {
+            card.addEventListener('click', () => {
+                window.openPaymentModal(card.dataset.orderId);
+            });
+        });
+
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+
+    // ============================================
+    // Kitchen (KDS)
+    // ============================================
+
+    function renderKitchenPage() {
+        const orders = StorageManager.getActiveOrders();
+
+        const pending = orders.filter(o => o.status === 'pending');
+        const preparing = orders.filter(o => o.status === 'preparing');
+        const ready = orders.filter(o => o.status === 'ready');
+
+        const updateColumn = (listId, countId, items, action) => {
+            const list = document.getElementById(listId);
+            const count = document.getElementById(countId);
+            if (count) count.textContent = items.length;
+            if (list) {
+                list.innerHTML = items.map(o => `
+                    <div class="kitchen-card">
+                        <div class="kitchen-card-header">
+                            <span class="kitchen-order-number">${o.orderNumber} ${o.sequenceNumber && o.sequenceNumber !== o.orderNumber ? `(${o.sequenceNumber})` : ''}</span>
+                            <span class="kitchen-time">${o.customerInfo}</span>
+                        </div>
+                        <div class="kitchen-items">
+                            ${(() => {
+                                const kItemsByClient = {};
+                                o.items.forEach(item => {
+                                    const cName = item.clientName || 'CLIENTE';
+                                    if (!kItemsByClient[cName]) kItemsByClient[cName] = [];
+                                    kItemsByClient[cName].push(item);
+                                });
+                                return Object.entries(kItemsByClient).map(([cName, cItems]) => `
+                                    <div style="font-size: 0.85rem; font-weight: bold; color: var(--accent-gold); margin: 6px 0 2px 0;">
+                                        Cliente: ${cName}
+                                    </div>
+                                    ${cItems.map(item => `
+                                        <div class="k-item">
+                                            <strong>${item.qty}x</strong> ${item.name || item.categoryName} ${item.size ? item.size : ''}
+                                            ${item.notes && item.notes !== item.name ? `<div style="font-size:0.8rem; color:#f0c040; margin-left:14px;">* ${item.notes}</div>` : ''}
+                                            ${item.extras && item.extras.length > 0 ? `<div style="font-size:0.8rem; color:#4ecdc4; margin-left:14px;">+ ${(Array.isArray(item.extras) ? item.extras.map(e => typeof e === 'object' ? e.name : e).join(', ') : item.extras)}</div>` : ''}
+                                        </div>
+                                    `).join('')}
+                                `).join('');
+                            })()}
+                        </div>
+                        <button class="k-action-btn" onclick="window.advanceOrder('${o.id}')">${action}</button>
+                    </div>
+                `).join('');
+            }
+        };
+
+        updateColumn('listPending', 'countPending', pending, 'EMPEZAR');
+        updateColumn('listPreparing', 'countPreparing', preparing, 'LISTO');
+        updateColumn('listReady', 'countReady', ready, 'ENTREGAR');
+
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+
+    window.advanceOrder = function (id) {
+        const orders = StorageManager.getOrders();
+        const order = orders.find(o => o.id === id);
+        if (!order) return;
+
+        const nextStatus = {
+            'pending': 'preparing',
+            'preparing': 'ready',
+            'ready': 'delivered'
+        };
+
+        const newStatus = nextStatus[order.status];
+        if (newStatus) {
+            StorageManager.updateOrder(id, { status: newStatus });
+            renderKitchenPage();
+            showNotification(`Orden ${order.orderNumber} movida a ${newStatus}`);
+        }
+    };
+
+    function createCheckoutCard(order) {
+        const labels = { pending: 'Pendiente', preparing: 'Preparando', ready: 'Listo', delivered: 'Entregado' };
+        const titleName = order.createdBy ? order.createdBy.toUpperCase() : 'CAJA';
+        const titleSeq = order.sequenceNumber ? `(${order.sequenceNumber})` : `(${order.orderNumber})`;
+        
+        return `
+            <div class="order-list-card ${order.paid ? 'paid' : ''}" data-order-id="${order.id}">
+                <div class="order-card-header">
+                    <span class="order-number">${titleName} ${titleSeq}</span>
+                    <span class="order-status-badge">${order.paid ? 'Pagado' : labels[order.status]}</span>
+                </div>
+                <div class="order-customer-info">
+                    <span class="order-time">${new Date(order.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                    <span> - ${order.customerInfo}</span>
+                </div>
+                <div class="order-items-preview">
+                    ${order.items.map(item => `
+                        <div class="preview-item">
+                            <div class="item-main">
+                                <span class="preview-qty">${item.clientName || item.qty}</span>
+                                <span class="preview-name">${item.name || item.categoryName || ''} ${item.notes && item.notes !== item.name ? '(' + item.notes + ')' : ''} ${item.extras && item.extras.length > 0 ? '+ ' + (Array.isArray(item.extras) ? item.extras.map(e => typeof e === 'object' ? e.name : e).join(', ') : item.extras) : ''}</span>
+                            </div>
+                            <span class="item-price">${formatPrice(item.price || (item.unitPrice * item.qty))}</span>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="order-card-footer">
+                    <div style="display: flex; gap: var(--space-sm); align-items: center;">
+                        <span class="order-total">${formatPrice(order.totalPrice)}</span>
+                        ${!order.paid ? `
+                            <button class="btn-append-items" onclick="event.stopPropagation(); window.appendToOrder('${order.id}')" 
+                                style="background: var(--accent-primary); color: white; border: none; padding: 4px 12px; border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                                <i data-lucide="plus" style="width: 14px; height: 14px;"></i> ADICIONAR
+                            </button>
+                        ` : ''}
+                    </div>
+                    ${order.paid ? `
+                        <div style="display: flex; gap: 8px; align-items: center;">
+                            <span class="status-indicator" style="background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); font-size: 0.75rem; padding: 2px 8px; border-radius: 999px;">
+                                ${(order.paymentMethod || 'EFECTIVO').toUpperCase()}
+                            </span>
+                            <span class="status-indicator paid-chip">PAGADO</span>
+                        </div>
+                    ` : ''}
+                </div>
+            </div>
+        `;
+    }
+
+    window.appendToOrder = function (orderId) {
+        const order = StorageManager.getOrders().find(o => o.id == orderId);
+        if (!order) return;
+
+        state.appendingOrderId = orderId;
+        state.serviceType = order.serviceType;
+
+        // Reset UI to "New Order" page
+        state.currentPage = 'new-order';
+        elements.pages.forEach(p => p.classList.remove('active'));
+        const targetPage = document.getElementById('page-new-order');
+        if (targetPage) targetPage.classList.add('active');
+
+        // Update drawer state
+        elements.drawerItems.forEach(i => i.classList.remove('active'));
+        const newOrderTab = Array.from(elements.drawerItems).find(i => i.dataset.page === 'new-order');
+        if (newOrderTab) newOrderTab.classList.add('active');
+
+        // Initialize/Clear category rows
+                resetAllCategories(); // Ensure we start with a clean UI
+        initializeCategories();
+        
+        // Populate clients based on existing order items
+        if (order.items && order.items.length > 0) {
+            const uniqueClients = [...new Set(order.items.map(i => i.clientName || 'P1'))];
+            // AUTOMATICALLY ADD ONLY THE NEW CLIENT TAB WHEN APPENDING
+            let maxNum = 0;
+            uniqueClients.forEach(c => {
+                const num = parseInt(c.replace('P', '')) || 0;
+                if (num > maxNum) maxNum = num;
+            });
+            const newClient = 'P' + (maxNum + 1);
+            state.clients = [newClient]; // Only show the new person's tab
+            state.activeClient = newClient;
+            if (typeof renderPosClientTabs === 'function') renderPosClientTabs();
+        }
+
+        state.serviceType = order.serviceType;
+
+        // Update Service Tabs to match order
+        elements.serviceTabs.forEach(tab => {
+            tab.classList.toggle('active', tab.dataset.service === order.serviceType);
+        });
+
+        const locIn = document.getElementById('posLocationInput');
+        const typeIn = document.getElementById('posOrderTypeInput');
+        if (locIn) {
+            locIn.value = order.customerInfo || '';
+            locIn.disabled = true;
+            locIn.style.opacity = '0.6';
+        }
+        if (typeIn) {
+            typeIn.disabled = true;
+            typeIn.style.opacity = '0.6';
+        }
+
+        // Show Footer
+        const appFooter = document.getElementById('appFooter');
+        if (appFooter) appFooter.style.display = 'flex';
+
+
+
+        showNotification(`AÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±adiendo productos a la Orden ${order.orderNumber}`);
         if (typeof lucide !== 'undefined') lucide.createIcons();
     };
 
