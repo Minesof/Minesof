@@ -804,6 +804,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function refreshOrderPageUI() {
         const locIn = document.getElementById('posLocationInput');
         const typeIn = document.getElementById('posOrderTypeInput');
+        const config = StorageManager.getConfig();
+        if (config.billingSystem === 'direct') {
+            if (typeIn) typeIn.style.display = 'none';
+            if (locIn) locIn.style.width = '100%';
+        } else {
+            if (typeIn) typeIn.style.display = '';
+            if (locIn) locIn.style.width = '65%';
+        }
         
         // Only re-enable inputs if we are NOT appending to an existing order
         if (!state.appendingOrderId) {
@@ -1521,12 +1529,8 @@ function renderSplitUI() {
                     StorageManager.addOrder(partialOrder);
                     
                     if (config.billingSystem === 'direct') {
-                        showNotification(`Adición agregada y lista para cobro`);
-                        setTimeout(() => {
-                            const checkoutDrawerItem = document.querySelector('.drawer-item[data-page="checkout"]');
-                            if (checkoutDrawerItem) checkoutDrawerItem.click();
-                            setTimeout(() => window.openPaymentModal(partialOrder.id), 150);
-                        }, 50);
+                        showNotification(Adición agregada y lista para cobro);
+                        setTimeout(() => window.openPaymentModal(partialOrder.id), 150);
                     } else {
                         showNotification(`Adición agregada al pedido ${originalOrder.orderNumber}`);
                     }
@@ -1565,16 +1569,9 @@ function renderSplitUI() {
                 
                 if (config.billingSystem === 'direct') {
                     showNotification('Pedido ' + newOrder.orderNumber + ' listo para cobro');
-                    
-                    // Delay switching to checkout page and opening modal slightly
                     setTimeout(() => {
-                        const checkoutDrawerItem = document.querySelector('.drawer-item[data-page="checkout"]');
-                        if (checkoutDrawerItem) checkoutDrawerItem.click();
-                        
-                        setTimeout(() => {
-                            window.openPaymentModal(newOrder.id);
-                        }, 150);
-                    }, 50);
+                        window.openPaymentModal(newOrder.id);
+                    }, 150);
                 } else {
                     showNotification('Pedido ' + newOrder.orderNumber + ' generado');
                 }
@@ -2095,7 +2092,7 @@ showNotification(`Agregando productos a la Orden ${order.orderNumber}`);
                 state.activeClient = state.clients[0];
                 
                 StorageManager.deleteOrder(selectedPaymentOrder.id);
-                showNotification('Pedido devuelto para correcciÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³n.');
+                showNotification('Pedido devuelto para corrección.');
                 
                 // Return to new-order
                 const newOrderDrawerItem = document.querySelector('.drawer-item[data-page="new-order"]');
