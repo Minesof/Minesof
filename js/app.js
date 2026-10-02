@@ -1589,6 +1589,27 @@ function renderSplitUI() {
     }
 
     if (elements.posSubmitOrderBtn) elements.posSubmitOrderBtn.addEventListener('click', submitOrder);
+    
+    const cancelAppendBtn = document.getElementById('posCancelAppendHeaderBtn');
+    if (cancelAppendBtn) {
+        cancelAppendBtn.addEventListener('click', () => {
+            state.appendingOrderId = null;
+            clearPosCart(false);
+            const locIn = document.getElementById('posLocationInput');
+            const typeIn = document.getElementById('posOrderTypeInput');
+            if (locIn) {
+                locIn.value = '';
+                locIn.disabled = false;
+                locIn.style.opacity = '1';
+            }
+            if (typeIn) {
+                typeIn.value = 'Local';
+                typeIn.disabled = false;
+                typeIn.style.opacity = '1';
+            }
+            refreshOrderPageUI();
+        });
+    }
     if (elements.sendToKitchenBtn) elements.sendToKitchenBtn.addEventListener('click', submitOrder);
 
     // Initial render of POS workspace
@@ -1959,9 +1980,11 @@ function renderSplitUI() {
 
 
 
-        showNotification(`Agregando productos a la Orden ${order.orderNumber}`);
-        if (typeof lucide !== 'undefined') lucide.createIcons();
+        
+showNotification(`Agregando productos a la Orden ${order.orderNumber}`);
+        refreshOrderPageUI();
     };
+
 
     window.openPaymentModal = function(orderId) {
         const order = StorageManager.getOrders().find(o => o.id == orderId);
