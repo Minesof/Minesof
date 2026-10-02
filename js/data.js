@@ -92,9 +92,9 @@ function calculateSize(blocksCount = 0, category = '', selectedFlavors = []) {
 
 // Format price to Colombian pesos
 function formatPrice(price) {
-    if (price === null || price === undefined || isNaN(price)) return '';
-    return '
-
+    if (price === null || price === undefined || isNaN(price)) return '$0';
+    return '$' + Number(price).toLocaleString('es-CO');
+}
 // Generate unique ID
 function generateId() {
     return Date.now().toString(36) + Math.random().toString(36).substr(2);
