@@ -1,4 +1,4 @@
-﻿/* ============================================
+/* ============================================
    FoodX POS PRO - Inline Selection Interface
    ============================================ */
 
@@ -1408,18 +1408,20 @@ body {
 
 .order-list-card {
     background: var(--bg-card);
-    border-radius: var(--radius-md);
-    padding: var(--space-md);
-    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 0;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0,0,0,0.05);
+    overflow: hidden;
 }
 
 .order-card-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: var(--space-md);
-    border-bottom: 1px solid var(--border-subtle);
-    padding-bottom: var(--space-sm);
+    background: #f8fafc;
+    padding: 12px 16px;
+    border-bottom: 1px solid #e2e8f0;
 }
 
 .order-info-group {
@@ -1449,11 +1451,12 @@ body {
 .order-customer-info {
     display: flex;
     align-items: center;
-    gap: var(--space-sm);
-    color: var(--accent-royal);
+    gap: var(--space-xs);
+    color: #475569;
     font-size: 0.9rem;
-    margin-bottom: var(--space-md);
     font-weight: 500;
+    margin-bottom: var(--space-sm);
+    padding: 12px 16px 0 16px;
 }
 
 .order-customer-info svg {
@@ -1462,7 +1465,11 @@ body {
 }
 
 .order-items-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
     margin-bottom: var(--space-md);
+    padding: 0 16px;
 }
 
 .preview-item {
@@ -1501,8 +1508,10 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: var(--space-sm);
-    border-top: 1px solid var(--border-subtle);
+    margin-top: auto;
+    padding: 12px 16px;
+    background: #f1f5f9;
+    border-top: 1px solid #e2e8f0;
 }
 
 .order-total {
@@ -1590,8 +1599,12 @@ body {
 }
 
 .order-list-card {
-    cursor: pointer;
-    transition: transform var(--transition-fast), border-color var(--transition-fast);
+    background: var(--bg-card);
+    border-radius: 12px;
+    padding: 0;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0,0,0,0.05);
+    overflow: hidden;
 }
 
 .order-list-card:hover {
