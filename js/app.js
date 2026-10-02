@@ -1773,19 +1773,19 @@ function renderSplitUI() {
 
         if (elements.toPrintList) {
             elements.toPrintList.innerHTML = toPrint.length > 0 
-                ? toPrint.reverse().map(o => createCheckoutCard(o)).join('') 
+                ? toPrint.reverse().map(o => safeCreateCheckoutCard(o)).join('') 
                 : emptyStateHTML('No hay pedidos pendientes', 'Los pedidos activos apareceran aqui.');
         }
         
         if (elements.pendingPaymentList) {
             elements.pendingPaymentList.innerHTML = pending.length > 0 
-                ? pending.reverse().map(o => createCheckoutCard(o)).join('') 
+                ? pending.reverse().map(o => safeCreateCheckoutCard(o)).join('') 
                 : emptyStateHTML('No hay pedidos por cobrar', 'No hay pedidos esperando por cobrar en caja.');
         }
         
         if (elements.paidOrdersList) {
             elements.paidOrdersList.innerHTML = paid.length > 0 
-                ? paid.reverse().map(o => createCheckoutCard(o)).join('') 
+                ? paid.reverse().map(o => safeCreateCheckoutCard(o)).join('') 
                 : emptyStateHTML('No hay ventas cobradas hoy', 'Los pedidos pagados apareceran aqui.');
         }
         
@@ -1893,7 +1893,15 @@ function renderSplitUI() {
         }
     };
 
-    function createCheckoutCard(order) {
+    function safeCreateCheckoutCard(o) {
+    try {
+        return createCheckoutCard(o);
+    } catch(e) {
+        console.error("Error creating card for order", o, e);
+        return '';
+    }
+}
+function createCheckoutCard(order) {
         const labels = { pending: 'Pendiente', preparing: 'Preparando', ready: 'Listo', delivered: 'Entregado' };
         const titleName = order.createdBy ? order.createdBy.toUpperCase() : 'CAJA';
         const titleSeq = order.sequenceNumber ? `(${order.sequenceNumber})` : `(${order.orderNumber})`;
@@ -1909,7 +1917,7 @@ function renderSplitUI() {
                     <span> - ${order.customerInfo}</span>
                 </div>
                 <div class="order-items-preview">
-                    ${order.items.map(item => `
+                    ${(order.items || []).map(item => `
                         <div class="preview-item">
                             <div class="item-main">
                                 <span class="preview-qty">${item.clientName || item.qty}</span>
@@ -2433,7 +2441,7 @@ if (total < selectedPaymentOrder.totalPrice) {
                 </div>
                 <div class="order-customer-info"><span>${order.customerInfo}</span></div>
                 <div class="order-items-preview">
-                    ${order.items.map(item => `
+                    ${(order.items || []).map(item => `
                         <div class="preview-item">
                             <div class="item-main">
                                 <span class="preview-qty">${item.clientName || item.qty}</span>
@@ -3186,7 +3194,7 @@ if (total < selectedPaymentOrder.totalPrice) {
                     <span> - ${order.customerInfo}</span>
                 </div>
                 <div class="order-items-preview">
-                    ${order.items.map(item => `
+                    ${(order.items || []).map(item => `
                         <div class="preview-item">
                             <div class="item-main">
                                 <span class="preview-qty">${item.clientName || item.qty}</span>
