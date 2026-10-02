@@ -3324,7 +3324,6 @@ if (total < selectedPaymentOrder.totalPrice) {
         });
 
         const clientKeys = Object.keys(itemsByClient);
-        let grandTotal = 0;
 
         let firstClient = true;
         for (const [clientName, cItems] of Object.entries(itemsByClient)) {
@@ -3332,26 +3331,14 @@ if (total < selectedPaymentOrder.totalPrice) {
                 t += '\n';
             }
             firstClient = false;
-            let clientSubtotal = 0;
             cItems.forEach(item => {
                 const qty = item.qty || 1;
-                const unitP = item.unitPrice || item.price || 0;
-                const totalP = item.price || (unitP * qty);
-                clientSubtotal += totalP;
-
                 let name = (item.name || 'ITEM').toUpperCase();
-                const priceStr = formatPrice(totalP);
                 const prefix = (item.clientName || qty + 'x') + ' ';
                 
-                // Allow exactly 1 space between name and price
-                const maxNameLen = W - priceStr.length - prefix.length - 1;
-                if (name.length > maxNameLen) {
-                    name = name.substring(0, maxNameLen);
-                }
-                
-                t += justify(prefix + name, priceStr) + '\n';
+                t += prefix + name + '\n';
 
-                                if (item.notes && item.notes.trim() !== '' && item.notes !== item.name) {
+                if (item.notes && item.notes.trim() !== '' && item.notes !== item.name) {
                     t += '  * ' + item.notes.toUpperCase() + '\n';
                 }
                 if (item.extras && item.extras.length > 0) {
@@ -3359,24 +3346,17 @@ if (total < selectedPaymentOrder.totalPrice) {
                     t += '  + ' + ext.toUpperCase() + '\n';
                 }
             });
-
-            if (clientKeys.length > 1) {
-                t += justify('  SUBTOTAL ' + clientName.toUpperCase() + ':', formatPrice(clientSubtotal)) + '\n';
-            }
-            grandTotal += clientSubtotal;
         }
 
         t += doubleLine + '\n';
-        t += justify('TOTAL:', formatPrice(order.totalPrice || grandTotal)) + '\n';
-        t += doubleLine + '\n';
-
+        
         if (order.paymentMethod) {
-            t += justify('PAGO:', order.paymentMethod.toUpperCase()) + '\n';
-            t += line + '\n';
+            t += justify('METODO DE PAGO:', order.paymentMethod.toUpperCase()) + '\n';
         }
+        t += doubleLine + '\n';
 
         t += '\n';
-        t += center('GRACIAS POR SU COMPRA!') + '\n';
+        t += center('GRACIAS POR SU VISITA!') + '\n';
         t += center((FOODX_DATA.businessName || 'Minesof').toUpperCase()) + '\n';
         t += '\n\n.';
 
