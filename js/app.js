@@ -1629,6 +1629,7 @@ function renderSplitUI() {
     if (elements.sendToKitchenBtn) elements.sendToKitchenBtn.addEventListener('click', submitOrder);
 
     // Initial render of POS workspace
+    refreshOrderPageUI();
     renderPosCategories();
     renderPosProducts();
     renderPosCart();
@@ -1742,6 +1743,13 @@ function renderSplitUI() {
 
     function renderCheckoutPage() {
         const orders = StorageManager.getOrders();
+        const config = StorageManager.getConfig();
+        if (config.billingSystem === 'direct') {
+            checkoutMode = 'paid';
+            document.querySelectorAll('.checkout-tab').forEach(t => t.classList.remove('active'));
+            const paidTab = document.querySelector('.checkout-tab[data-tab="paid"]');
+            if (paidTab) paidTab.classList.add('active');
+        }
 
         // Filter logic:
         // to-print: Not paid AND NOT printed for checkout
