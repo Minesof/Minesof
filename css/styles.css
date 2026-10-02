@@ -1410,7 +1410,7 @@ body {
     background: var(--bg-card);
     border-radius: 12px;
     padding: 0;
-    border: 1px solid #cbd5e1;
+    border: 2px solid #94a3b8;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0,0,0,0.05);
     overflow: hidden;
 }
@@ -1602,7 +1602,7 @@ body {
     background: var(--bg-card);
     border-radius: 12px;
     padding: 0;
-    border: 1px solid #cbd5e1;
+    border: 2px solid #94a3b8;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0,0,0,0.05);
     overflow: hidden;
 }
@@ -1613,8 +1613,8 @@ body {
 }
 
 .order-list-card.paid {
-    opacity: 0.85;
-    border-left: 4px solid var(--status-ready);
+    border: 3px solid var(--status-ready);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
 }
 
 .paid-chip {
