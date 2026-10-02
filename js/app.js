@@ -836,15 +836,6 @@ document.addEventListener('DOMContentLoaded', () => {
         renderPosCart();
         if (typeof lucide !== 'undefined') lucide.createIcons();
     }
-        if (typeIn) {
-            typeIn.disabled = false;
-            typeIn.style.opacity = '1';
-        }
-        renderPosCategories();
-        renderPosProducts();
-        renderPosCart();
-        if (typeof lucide !== 'undefined') lucide.createIcons();
-    }
 
     // ============================================
     // Multi-Sector POS Order Taking Engine
@@ -5603,4 +5594,3 @@ window.moveAdminItem = function(type, id, direction) {
         document.getElementById('balanceDetailModal').classList.add('open');
         if (typeof lucide !== 'undefined') lucide.createIcons();
     };
-
