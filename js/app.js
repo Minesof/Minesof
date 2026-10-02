@@ -1502,14 +1502,14 @@ function renderSplitUI() {
                     StorageManager.addOrder(partialOrder);
                     
                     if (config.billingSystem === 'direct') {
-                        showNotification(`AdiciÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³n agregada y lista para cobro`);
+                        showNotification(`Adición agregada y lista para cobro`);
                         setTimeout(() => {
                             const checkoutDrawerItem = document.querySelector('.drawer-item[data-page="checkout"]');
                             if (checkoutDrawerItem) checkoutDrawerItem.click();
                             setTimeout(() => window.openPaymentModal(partialOrder.id), 150);
                         }, 50);
                     } else {
-                        showNotification(`AdiciÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³n agregada al pedido ${originalOrder.orderNumber}`);
+                        showNotification(`Adición agregada al pedido ${originalOrder.orderNumber}`);
                     }
                 }
                 state.appendingOrderId = null;
@@ -1959,7 +1959,7 @@ function renderSplitUI() {
 
 
 
-        showNotification(`AÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±adiendo productos a la Orden ${order.orderNumber}`);
+        showNotification(`Agregando productos a la Orden ${order.orderNumber}`);
         if (typeof lucide !== 'undefined') lucide.createIcons();
     };
 
@@ -2286,7 +2286,7 @@ if (total < selectedPaymentOrder.totalPrice) {
                 if (selectedPaymentOrder.isPartial) {
                     // If it's a partial order (addition), delete it after printing
                     StorageManager.deleteOrder(selectedPaymentOrder.id);
-                    showNotification(`Ticket de adiciÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³n impreso`);
+                    showNotification(`Ticket de adición impreso`);
                 } else {
                     // Normal order: Set as printed for checkout
                     StorageManager.updateOrder(selectedPaymentOrder.id, { checkoutPrinted: true });
@@ -2305,7 +2305,7 @@ if (total < selectedPaymentOrder.totalPrice) {
             if (selectedPaymentOrder) {
                 if (selectedPaymentOrder.isPartial) {
                     StorageManager.deleteOrder(selectedPaymentOrder.id);
-                    showNotification('AdiciÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³n procesada');
+                    showNotification('Adición procesada');
                 } else {
                     StorageManager.updateOrder(selectedPaymentOrder.id, { checkoutPrinted: true });
                     showNotification('Pedido ' + selectedPaymentOrder.orderNumber + ' marcado como listo');
