@@ -1613,8 +1613,7 @@ body {
 }
 
 .order-list-card.paid {
-    border: 3px solid var(--status-ready);
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+    /* opacidad eliminada para que luzca como los demás, usando el borde gris normal */
 }
 
 .paid-chip {
