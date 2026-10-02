@@ -95,52 +95,6 @@ function formatPrice(price) {
     if (price === null || price === undefined || isNaN(price)) return '$0';
     return '$' + Number(price).toLocaleString('es-CO');
 }
-// Generate unique ID
-function generateId() {
-    return Date.now().toString(36) + Math.random().toString(36).substr(2);
-}
-
-// Generate order number with daily reset - SYNCHRONIZED via Firebase
-let orderCounter = parseInt(localStorage.getItem('galeria_order_counter') || '0');
-let lastOrderDate = localStorage.getItem('galeria_last_order_date') || '';
-
-// Get local date key (YYYY-MM-DD in local timezone)
-function getLocalDateKey() {
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, '0');
-    const day = String(now.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
-}
-
-async function getNextOrderNumber() {
-    return generateOrderNumberLocal();
-}
-
-// Local fallback function (original logic)
-function generateOrderNumberLocal() {
-    const today = new Date().toDateString();
-    const lastDate = localStorage.getItem('galeria_last_order_date');
-
-    if (lastDate !== today) {
-        orderCounter = 0;
-        localStorage.setItem('galeria_last_order_date', today);
-    }
-
-    orderCounter++;
-    localStorage.setItem('galeria_order_counter', orderCounter.toString());
-    return '#' + String(orderCounter).padStart(3, '0');
-}
-
-// Sync wrapper - returns a promise
-function generateOrderNumber() {
-    // Return the async result, but for backward compatibility also have sync fallback
-    return getNextOrderNumber();
-}
-
-
- + Number(price).toLocaleString('es-CO');
-}
 
 // Generate unique ID
 function generateId() {
