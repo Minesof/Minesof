@@ -1467,7 +1467,7 @@ body {
 .order-items-preview {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 2px;
     margin-bottom: var(--space-md);
     padding: 0 16px;
 }
@@ -1476,9 +1476,9 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: var(--space-sm);
+    gap: var(--space-xs);
     font-size: 0.85rem;
-    margin-bottom: 6px;
+    margin-bottom: 2px;
     color: var(--text-secondary);
 }
 

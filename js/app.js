@@ -1920,7 +1920,7 @@ function createCheckoutCard(order) {
                     <span> - ${order.customerInfo}</span>
                 </div>
                 <div class="order-items-preview">
-                    ${(order.items || []).map(item => `
+                    ${[...(order.items || [])].sort((a,b) => (a.clientName || "Z").localeCompare(b.clientName || "Z")).map(item => `
                         <div class="preview-item">
                             <div class="item-main">
                                 <span class="preview-qty">${item.clientName || item.qty}</span>
@@ -2444,7 +2444,7 @@ if (total < selectedPaymentOrder.totalPrice) {
                 </div>
                 <div class="order-customer-info"><span>${order.customerInfo}</span></div>
                 <div class="order-items-preview">
-                    ${(order.items || []).map(item => `
+                    ${[...(order.items || [])].sort((a,b) => (a.clientName || "Z").localeCompare(b.clientName || "Z")).map(item => `
                         <div class="preview-item">
                             <div class="item-main">
                                 <span class="preview-qty">${item.clientName || item.qty}</span>
@@ -3197,7 +3197,7 @@ if (total < selectedPaymentOrder.totalPrice) {
                     <span> - ${order.customerInfo}</span>
                 </div>
                 <div class="order-items-preview">
-                    ${(order.items || []).map(item => `
+                    ${[...(order.items || [])].sort((a,b) => (a.clientName || "Z").localeCompare(b.clientName || "Z")).map(item => `
                         <div class="preview-item">
                             <div class="item-main">
                                 <span class="preview-qty">${item.clientName || item.qty}</span>
