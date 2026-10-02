@@ -1542,7 +1542,7 @@ function renderSplitUI() {
                 
                 let orderIdentifier = seqNum;
                 if (locationText && customerText) {
-                    orderIdentifier = ${locationText} | ;
+                    orderIdentifier = `${locationText} | ${customerText}`;
                 } else if (locationText) {
                     orderIdentifier = locationText;
                 } else if (customerText) {
