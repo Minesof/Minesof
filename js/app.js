@@ -1279,7 +1279,7 @@ function renderSplitUI() {
             background: ${colors.bg}; border: 1px solid ${colors.border}; border-radius: 16px; padding: 10px;
             --active-check: ${colors.main}; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
             
-            <div style="background: ${colors.main}; border-radius: 10px; padding: 12px; text-align: center; font-weight: 800; color: white; text-transform: uppercase; font-size: 0.9rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2);">
+            <div style="background: ${colors.main}; border-radius: 8px; padding: 6px; text-align: center; font-weight: 800; color: white; text-transform: uppercase; font-size: 0.9rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2);">
                 ${catName}
             </div>
             
@@ -1312,7 +1312,7 @@ function renderSplitUI() {
                     
                     if (isItemActive) {
                         return `<div class="split-card dynamic-card active" data-id="${p.id}" data-name="${p.name.toLowerCase()}" onclick="window.triggerToggleProduct('${p.id}')"
-                            style="border: none; border-radius: 10px; padding: 12px; font-size: 0.95rem; font-weight: 600; display: flex; flex-direction: column; gap: 6px; flex-shrink: 0;">
+                            style="border: none; border-radius: 8px; padding: 6px; font-size: 0.95rem; font-weight: 600; display: flex; flex-direction: column; gap: 6px; flex-shrink: 0;">
                                 <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
                                     <span style="text-align: center;">${p.name}</span>
                                 </div>
@@ -1322,13 +1322,13 @@ function renderSplitUI() {
                             </div>`;
                     } else {
                         return `<div class="split-card dynamic-card" data-id="${p.id}" data-name="${p.name.toLowerCase()}" onclick="window.triggerToggleProduct('${p.id}')"
-                            style="border: none; border-radius: 10px; padding: 12px; font-size: 0.95rem; font-weight: 600; display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
+                            style="border: none; border-radius: 8px; padding: 6px; font-size: 0.95rem; font-weight: 600; display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
                                <span style="text-align: center;">${p.name}</span>
                             </div>`;
                     }
                 } else {
                     return `<div class="split-card dynamic-card ${isActive ? 'active' : ''}" data-id="${p.id}" data-name="${p.name.toLowerCase()}" onclick="window.triggerToggleProduct('${p.id}')"
-                        style="border: none; border-radius: 10px; padding: 12px; font-size: 0.95rem; font-weight: 600; display: flex; justify-content: center; text-align: center; align-items: center; flex-shrink: 0;">
+                        style="border: none; border-radius: 8px; padding: 6px; font-size: 0.95rem; font-weight: 600; display: flex; justify-content: center; text-align: center; align-items: center; flex-shrink: 0;">
                            <span>${p.name}</span>
                            </div>`;
                 }
