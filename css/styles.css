@@ -1074,8 +1074,8 @@ body {
 
 .total-display {
     min-width: 150px;
-    flex: 0.6;
-    height: 50px;
+    flex: 1;
+    height: 38px;
     background: var(--accent-primary);
     border: none;
     border-radius: var(--radius-md);
@@ -1097,7 +1097,7 @@ body {
 }
 
 .total-amount {
-    font-size: 1.2rem;
+    font-size: 0.95rem;
     font-weight: 800;
     color: #ffffff;
 }
