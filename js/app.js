@@ -1312,7 +1312,7 @@ function renderSplitUI() {
                     
                     if (isItemActive) {
                         return `<div class="split-card dynamic-card active" data-id="${p.id}" data-name="${p.name.toLowerCase()}" onclick="window.triggerToggleProduct('${p.id}')"
-                            style="border: none; border-radius: 8px; padding: 3px 6px; font-size: 0.95rem; font-weight: 600; display: flex; flex-direction: column; gap: 6px; flex-shrink: 0;">
+                            style="border: none; border-radius: 8px; padding: 2px 4px; font-size: 0.8rem; font-weight: 600; display: flex; flex-direction: column; gap: 6px; flex-shrink: 0;">
                                 <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
                                     <span style="text-align: center;">${p.name}</span>
                                 </div>
@@ -1322,13 +1322,13 @@ function renderSplitUI() {
                             </div>`;
                     } else {
                         return `<div class="split-card dynamic-card" data-id="${p.id}" data-name="${p.name.toLowerCase()}" onclick="window.triggerToggleProduct('${p.id}')"
-                            style="border: none; border-radius: 8px; padding: 3px 6px; font-size: 0.95rem; font-weight: 600; display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
+                            style="border: none; border-radius: 8px; padding: 2px 4px; font-size: 0.8rem; font-weight: 600; display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
                                <span style="text-align: center;">${p.name}</span>
                             </div>`;
                     }
                 } else {
                     return `<div class="split-card dynamic-card ${isActive ? 'active' : ''}" data-id="${p.id}" data-name="${p.name.toLowerCase()}" onclick="window.triggerToggleProduct('${p.id}')"
-                        style="border: none; border-radius: 8px; padding: 3px 6px; font-size: 0.95rem; font-weight: 600; display: flex; justify-content: center; text-align: center; align-items: center; flex-shrink: 0;">
+                        style="border: none; border-radius: 8px; padding: 2px 4px; font-size: 0.8rem; font-weight: 600; display: flex; justify-content: center; text-align: center; align-items: center; flex-shrink: 0;">
                            <span>${p.name}</span>
                            </div>`;
                 }
