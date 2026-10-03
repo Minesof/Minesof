@@ -1209,8 +1209,7 @@ window.switchClient = function(client) {
             } else {
                 el.classList.remove('active');
             }
-            const checkIcon = el.querySelector('.check-icon');
-            if (checkIcon) checkIcon.style.display = isActiveNow ? 'flex' : 'none';
+            
         });
         
         renderPosCart();
@@ -1329,12 +1328,9 @@ function renderSplitUI() {
                     }
                 } else {
                     return `<div class="split-card dynamic-card ${isActive ? 'active' : ''}" data-id="${p.id}" data-name="${p.name.toLowerCase()}" onclick="window.triggerToggleProduct('${p.id}')"
-                        style="border: none; border-radius: 10px; padding: 12px; font-size: 0.95rem; font-weight: 600; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0;">
+                        style="border: none; border-radius: 10px; padding: 12px; font-size: 0.95rem; font-weight: 600; display: flex; justify-content: center; text-align: center; align-items: center; flex-shrink: 0;">
                            <span>${p.name}</span>
-                           <div class="check-icon" style="display: ${isActive ? 'flex' : 'none'}; width: 22px; height: 22px; border-radius: 50%; background: white; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(0,0,0,0.3);">
-                               <i data-lucide="check" style="width: 16px; height: 16px; color: ${colors.main};"></i>
-                           </div>
-                        </div>`;
+                           </div>`;
                 }
             }).join('');
         }
@@ -5579,7 +5575,7 @@ window.moveAdminItem = function(type, id, direction) {
             dayExpenses.forEach(e => {
                 tExp += e.amount;
                 eHtml += `
-                    <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 4px;">
+                    <div style="display: flex; justify-content: center; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 4px;">
                         <span style="display: flex; flex-direction: column;">
                             <span>${e.description}</span>
                             <span style="color: var(--text-muted); font-size: 0.7rem;">${e.category}</span>
