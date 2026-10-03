@@ -1312,7 +1312,7 @@ function renderSplitUI() {
                     
                     if (isItemActive) {
                         return `<div class="split-card dynamic-card active" data-id="${p.id}" data-name="${p.name.toLowerCase()}" onclick="window.triggerToggleProduct('${p.id}')"
-                            style="border: none; border-radius: 8px; padding: 2px 4px; font-size: 0.8rem; font-weight: 600; display: flex; flex-direction: column; gap: 6px; flex-shrink: 0;">
+                            style="border: none; border-radius: 8px; padding: 2px 4px; font-size: 0.9rem; font-weight: 600; display: flex; flex-direction: column; gap: 6px; flex-shrink: 0;">
                                 <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
                                     <span style="text-align: center;">${p.name}</span>
                                 </div>
@@ -1322,13 +1322,13 @@ function renderSplitUI() {
                             </div>`;
                     } else {
                         return `<div class="split-card dynamic-card" data-id="${p.id}" data-name="${p.name.toLowerCase()}" onclick="window.triggerToggleProduct('${p.id}')"
-                            style="border: none; border-radius: 8px; padding: 2px 4px; font-size: 0.8rem; font-weight: 600; display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
+                            style="border: none; border-radius: 8px; padding: 2px 4px; font-size: 0.9rem; font-weight: 600; display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
                                <span style="text-align: center;">${p.name}</span>
                             </div>`;
                     }
                 } else {
                     return `<div class="split-card dynamic-card ${isActive ? 'active' : ''}" data-id="${p.id}" data-name="${p.name.toLowerCase()}" onclick="window.triggerToggleProduct('${p.id}')"
-                        style="border: none; border-radius: 8px; padding: 2px 4px; font-size: 0.8rem; font-weight: 600; display: flex; justify-content: center; text-align: center; align-items: center; flex-shrink: 0;">
+                        style="border: none; border-radius: 8px; padding: 2px 4px; font-size: 0.9rem; font-weight: 600; display: flex; justify-content: center; text-align: center; align-items: center; flex-shrink: 0;">
                            <span>${p.name}</span>
                            </div>`;
                 }
@@ -2696,11 +2696,11 @@ if (total < selectedPaymentOrder.totalPrice) {
             if (container) {
                 const days = Object.keys(salesBreakdownByDay).sort((a, b) => new Date(b) - new Date(a));
                 if (days.length === 0) {
-                    container.innerHTML = '<div style="padding: 1rem; text-align: center; color: var(--text-muted); font-size: 0.8rem;">Sin datos</div>';
+                    container.innerHTML = '<div style="padding: 1rem; text-align: center; color: var(--text-muted); font-size: 0.9rem;">Sin datos</div>';
                 } else {
                     let html = `
                         <div style="overflow-x: auto; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
-                        <table style="width: 100%; border-collapse: collapse; font-size: 0.8rem;">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
                             <thead>
                                 <tr style="background: var(--bg-tertiary);">
                                     <th style="padding: 10px 12px; text-align: left; color: var(--text-muted); font-weight: 600; text-transform: uppercase; font-size: 0.65rem;">Fecha</th>
@@ -2748,7 +2748,7 @@ if (total < selectedPaymentOrder.totalPrice) {
             if (!container) return;
 
             if (list.length === 0) {
-                container.innerHTML = '<div style="padding: 1rem; text-align: center; color: var(--text-muted); font-size: 0.8rem;">Sin transacciones</div>';
+                container.innerHTML = '<div style="padding: 1rem; text-align: center; color: var(--text-muted); font-size: 0.9rem;">Sin transacciones</div>';
                 return;
             }
 
@@ -2757,7 +2757,7 @@ if (total < selectedPaymentOrder.totalPrice) {
 
             let html = `
                 <div style="overflow-y: auto; max-height: 250px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
-                <table style="width: 100%; border-collapse: collapse; font-size: 0.8rem;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
                     <thead>
                         <tr style="background: var(--bg-tertiary);">
                             <th style="padding: 8px 12px; text-align: left; color: var(--text-muted); font-weight: 600; text-transform: uppercase; font-size: 0.65rem; position: sticky; top: 0; background: var(--bg-tertiary); z-index: 10;">Fecha</th>
@@ -2913,7 +2913,7 @@ if (total < selectedPaymentOrder.totalPrice) {
                             ${o.orderNumber}
                             ${o.isCombined ? '<span style="font-size: 0.65rem; color: var(--text-muted); display: block;">(Combinado)</span>' : ''}
                         </td>
-                        <td style="font-size: 0.8rem; max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                        <td style="font-size: 0.9rem; max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
                             ${o.customerInfo}
                         </td>
                         <td class="detail-amount">${formatPrice(o.displayAmount)}</td>
@@ -3628,14 +3628,14 @@ if (total < selectedPaymentOrder.totalPrice) {
 
                     tableHtml += `
                         <tr style="border-top: 1px solid var(--border-subtle); background: var(--bg-secondary);">
-                            <td style="padding: 10px 12px; color: var(--text-secondary); white-space: nowrap; font-size: 0.8rem;">${dateStr}</td>
+                            <td style="padding: 10px 12px; color: var(--text-secondary); white-space: nowrap; font-size: 0.9rem;">${dateStr}</td>
                             <td style="padding: 10px 12px; white-space: nowrap;">
-                                <span style="font-size: 0.8rem;">${cat.label}</span>
+                                <span style="font-size: 0.9rem;">${cat.label}</span>
                             </td>
-                            <td style="padding: 10px 12px; color: var(--text-primary); max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 0.8rem;">
+                            <td style="padding: 10px 12px; color: var(--text-primary); max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 0.9rem;">
                                 ${expense.description || '-'}
                             </td>
-                            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary); font-size: 0.8rem;">
+                            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary); font-size: 0.9rem;">
                                 ${qty}
                             </td>
                             <td style="padding: 10px 12px; text-align: right; color: var(--text-muted); font-size: 0.75rem;">
@@ -3723,7 +3723,7 @@ if (total < selectedPaymentOrder.totalPrice) {
                 <input type="text" autocomplete="off" id="newExpenseCatLabel" placeholder="Nombre de categoria"
                     style="flex: 1; padding: 8px 12px; background: var(--bg-tertiary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); color: var(--text-primary); font-size: 0.85rem; box-sizing: border-box;">
                 <button onclick="window.addExpenseCategory()"
-                    style="padding: 8px 14px; background: var(--accent-primary); color: var(--bg-primary); border: none; border-radius: var(--radius-md); font-weight: 700; font-size: 0.8rem; cursor: pointer; white-space: nowrap;">
+                    style="padding: 8px 14px; background: var(--accent-primary); color: var(--bg-primary); border: none; border-radius: var(--radius-md); font-weight: 700; font-size: 0.9rem; cursor: pointer; white-space: nowrap;">
                     + Agregar
                 </button>
             </div>

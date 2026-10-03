@@ -4257,7 +4257,7 @@ option {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    min-height: 48px;
+    min-height: 28px;
 }
 
 .split-card.active.drink-active {
