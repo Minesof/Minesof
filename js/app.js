@@ -1115,8 +1115,9 @@ window.switchClient = function(client) {
                     price: product.price || 0,
                     unitPrice: product.price || 0,
                     qty: 1,
+                    subtotal: product.price || 0,
                     clientName: clientId,
-                    categoryId: product.categoryId,
+                    categoryId: product.category,
                     notes: notes
                 });
             }
