@@ -1924,7 +1924,7 @@ function createCheckoutCard(order) {
                         <div class="preview-item">
                             <div class="item-main">
                                 <span class="preview-qty">${item.clientName || item.qty}</span>
-                                <span class="preview-name">${(() => { const config = StorageManager.getConfig(); let catId = item.categoryId; if (!catId) { const p = (config.products||[]).find(x => x.id === item.productId) || {}; catId = p.category; if (!catId) { catId = Object.keys(config.flavors || {}).find(k => (config.flavors[k]||[]).some(f => f.id === item.productId)); } } const cat = (config.categories||[]).find(c => String(c.id) === String(catId)) || {}; const cName = cat.name || item.categoryName || catId || ""; return cName ? cName.substring(0,4).toUpperCase() + " " : ""; })()}${item.name || item.categoryName || ''} ${item.notes && item.notes !== item.name ? '(' + item.notes + ')' : ''} ${item.extras && item.extras.length > 0 ? '+ ' + (Array.isArray(item.extras) ? item.extras.map(e => typeof e === 'object' ? e.name : e).join(', ') : item.extras) : ''}</span>
+                                <span class="preview-name">${item.name || item.categoryName || ''} ${item.notes && item.notes !== item.name ? '(' + item.notes + ')' : ''} ${item.extras && item.extras.length > 0 ? '+ ' + (Array.isArray(item.extras) ? item.extras.map(e => typeof e === 'object' ? e.name : e).join(', ') : item.extras) : ''}</span>
                             </div>
                             <span class="item-price">${formatPrice(item.price || (item.unitPrice * item.qty))}</span>
                         </div>
@@ -2448,7 +2448,7 @@ if (total < selectedPaymentOrder.totalPrice) {
                         <div class="preview-item">
                             <div class="item-main">
                                 <span class="preview-qty">${item.clientName || item.qty}</span>
-                                <span class="preview-name">${(() => { const config = StorageManager.getConfig(); let catId = item.categoryId; if (!catId) { const p = (config.products||[]).find(x => x.id === item.productId) || {}; catId = p.category; if (!catId) { catId = Object.keys(config.flavors || {}).find(k => (config.flavors[k]||[]).some(f => f.id === item.productId)); } } const cat = (config.categories||[]).find(c => String(c.id) === String(catId)) || {}; const cName = cat.name || item.categoryName || catId || ""; return cName ? cName.substring(0,4).toUpperCase() + " " : ""; })()}${item.name || item.categoryName || ''} ${item.notes && item.notes !== item.name ? '(' + item.notes + ')' : ''} ${item.extras && item.extras.length > 0 ? '+ ' + (Array.isArray(item.extras) ? item.extras.map(e => typeof e === 'object' ? e.name : e).join(', ') : item.extras) : ''}</span>
+                                <span class="preview-name">${item.name || item.categoryName || ''} ${item.notes && item.notes !== item.name ? '(' + item.notes + ')' : ''} ${item.extras && item.extras.length > 0 ? '+ ' + (Array.isArray(item.extras) ? item.extras.map(e => typeof e === 'object' ? e.name : e).join(', ') : item.extras) : ''}</span>
                             </div>
                             <span class="item-price">${formatPrice(item.price / item.qty)}</span>
                         </div>
@@ -3201,7 +3201,7 @@ if (total < selectedPaymentOrder.totalPrice) {
                         <div class="preview-item">
                             <div class="item-main">
                                 <span class="preview-qty">${item.clientName || item.qty}</span>
-                                <span class="preview-name">${(() => { const config = StorageManager.getConfig(); let catId = item.categoryId; if (!catId) { const p = (config.products||[]).find(x => x.id === item.productId) || {}; catId = p.category; if (!catId) { catId = Object.keys(config.flavors || {}).find(k => (config.flavors[k]||[]).some(f => f.id === item.productId)); } } const cat = (config.categories||[]).find(c => String(c.id) === String(catId)) || {}; const cName = cat.name || item.categoryName || catId || ""; return cName ? cName.substring(0,4).toUpperCase() + " " : ""; })()}${item.name || item.categoryName || ''} ${item.notes && item.notes !== item.name ? '(' + item.notes + ')' : ''} ${item.extras && item.extras.length > 0 ? '+ ' + (Array.isArray(item.extras) ? item.extras.map(e => typeof e === 'object' ? e.name : e).join(', ') : item.extras) : ''}</span>
+                                <span class="preview-name">${item.name || item.categoryName || ''} ${item.notes && item.notes !== item.name ? '(' + item.notes + ')' : ''} ${item.extras && item.extras.length > 0 ? '+ ' + (Array.isArray(item.extras) ? item.extras.map(e => typeof e === 'object' ? e.name : e).join(', ') : item.extras) : ''}</span>
                             </div>
                             <span class="item-price">${formatPrice(item.price / item.qty)}</span>
                         </div>
@@ -3333,11 +3333,7 @@ if (total < selectedPaymentOrder.totalPrice) {
             firstClient = false;
             cItems.forEach(item => {
                 const qty = item.qty || 1;
-                                const config = StorageManager.getConfig();
-                const cat = config.categories.find(c => c.id === item.categoryId) || {};
-                const cName = cat.name || item.categoryName || item.categoryId || "UKWN";
-                const catPrefix = cName ? cName.substring(0,4) + ' ' : '';
-                let name = (catPrefix + (item.name || 'ITEM')).toUpperCase();
+                let name = (item.name || 'ITEM').toUpperCase();
                 const prefix = (item.clientName || qty + 'x') + ' ';
                 
                 t += prefix + name + '\n';
@@ -3441,11 +3437,7 @@ if (total < selectedPaymentOrder.totalPrice) {
                 const totalP = item.price || (unitP * qty);
                 clientSubtotal += totalP;
 
-                                const config = StorageManager.getConfig();
-                const cat = config.categories.find(c => c.id === item.categoryId) || {};
-                const cName = cat.name || item.categoryName || item.categoryId || "UKWN";
-                const catPrefix = cName ? cName.substring(0,4) + ' ' : '';
-                let name = (catPrefix + (item.name || 'ITEM')).toUpperCase();
+                let name = (item.name || 'ITEM').toUpperCase();
                 const priceStr = formatPrice(totalP);
                 const prefix = (item.clientName || qty + 'x') + ' ';
                 
