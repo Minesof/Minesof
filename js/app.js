@@ -1057,6 +1057,88 @@ window.switchClient = function(client) {
     };
 
     let activeQuantityProductId = null;
+        let activeFixedObsProductId = null;
+    let activeFixedObsEditIndex = -1;
+
+    window.openFixedWithObsForProduct = function(product, editIndex = -1) {
+        if (!product) return;
+        activeFixedObsProductId = product.id;
+        activeFixedObsEditIndex = editIndex;
+        
+        const modal = document.getElementById('fixedObsModal');
+        const nameEl = document.getElementById('fixedObsModalProductName');
+        const priceEl = document.getElementById('fixedObsModalProductPrice');
+        const input = document.getElementById('fixedObsModalInput');
+        const confirmBtn = document.getElementById('fixedObsConfirmBtn');
+        const removeBtn = document.getElementById('fixedObsModalRemoveBtn');
+        const titleEl = document.getElementById('fixedObsModalTitle');
+
+        if (!modal) return;
+
+        nameEl.textContent = product.name;
+        priceEl.textContent = '$' + (product.price || 0).toLocaleString('es-CO');
+
+        if (editIndex !== -1) {
+            titleEl.textContent = 'Editar Observación';
+            confirmBtn.textContent = 'Guardar';
+            input.value = state.cart[editIndex].notes || '';
+            removeBtn.style.display = 'block';
+        } else {
+            titleEl.textContent = 'Agregar Producto';
+            confirmBtn.textContent = 'Agregar';
+            input.value = '';
+            removeBtn.style.display = 'none';
+        }
+
+        modal.classList.add('open');
+        setTimeout(() => input.focus(), 100);
+    };
+
+    const fixedObsConfirmBtn = document.getElementById('fixedObsConfirmBtn');
+    if (fixedObsConfirmBtn) {
+        fixedObsConfirmBtn.addEventListener('click', () => {
+            const config = StorageManager.getConfig();
+            const product = getActiveProductsList(config).find(p => p.id === activeFixedObsProductId);
+            if (!product) return;
+
+            const input = document.getElementById('fixedObsModalInput');
+            const notes = input.value.trim();
+            const clientId = state.activeClient;
+
+            if (activeFixedObsEditIndex !== -1) {
+                state.cart[activeFixedObsEditIndex].notes = notes;
+            } else {
+                state.cart.push({
+                    id: 'cart_' + Date.now(),
+                    productId: product.id,
+                    name: product.name,
+                    price: product.price || 0,
+                    unitPrice: product.price || 0,
+                    qty: 1,
+                    clientName: clientId,
+                    categoryId: product.categoryId,
+                    notes: notes
+                });
+            }
+
+            document.getElementById('fixedObsModal').classList.remove('open');
+            renderSplitUI();
+            if (typeof updateOrderTotal === "function") updateOrderTotal(); else renderPosCart();
+        });
+    }
+
+    const fixedObsModalRemoveBtn = document.getElementById('fixedObsModalRemoveBtn');
+    if (fixedObsModalRemoveBtn) {
+        fixedObsModalRemoveBtn.addEventListener('click', () => {
+            if (activeFixedObsEditIndex !== -1) {
+                state.cart.splice(activeFixedObsEditIndex, 1);
+            }
+            document.getElementById('fixedObsModal').classList.remove('open');
+            renderSplitUI();
+            if (typeof updateOrderTotal === "function") updateOrderTotal(); else renderPosCart();
+        });
+    }
+
     window.openQuantityForProduct = function(product, editIndex = -1) {
         if (!product) return;
         activeQuantityProductId = product.id;
@@ -4082,7 +4164,7 @@ if (total < selectedPaymentOrder.totalPrice) {
                     <option value="fixed">Precio Fijo (Normal)</option>
                     <option value="open_price">Precio Abierto (Ingresar al cobrar)</option>
                     <option value="quantity">Selector de Cantidad (+ / -)</option>
-                    <option value="text">Texto Libre (Observacion)</option>
+                    <option value="text">Texto Libre (Observacion)</option><option value="fixed_with_obs">Precio Fijo + Observacion</option>
                 </select>
             </div>
             <div class="form-group" id="editPriceGroup"><label>Precio Unitario ($)</label><input type="number" autocomplete="off" id="editPrice" placeholder="4500" value="0"></div>
@@ -4338,7 +4420,7 @@ window.moveAdminItem = function(type, id, direction) {
                             <option value="fixed" ${pt === 'fixed' ? 'selected' : ''}>Precio Fijo (Normal)</option>
                             <option value="open_price" ${pt === 'open_price' ? 'selected' : ''}>Precio Abierto (Ingresar al cobrar)</option>
                             <option value="quantity" ${pt === 'quantity' ? 'selected' : ''}>Selector de Cantidad (+ / -)</option>
-                            <option value="text" ${pt === 'text' ? 'selected' : ''}>Texto Libre (Observacion)</option>
+                            <option value="text" ${pt === 'text' ? 'selected' : ''}>Texto Libre (Observacion)</option><option value="fixed_with_obs" ${pt === 'fixed_with_obs' ? 'selected' : ''}>Precio Fijo + Observacion</option>
                         </select>
                     </div>
                     <div class="form-group" id="editPriceGroup" style="display: ${pt === 'open_price' || pt === 'text' ? 'none' : 'block'};"><label>Precio Unitario ($)</label><input type="number" autocomplete="off" id="editPrice" value="${item.price || 0}"></div>`;

@@ -152,7 +152,7 @@
                         <i data-lucide="user" style="width:14px; height:14px; flex-shrink:0;"></i>
                         <span id="currentUserEmailDisplay" style="font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">...</span>
                     </div>
-                    <span style="font-size:0.7rem; opacity:0.7;">Versión 494</span>
+                    <span style="font-size:0.7rem; opacity:0.7;">Versión 496</span>
                 </div>
             </div>
         </div>
@@ -1104,6 +1104,34 @@
         </div>
     </div>
 
+        <div class="modal" id="fixedObsModal">
+        <div class="modal-overlay" onclick="document.getElementById('fixedObsModal').classList.remove('open')"></div>
+        <div class="modal-content" style="max-width: 360px;">
+            <div class="modal-header">
+                <h3 id="fixedObsModalTitle">Agregar Producto</h3>
+                <button class="close-modal" onclick="document.getElementById('fixedObsModal').classList.remove('open')">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <span id="fixedObsModalProductName" style="font-size: 1rem; font-weight: 800; color: var(--accent-royal);"></span>
+                    <span id="fixedObsModalProductPrice" style="font-size: 1rem; font-weight: 800; color: #10b981;"></span>
+                </div>
+                <div class="form-group">
+                    <label style="text-transform: uppercase; font-weight: 800; font-size: 0.85rem; color: #334155; display: block; margin-bottom: 8px;">OBSERVACI&Oacute;N (OPCIONAL)</label>
+                    <textarea id="fixedObsModalInput" placeholder="Ej: Sin cebolla, bien asada..." style="width: 100%; height: 75px; padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-default); background: var(--bg-input); color: var(--text-primary); font-family: inherit; resize: none;"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer" style="justify-content: space-between;">
+                <button class="btn-cancel" id="fixedObsModalRemoveBtn" style="background: #ef4444; color: white; display: none;">Eliminar</button>
+                <div style="display: flex; gap: 10px; margin-left: auto;">
+                    <button class="btn-cancel" onclick="document.getElementById('fixedObsModal').classList.remove('open')">Cancelar</button>
+                    <button class="btn-confirm" id="fixedObsConfirmBtn">Agregar</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Admin Login Modal -->
     <div class="modal" id="adminLoginModal" style="z-index: 999999;">
         <div class="modal-overlay"></div>
@@ -1296,11 +1324,11 @@
                     </div>
                 </div>
 
-    <script src="js/data.js?v=494"></script>
+    <script src="js/data.js?v=496"></script>
     
-    <script src="js/storage.js?v=494"></script>
-    <script src="js/auth.js?v=494"></script>
-    <script src="js/app.js?v=494"></script>
+    <script src="js/storage.js?v=496"></script>
+    <script src="js/auth.js?v=496"></script>
+    <script src="js/app.js?v=496"></script>
     <script>
         // Disable Service Worker and clear cache to force internet-only mode
         if ('serviceWorker' in navigator) {
