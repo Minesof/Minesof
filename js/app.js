@@ -1312,7 +1312,7 @@ function renderSplitUI() {
                     
                     if (isItemActive) {
                         return `<div class="split-card dynamic-card active" data-id="${p.id}" data-name="${p.name.toLowerCase()}" onclick="window.triggerToggleProduct('${p.id}')"
-                            style="border: none; border-radius: 8px; padding: 6px 8px; font-size: 0.9rem; font-weight: 600; display: flex; flex-direction: column; gap: 6px; flex-shrink: 0;">
+                            style="border: none; border-radius: 8px; padding: 4px 8px; font-size: 0.85rem; font-weight: 600; display: flex; flex-direction: column; gap: 6px; flex-shrink: 0;">
                                 <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
                                     <span style="text-align: center;">${p.name}</span>
                                 </div>
@@ -1322,13 +1322,13 @@ function renderSplitUI() {
                             </div>`;
                     } else {
                         return `<div class="split-card dynamic-card" data-id="${p.id}" data-name="${p.name.toLowerCase()}" onclick="window.triggerToggleProduct('${p.id}')"
-                            style="border: none; border-radius: 8px; padding: 8px; font-size: 0.9rem; font-weight: 600; display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
+                            style="border: none; border-radius: 8px; padding: 4px 6px; font-size: 0.85rem; font-weight: 600; display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
                                <span style="text-align: center;">${p.name}</span>
                             </div>`;
                     }
                 } else {
                     return `<div class="split-card dynamic-card ${isActive ? 'active' : ''}" data-id="${p.id}" data-name="${p.name.toLowerCase()}" onclick="window.triggerToggleProduct('${p.id}')"
-                        style="border: none; border-radius: 8px; padding: 8px; font-size: 0.9rem; font-weight: 600; display: flex; justify-content: center; text-align: center; align-items: center; flex-shrink: 0;">
+                        style="border: none; border-radius: 8px; padding: 4px 6px; font-size: 0.85rem; font-weight: 600; display: flex; justify-content: center; text-align: center; align-items: center; flex-shrink: 0;">
                            <span>${p.name}</span>
                            </div>`;
                 }
@@ -4215,7 +4215,7 @@ window.moveAdminItem = function(type, id, direction) {
                 
                 <div class="admin-products-list" style="margin-top: 10px; display: flex; flex-direction: column; gap: 5px;">
                     ${productsHtml}
-                    <button class="btn-add-inline" onclick="window.openAddProductModal('${cat.id}')" style="margin-top: 10px; padding: 8px; font-size: 0.9rem; width: 100%; border: 1px dashed var(--accent-royal); color: var(--accent-royal); background: transparent; border-radius: 8px; cursor: pointer;">
+                    <button class="btn-add-inline" onclick="window.openAddProductModal('${cat.id}')" style="margin-top: 10px; padding: 4px 6px; font-size: 0.85rem; width: 100%; border: 1px dashed var(--accent-royal); color: var(--accent-royal); background: transparent; border-radius: 8px; cursor: pointer;">
                         <i data-lucide="plus" style="width: 16px; height: 16px;"></i> Agregar Producto a ${cat.name}
                     </button>
                 </div>
