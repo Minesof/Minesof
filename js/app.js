@@ -1275,15 +1275,15 @@ function renderSplitUI() {
         
         const nameLower = catName.toLowerCase();
 
-        let colHtml = `<div class="category-col-wrapper" style="height: 100%; display: flex; flex-direction: column; flex: 1; min-width: 17ch;"><div class="category-col" style="width: 100%; flex: 0 1 auto; display: flex; flex-direction: column; gap: 8px; max-height: 100%; min-height: 0; 
-            background: ${colors.bg}; border: 1px solid ${colors.border}; border-radius: 12px; padding: 6px;
+        let colHtml = `<div class="category-col-wrapper" style="height: 100%; display: flex; flex-direction: column; flex: 1; min-width: 17ch;"><div class="category-col" style="width: 100%; flex: 0 1 auto; display: flex; flex-direction: column; gap: 12px; max-height: 100%; min-height: 0; 
+            background: ${colors.bg}; border: 1px solid ${colors.border}; border-radius: 16px; padding: 10px;
             --active-check: ${colors.main}; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
             
-            <div style="background: ${colors.main}; border-radius: 8px; padding: 8px; text-align: center; font-weight: 800; color: white; text-transform: uppercase; font-size: 0.85rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2);">
+            <div style="background: ${colors.main}; border-radius: 10px; padding: 12px; text-align: center; font-weight: 800; color: white; text-transform: uppercase; font-size: 0.9rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2);">
                 ${catName}
             </div>
             
-            <div style="display: flex; align-items: center; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 4px 8px; min-height: 32px; position: relative;">
+            <div style="display: flex; align-items: center; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 6px 12px; min-height: 40px; position: relative;">
                 <i data-lucide="search" style="width: 16px; height: 16px; color: #94a3b8;"></i>
                 <input type="text" autocomplete="off" id="search-input-${catId}" placeholder="Buscar..." oninput="window.filterCategory(this, '${catId}')" style="border: none; outline: none; width: 100%; padding: 4px; font-size: 0.85rem; margin-left: 8px; padding-right: 24px; background: transparent; color: var(--text-primary);">
                 <div id="clear-search-${catId}" onclick="window.clearCategorySearch('${catId}')" style="display: none; position: absolute; right: 8px; cursor: pointer; padding: 4px; border-radius: 50%; background: rgba(0,0,0,0.1); align-items: center; justify-content: center;">
@@ -1312,7 +1312,7 @@ function renderSplitUI() {
                     
                     if (isItemActive) {
                         return `<div class="split-card dynamic-card active" data-id="${p.id}" data-name="${p.name.toLowerCase()}" onclick="window.triggerToggleProduct('${p.id}')"
-                            style="border: none; border-radius: 8px; padding: 4px 8px; font-size: 0.85rem; font-weight: 600; display: flex; flex-direction: column; gap: 6px; flex-shrink: 0;">
+                            style="border: none; border-radius: 10px; padding: 12px; font-size: 0.95rem; font-weight: 600; display: flex; flex-direction: column; gap: 6px; flex-shrink: 0;">
                                 <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
                                     <span style="text-align: center;">${p.name}</span>
                                 </div>
@@ -1322,13 +1322,13 @@ function renderSplitUI() {
                             </div>`;
                     } else {
                         return `<div class="split-card dynamic-card" data-id="${p.id}" data-name="${p.name.toLowerCase()}" onclick="window.triggerToggleProduct('${p.id}')"
-                            style="border: none; border-radius: 8px; padding: 4px 6px; font-size: 0.85rem; font-weight: 600; display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
+                            style="border: none; border-radius: 10px; padding: 12px; font-size: 0.95rem; font-weight: 600; display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
                                <span style="text-align: center;">${p.name}</span>
                             </div>`;
                     }
                 } else {
                     return `<div class="split-card dynamic-card ${isActive ? 'active' : ''}" data-id="${p.id}" data-name="${p.name.toLowerCase()}" onclick="window.triggerToggleProduct('${p.id}')"
-                        style="border: none; border-radius: 8px; padding: 4px 6px; font-size: 0.85rem; font-weight: 600; display: flex; justify-content: center; text-align: center; align-items: center; flex-shrink: 0;">
+                        style="border: none; border-radius: 10px; padding: 12px; font-size: 0.95rem; font-weight: 600; display: flex; justify-content: center; text-align: center; align-items: center; flex-shrink: 0;">
                            <span>${p.name}</span>
                            </div>`;
                 }
