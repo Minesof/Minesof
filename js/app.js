@@ -1240,6 +1240,9 @@ window.switchClient = function(client) {
             } else if (prodType === 'quantity') {
                 window.openQuantityForProduct(product, existingIndex);
                 return;
+            } else if (prodType === 'fixed_with_obs') {
+                window.openFixedWithObsForProduct(product, existingIndex);
+                return;
             }
             // For fixed products, simply remove from cart
             state.cart.splice(existingIndex, 1);
@@ -1254,6 +1257,8 @@ window.switchClient = function(client) {
             window.openTextForProduct(product);
         } else if (prodType === 'quantity') {
             window.openQuantityForProduct(product);
+        } else if (prodType === 'fixed_with_obs') {
+            window.openFixedWithObsForProduct(product);
         } else {
             toggleProduct(product);
         }
