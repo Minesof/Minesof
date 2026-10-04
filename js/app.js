@@ -2011,8 +2011,8 @@ function createCheckoutCard(order) {
                                 <span class="preview-qty">${item.clientName || item.qty}</span>
                                 <span class="preview-name" style="display: flex; flex-direction: column; color: var(--text-primary); font-weight: 600; ">
                                     <span>${item.name || item.categoryName || ''}</span>
-                                    ${item.notes && item.notes !== item.name ? `<span style="font-size: 0.85rem; margin-top: 0px; ">* ${item.notes}</span>` : ''}
-                                    ${item.extras && item.extras.length > 0 ? `<span style="font-size: 0.85rem; margin-top: 0px; ">+ ${(Array.isArray(item.extras) ? item.extras.map(e => typeof e === 'object' ? e.name : e).join(', ') : item.extras)}</span>` : ''}
+                                    ${item.notes && item.notes !== item.name ? `<span style="font-size: 0.85rem; margin-top: 0px; margin-left: 12px;">* ${item.notes}</span>` : ''}
+                                    ${item.extras && item.extras.length > 0 ? `<span style="font-size: 0.85rem; margin-top: 0px; margin-left: 12px;">+ ${(Array.isArray(item.extras) ? item.extras.map(e => typeof e === 'object' ? e.name : e).join(', ') : item.extras)}</span>` : ''}
                                 </span>
                             </div>
                             <span class="item-price">${formatPrice(item.price || (item.unitPrice * item.qty))}</span>
@@ -2540,8 +2540,8 @@ if (total < selectedPaymentOrder.totalPrice) {
                                 <span class="preview-qty">${item.clientName || item.qty}</span>
                                 <span class="preview-name" style="display: flex; flex-direction: column; color: var(--text-primary); font-weight: 600; ">
                                     <span>${item.name || item.categoryName || ''}</span>
-                                    ${item.notes && item.notes !== item.name ? `<span style="font-size: 0.85rem; margin-top: 0px; ">* ${item.notes}</span>` : ''}
-                                    ${item.extras && item.extras.length > 0 ? `<span style="font-size: 0.85rem; margin-top: 0px; ">+ ${(Array.isArray(item.extras) ? item.extras.map(e => typeof e === 'object' ? e.name : e).join(', ') : item.extras)}</span>` : ''}
+                                    ${item.notes && item.notes !== item.name ? `<span style="font-size: 0.85rem; margin-top: 0px; margin-left: 12px;">* ${item.notes}</span>` : ''}
+                                    ${item.extras && item.extras.length > 0 ? `<span style="font-size: 0.85rem; margin-top: 0px; margin-left: 12px;">+ ${(Array.isArray(item.extras) ? item.extras.map(e => typeof e === 'object' ? e.name : e).join(', ') : item.extras)}</span>` : ''}
                                 </span>
                             </div>
                             <span class="item-price">${formatPrice(item.price / item.qty)}</span>
@@ -3298,8 +3298,8 @@ if (total < selectedPaymentOrder.totalPrice) {
                                 <span class="preview-qty">${item.clientName || item.qty}</span>
                                 <span class="preview-name" style="display: flex; flex-direction: column; color: var(--text-primary); font-weight: 600; ">
                                     <span>${item.name || item.categoryName || ''}</span>
-                                    ${item.notes && item.notes !== item.name ? `<span style="font-size: 0.85rem; margin-top: 0px; ">* ${item.notes}</span>` : ''}
-                                    ${item.extras && item.extras.length > 0 ? `<span style="font-size: 0.85rem; margin-top: 0px; ">+ ${(Array.isArray(item.extras) ? item.extras.map(e => typeof e === 'object' ? e.name : e).join(', ') : item.extras)}</span>` : ''}
+                                    ${item.notes && item.notes !== item.name ? `<span style="font-size: 0.85rem; margin-top: 0px; margin-left: 12px;">* ${item.notes}</span>` : ''}
+                                    ${item.extras && item.extras.length > 0 ? `<span style="font-size: 0.85rem; margin-top: 0px; margin-left: 12px;">+ ${(Array.isArray(item.extras) ? item.extras.map(e => typeof e === 'object' ? e.name : e).join(', ') : item.extras)}</span>` : ''}
                                 </span>
                             </div>
                             <span class="item-price">${formatPrice(item.price / item.qty)}</span>
