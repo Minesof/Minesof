@@ -1475,7 +1475,7 @@ body {
     align-items: flex-start;
     gap: var(--space-xs);
     font-size: 0.85rem;
-    margin-bottom: 4px;
+    margin-bottom: 0px;
     color: var(--text-secondary);
 }
 
