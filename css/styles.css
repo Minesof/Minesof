@@ -1472,7 +1472,7 @@ body {
 .preview-item {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     gap: var(--space-xs);
     font-size: 0.85rem;
     margin-bottom: 2px;
