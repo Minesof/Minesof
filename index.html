@@ -813,7 +813,41 @@
                             <button class="btn-primary" id="saveBillingSystemBtn" style="margin-top: 20px; width: 100%; padding: 14px; border-radius: 10px; background: #10b981; color: white; border: none; font-weight: bold; cursor: pointer; font-size: 1rem; box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);">Guardar Sistema de Cobro</button>
                         </div>
                         
+                        <div class="security-card" style="margin-bottom: 20px;">
+                            <h4><i data-lucide="settings"></i> Personalizaci&oacute;n</h4>
+                            <div class="form-group">
+                                <label>Nombre del Negocio</label>
+                                <input type="text" autocomplete="off" id="businessNameInput" class="config-input" placeholder="Ej: Pizzer&iacute;a Juan" style="width:100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
+                            </div>
+                            
+                            <div class="form-group" style="margin-top: 12px;">
+                                <label>Usuario / Caja <small style="font-weight:normal; color:#666;">(Solo este dispositivo)</small></label>
+                                <input type="text" autocomplete="off" id="deviceUserInput" class="config-input" placeholder="Ej: Caja Principal, Pedro, Celular..." style="width:100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
+                            </div>
 
+                            <button class="btn-primary" id="saveBusinessBrandBtn" style="margin-top: 15px; width: 100%; padding: 12px; border-radius: 8px; background: #2563eb; color: white; border: none; font-weight: bold; cursor: pointer;">Guardar Ajustes</button>
+                        </div>
+                        
+                        <div class="security-card">
+                            <h4><i data-lucide="shield-check"></i> Cambiar Contrase&ntilde;a de Administrador</h4>
+                            <div class="form-group">
+                                <label>Nueva Contrase&ntilde;a</label>
+                                <input type="password" autocomplete="new-password" id="newAdminPassword" placeholder="M&iacute;nimo 4 caracteres">
+                            </div>
+                            <div class="form-group">
+                                <label>Confirmar Contrase&ntilde;a</label>
+                                <input type="password" autocomplete="new-password" id="confirmAdminPassword" placeholder="Repite la Contrase&ntilde;a">
+                            </div>
+                            <button class="btn-pay" id="saveAdminPasswordBtn"
+                                style="width: 100%; margin-top: var(--space-md);">
+                                <i data-lucide="save"></i> Actualizar Contrase&ntilde;a
+                            </button>
+                            <p
+                                style="font-size: 0.75rem; color: var(--text-muted); margin-top: var(--space-md); text-align: center;">
+                                <i data-lucide="info" style="width: 12px; height: 12px; vertical-align: middle;"></i>
+                                La nueva Contrase&ntilde;a se sincronizar&aacute; con todos los dispositivos.
+                            </p>
+                        </div>
                     </div>
 
                                         <!-- Migration Panel -->
@@ -854,49 +888,7 @@
                         </div>
                     </div>
 
-                    <!-- Security Panel -->
-                    <div class="admin-panel" id="panel-security">
-                        <div class="panel-header">
-                            <h3>Ajustes Generales</h3>
-                        </div>
-                        
-                        <div class="security-card" style="margin-bottom: 20px;">
-                            <h4><i data-lucide="settings"></i> Personalizaci&oacute;n</h4>
-                            <div class="form-group">
-                                <label>Nombre del Negocio</label>
-                                <input type="text" autocomplete="off" id="businessNameInput" class="config-input" placeholder="Ej: Pizzer&iacute;a Juan" style="width:100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
-                            </div>
-                            
-                            <div class="form-group" style="margin-top: 12px;">
-                                <label>Usuario / Caja <small style="font-weight:normal; color:#666;">(Solo este dispositivo)</small></label>
-                                <input type="text" autocomplete="off" id="deviceUserInput" class="config-input" placeholder="Ej: Caja Principal, Pedro, Celular..." style="width:100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
-                            </div>
 
-                            <button class="btn-primary" id="saveBusinessBrandBtn" style="margin-top: 15px; width: 100%; padding: 12px; border-radius: 8px; background: #2563eb; color: white; border: none; font-weight: bold; cursor: pointer;">Guardar Ajustes</button>
-                        </div>
-                        <div class="security-card">
-                            <h4><i data-lucide="shield-check"></i> Cambiar Contrase&ntilde;a de Administrador</h4>
-                            <div class="form-group">
-                                <label>Nueva Contrase&ntilde;a</label>
-                                <input type="password" autocomplete="new-password" id="newAdminPassword" placeholder="M&iacute;nimo 4 caracteres">
-                            </div>
-                            <div class="form-group">
-                                <label>Confirmar Contrase&ntilde;a</label>
-                                <input type="password" autocomplete="new-password" id="confirmAdminPassword" placeholder="Repite la Contrase&ntilde;a">
-                            </div>
-                            <button class="btn-pay" id="saveAdminPasswordBtn"
-                                style="width: 100%; margin-top: var(--space-md);">
-                                <i data-lucide="save"></i> Actualizar Contrase&ntilde;a
-                            </button>
-                            <p
-                                style="font-size: 0.75rem; color: var(--text-muted); margin-top: var(--space-md); text-align: center;">
-                                <i data-lucide="info" style="width: 12px; height: 12px; vertical-align: middle;"></i>
-                                La nueva Contrase&ntilde;a se sincronizar&aacute; con todos los dispositivos.
-                            </p>
-                        </div>
-
-
-                    </div>
                 </div>
             </div>
 
