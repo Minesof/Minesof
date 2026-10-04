@@ -1678,14 +1678,20 @@ function renderSplitUI() {
             state.clients = ['P1'];
             state.activeClient = 'P1';
             renderPosClientTabs();
+            refreshOrderPageUI();
         } catch (err) {
             console.error('Error submitting order:', err);
             showNotification('ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â Error al procesar pedido', 'error');
         } finally {
             if (submitBtn) {
-                submitBtn.innerHTML = origText;
                 submitBtn.disabled = false;
-                updateSubmitButtonText();
+                // ensure correct text based on append state
+                if (state.appendingOrderId) {
+                    submitBtn.innerHTML = '<i data-lucide="send"></i> <span>ADICIONAR</span>';
+                } else {
+                    submitBtn.innerHTML = '<i data-lucide="send"></i> <span>GENERAR</span>';
+                }
+                document.getElementById('posCancelAppendHeaderBtn').style.display = 'none';
                 if (typeof lucide !== 'undefined') lucide.createIcons();
             }
         }
@@ -1764,6 +1770,8 @@ function renderSplitUI() {
                 showNotification(`Pedido ${pendingOrder.orderNumber} impreso y enviado`);
                 closeTicketModal();
                 resetAllCategories();
+                clearPosCart(false);
+                refreshOrderPageUI();
             }
         });
     }
@@ -1789,6 +1797,8 @@ function renderSplitUI() {
                 showNotification(`Pedido ${pendingOrder.orderNumber} enviado a cocina`);
                 closeTicketModal();
                 resetAllCategories();
+                clearPosCart(false);
+                refreshOrderPageUI();
             }
         });
     }
