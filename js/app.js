@@ -1367,7 +1367,7 @@ function renderSplitUI() {
             background: ${colors.bg}; border: 1px solid ${colors.border}; border-radius: 16px; padding: 10px;
             --active-check: ${colors.main}; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
             
-            <div style="background: ${colors.main}; border-radius: 8px; padding: 4px; text-align: center; font-weight: 800; color: white; text-transform: uppercase; font-size: 0.9rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2);">
+            <div style="background: ${colors.main}; border-radius: 8px; padding: 4px; text-align: center; font-weight: 800; color: white;  font-size: 0.9rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2);">
                 ${catName}
             </div>
             
@@ -2009,10 +2009,10 @@ function createCheckoutCard(order) {
                         <div class="preview-item">
                             <div class="item-main">
                                 <span class="preview-qty">${item.clientName || item.qty}</span>
-                                <span class="preview-name" style="display: flex; flex-direction: column; color: var(--text-primary); font-weight: 600; text-transform: uppercase;">
+                                <span class="preview-name" style="display: flex; flex-direction: column; color: var(--text-primary); font-weight: 600; ">
                                     <span>${item.name || item.categoryName || ''}</span>
-                                    ${item.notes && item.notes !== item.name ? `<span style="font-size: 0.85rem; margin-top: 4px; margin-left: 10px;">* ${item.notes}</span>` : ''}
-                                    ${item.extras && item.extras.length > 0 ? `<span style="font-size: 0.85rem; margin-top: 4px; margin-left: 10px;">+ ${(Array.isArray(item.extras) ? item.extras.map(e => typeof e === 'object' ? e.name : e).join(', ') : item.extras)}</span>` : ''}
+                                    ${item.notes && item.notes !== item.name ? `<span style="font-size: 0.85rem; margin-top: 4px; ">* ${item.notes}</span>` : ''}
+                                    ${item.extras && item.extras.length > 0 ? `<span style="font-size: 0.85rem; margin-top: 4px; ">+ ${(Array.isArray(item.extras) ? item.extras.map(e => typeof e === 'object' ? e.name : e).join(', ') : item.extras)}</span>` : ''}
                                 </span>
                             </div>
                             <span class="item-price">${formatPrice(item.price || (item.unitPrice * item.qty))}</span>
@@ -2538,10 +2538,10 @@ if (total < selectedPaymentOrder.totalPrice) {
                         <div class="preview-item">
                             <div class="item-main">
                                 <span class="preview-qty">${item.clientName || item.qty}</span>
-                                <span class="preview-name" style="display: flex; flex-direction: column; color: var(--text-primary); font-weight: 600; text-transform: uppercase;">
+                                <span class="preview-name" style="display: flex; flex-direction: column; color: var(--text-primary); font-weight: 600; ">
                                     <span>${item.name || item.categoryName || ''}</span>
-                                    ${item.notes && item.notes !== item.name ? `<span style="font-size: 0.85rem; margin-top: 4px; margin-left: 10px;">* ${item.notes}</span>` : ''}
-                                    ${item.extras && item.extras.length > 0 ? `<span style="font-size: 0.85rem; margin-top: 4px; margin-left: 10px;">+ ${(Array.isArray(item.extras) ? item.extras.map(e => typeof e === 'object' ? e.name : e).join(', ') : item.extras)}</span>` : ''}
+                                    ${item.notes && item.notes !== item.name ? `<span style="font-size: 0.85rem; margin-top: 4px; ">* ${item.notes}</span>` : ''}
+                                    ${item.extras && item.extras.length > 0 ? `<span style="font-size: 0.85rem; margin-top: 4px; ">+ ${(Array.isArray(item.extras) ? item.extras.map(e => typeof e === 'object' ? e.name : e).join(', ') : item.extras)}</span>` : ''}
                                 </span>
                             </div>
                             <span class="item-price">${formatPrice(item.price / item.qty)}</span>
@@ -2801,12 +2801,12 @@ if (total < selectedPaymentOrder.totalPrice) {
                         <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
                             <thead>
                                 <tr style="background: var(--bg-tertiary);">
-                                    <th style="padding: 10px 12px; text-align: left; color: var(--text-muted); font-weight: 600; text-transform: uppercase; font-size: 0.65rem;">Fecha</th>
+                                    <th style="padding: 10px 12px; text-align: left; color: var(--text-muted); font-weight: 600;  font-size: 0.65rem;">Fecha</th>
                                     
                                     
                                     
                                     
-                                    <th style="padding: 10px 12px; text-align: right; color: var(--text-muted); font-weight: 600; text-transform: uppercase; font-size: 0.65rem;">Total</th>
+                                    <th style="padding: 10px 12px; text-align: right; color: var(--text-muted); font-weight: 600;  font-size: 0.65rem;">Total</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -2858,8 +2858,8 @@ if (total < selectedPaymentOrder.totalPrice) {
                 <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
                     <thead>
                         <tr style="background: var(--bg-tertiary);">
-                            <th style="padding: 8px 12px; text-align: left; color: var(--text-muted); font-weight: 600; text-transform: uppercase; font-size: 0.65rem; position: sticky; top: 0; background: var(--bg-tertiary); z-index: 10;">Fecha</th>
-                            <th style="padding: 8px 12px; text-align: right; color: var(--text-muted); font-weight: 600; text-transform: uppercase; font-size: 0.65rem; position: sticky; top: 0; background: var(--bg-tertiary); z-index: 10;">Monto</th>
+                            <th style="padding: 8px 12px; text-align: left; color: var(--text-muted); font-weight: 600;  font-size: 0.65rem; position: sticky; top: 0; background: var(--bg-tertiary); z-index: 10;">Fecha</th>
+                            <th style="padding: 8px 12px; text-align: right; color: var(--text-muted); font-weight: 600;  font-size: 0.65rem; position: sticky; top: 0; background: var(--bg-tertiary); z-index: 10;">Monto</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -3296,10 +3296,10 @@ if (total < selectedPaymentOrder.totalPrice) {
                         <div class="preview-item">
                             <div class="item-main">
                                 <span class="preview-qty">${item.clientName || item.qty}</span>
-                                <span class="preview-name" style="display: flex; flex-direction: column; color: var(--text-primary); font-weight: 600; text-transform: uppercase;">
+                                <span class="preview-name" style="display: flex; flex-direction: column; color: var(--text-primary); font-weight: 600; ">
                                     <span>${item.name || item.categoryName || ''}</span>
-                                    ${item.notes && item.notes !== item.name ? `<span style="font-size: 0.85rem; margin-top: 4px; margin-left: 10px;">* ${item.notes}</span>` : ''}
-                                    ${item.extras && item.extras.length > 0 ? `<span style="font-size: 0.85rem; margin-top: 4px; margin-left: 10px;">+ ${(Array.isArray(item.extras) ? item.extras.map(e => typeof e === 'object' ? e.name : e).join(', ') : item.extras)}</span>` : ''}
+                                    ${item.notes && item.notes !== item.name ? `<span style="font-size: 0.85rem; margin-top: 4px; ">* ${item.notes}</span>` : ''}
+                                    ${item.extras && item.extras.length > 0 ? `<span style="font-size: 0.85rem; margin-top: 4px; ">+ ${(Array.isArray(item.extras) ? item.extras.map(e => typeof e === 'object' ? e.name : e).join(', ') : item.extras)}</span>` : ''}
                                 </span>
                             </div>
                             <span class="item-price">${formatPrice(item.price / item.qty)}</span>
@@ -3710,12 +3710,12 @@ if (total < selectedPaymentOrder.totalPrice) {
                     <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem;">
                         <thead>
                             <tr style="background: var(--bg-tertiary);">
-                                <th style="padding: 10px 12px; text-align: left; color: var(--text-muted); font-weight: 600; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px;">Fecha</th>
-                                <th style="padding: 10px 12px; text-align: left; color: var(--text-muted); font-weight: 600; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px;">Categoría</th>
-                                <th style="padding: 10px 12px; text-align: left; color: var(--text-muted); font-weight: 600; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px;">Descripción</th>
-                                <th style="padding: 10px 12px; text-align: center; color: var(--text-muted); font-weight: 600; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px;">Cant.</th>
-                                <th style="padding: 10px 12px; text-align: right; color: var(--text-muted); font-weight: 600; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px;">Unit.</th>
-                                <th style="padding: 10px 12px; text-align: right; color: var(--text-muted); font-weight: 600; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px;">Total</th>
+                                <th style="padding: 10px 12px; text-align: left; color: var(--text-muted); font-weight: 600; font-size: 0.7rem;  letter-spacing: 0.5px;">Fecha</th>
+                                <th style="padding: 10px 12px; text-align: left; color: var(--text-muted); font-weight: 600; font-size: 0.7rem;  letter-spacing: 0.5px;">Categoría</th>
+                                <th style="padding: 10px 12px; text-align: left; color: var(--text-muted); font-weight: 600; font-size: 0.7rem;  letter-spacing: 0.5px;">Descripción</th>
+                                <th style="padding: 10px 12px; text-align: center; color: var(--text-muted); font-weight: 600; font-size: 0.7rem;  letter-spacing: 0.5px;">Cant.</th>
+                                <th style="padding: 10px 12px; text-align: right; color: var(--text-muted); font-weight: 600; font-size: 0.7rem;  letter-spacing: 0.5px;">Unit.</th>
+                                <th style="padding: 10px 12px; text-align: right; color: var(--text-muted); font-weight: 600; font-size: 0.7rem;  letter-spacing: 0.5px;">Total</th>
                                 <th style="padding: 10px 6px; width: 30px;"></th>
                             </tr>
                         </thead>
@@ -3787,8 +3787,8 @@ if (total < selectedPaymentOrder.totalPrice) {
             <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem;">
                 <thead>
                     <tr style="background: var(--bg-tertiary);">
-                        <th style="padding: 8px 12px; text-align: left; color: var(--text-muted); font-weight: 600; font-size: 0.7rem; text-transform: uppercase;">Nombre de categoria</th>
-                        <th style="padding: 8px 6px; width: 60px; text-align: center; color: var(--text-muted); font-weight: 600; font-size: 0.7rem; text-transform: uppercase;">Acciones</th>
+                        <th style="padding: 8px 12px; text-align: left; color: var(--text-muted); font-weight: 600; font-size: 0.7rem; ">Nombre de categoria</th>
+                        <th style="padding: 8px 6px; width: 60px; text-align: center; color: var(--text-muted); font-weight: 600; font-size: 0.7rem; ">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -5544,26 +5544,26 @@ window.moveAdminItem = function(type, id, direction) {
             }
                         tRow.innerHTML = `
                 <th style="width: 22%; padding: 15px 10px; text-align: left; box-sizing: border-box;">
-                    <div style="display: flex; align-items: center; gap: 8px; color: #94a3b8; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
+                    <div style="display: flex; align-items: center; gap: 8px; color: #94a3b8; font-weight: 700;  letter-spacing: 1px;">
                         <i data-lucide="pie-chart" style="width: 16px; height: 16px; color: #38bdf8;"></i>
                         <span style="font-size: 0.85rem;">RESUMEN TOTAL</span>
                     </div>
                 </th>
                 <th style="width: 22%; padding: 15px 10px; text-align: right; box-sizing: border-box;">
                     <div style="display: flex; flex-direction: column; align-items: flex-end; overflow: hidden;">
-                        <span style="color: #94a3b8; font-size: 0.7rem; text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Ventas</span>
+                        <span style="color: #94a3b8; font-size: 0.7rem;  font-weight: 600; margin-bottom: 4px;">Ventas</span>
                         <span style="color: #f8fafc; font-size: 0.95rem; font-weight: 700; white-space: nowrap;">${formatPrice(totalSales)}</span>
                     </div>
                 </th>
                 <th style="width: 22%; padding: 15px 10px; text-align: right; box-sizing: border-box;">
                     <div style="display: flex; flex-direction: column; align-items: flex-end; overflow: hidden;">
-                        <span style="color: #94a3b8; font-size: 0.7rem; text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Gastos</span>
+                        <span style="color: #94a3b8; font-size: 0.7rem;  font-weight: 600; margin-bottom: 4px;">Gastos</span>
                         <span style="color: #f8fafc; font-size: 0.95rem; font-weight: 700; white-space: nowrap;">${formatPrice(totalExp)}</span>
                     </div>
                 </th>
                 <th colspan="2" style="width: 34%; padding: 15px 10px; text-align: right; box-sizing: border-box;">
                       <div style="display: flex; flex-direction: column; align-items: flex-end; padding-right: 5px; overflow: hidden;">
-                          <span style="color: #94a3b8; font-size: 0.7rem; text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Balance</span>
+                          <span style="color: #94a3b8; font-size: 0.7rem;  font-weight: 600; margin-bottom: 4px;">Balance</span>
                           <span style="color: ${darkColor}; font-size: 1.15rem; font-weight: 900; text-shadow: 0 2px 4px rgba(0,0,0,0.3); white-space: nowrap;">${formatPrice(totalBalance)}</span>
                       </div>
                 </th>
