@@ -977,7 +977,7 @@ function renderPosClientTabs() {
 
     el.innerHTML = state.clients.map(client => `
         <button type="button" class="pos-client-pill ${client === state.activeClient ? 'active' : ''}" style="display: flex; align-items: center; gap: 8px; padding-right: 8px;" onclick="window.switchClient('${client}')">
-            <span>${client.replace('P', '👤')}</span>
+            <span>${client}</span>
             ${state.clients.length > 1 ? `<div onclick="window.removeClient(event, '${client}')" style="display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; background: rgba(0,0,0,0.1);"><i data-lucide="x" style="width: 12px; height: 12px;"></i></div>` : ''}
         </button>
     `).join('');
@@ -2008,7 +2008,7 @@ function createCheckoutCard(order) {
                         ${i > 0 && item.clientName !== arr[i-1].clientName ? '<div style="height: 12px; width: 100%;"></div>' : ''}
                         <div class="preview-item">
                             <div class="item-main">
-                                <span class="preview-qty">${item.clientName ? item.clientName.replace('P', '👤') : item.qty}</span>
+                                <span class="preview-qty">${item.clientName || item.qty}</span>
                                 <span class="preview-name" style="display: flex; flex-direction: column; color: var(--text-primary); font-weight: 600; ">
                                     <span>${item.name || item.categoryName || ''}</span>
                                     ${item.notes && item.notes !== item.name ? `<span style="font-size: 0.85rem; margin-top: 0px;"><span style="position: relative; top: 3px;">*</span> ${item.notes}</span>` : ''}
@@ -2537,7 +2537,7 @@ if (total < selectedPaymentOrder.totalPrice) {
                         ${i > 0 && item.clientName !== arr[i-1].clientName ? '<div style="height: 12px; width: 100%;"></div>' : ''}
                         <div class="preview-item">
                             <div class="item-main">
-                                <span class="preview-qty">${item.clientName ? item.clientName.replace('P', '👤') : item.qty}</span>
+                                <span class="preview-qty">${item.clientName || item.qty}</span>
                                 <span class="preview-name" style="display: flex; flex-direction: column; color: var(--text-primary); font-weight: 600; ">
                                     <span>${item.name || item.categoryName || ''}</span>
                                     ${item.notes && item.notes !== item.name ? `<span style="font-size: 0.85rem; margin-top: 0px;"><span style="position: relative; top: 3px;">*</span> ${item.notes}</span>` : ''}
@@ -3295,7 +3295,7 @@ if (total < selectedPaymentOrder.totalPrice) {
                         ${i > 0 && item.clientName !== arr[i-1].clientName ? '<div style="height: 12px; width: 100%;"></div>' : ''}
                         <div class="preview-item">
                             <div class="item-main">
-                                <span class="preview-qty">${item.clientName ? item.clientName.replace('P', '👤') : item.qty}</span>
+                                <span class="preview-qty">${item.clientName || item.qty}</span>
                                 <span class="preview-name" style="display: flex; flex-direction: column; color: var(--text-primary); font-weight: 600; ">
                                     <span>${item.name || item.categoryName || ''}</span>
                                     ${item.notes && item.notes !== item.name ? `<span style="font-size: 0.85rem; margin-top: 0px;"><span style="position: relative; top: 3px;">*</span> ${item.notes}</span>` : ''}
