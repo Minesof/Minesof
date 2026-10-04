@@ -2009,10 +2009,10 @@ function createCheckoutCard(order) {
                         <div class="preview-item">
                             <div class="item-main">
                                 <span class="preview-qty">${item.clientName || item.qty}</span>
-                                <span class="preview-name" style="display: flex; flex-direction: column; color: var(--text-primary); font-weight: 600;">
+                                <span class="preview-name" style="display: flex; flex-direction: column; color: var(--text-primary); font-weight: 600; text-transform: uppercase;">
                                     <span>${item.name || item.categoryName || ''}</span>
-                                    ${item.notes && item.notes !== item.name ? `<span style="font-size: 0.85rem; margin-top: 2px;">* ${item.notes}</span>` : ''}
-                                    ${item.extras && item.extras.length > 0 ? `<span style="font-size: 0.85rem; margin-top: 2px;">+ ${(Array.isArray(item.extras) ? item.extras.map(e => typeof e === 'object' ? e.name : e).join(', ') : item.extras)}</span>` : ''}
+                                    ${item.notes && item.notes !== item.name ? `<span style="font-size: 0.85rem; margin-top: 4px; margin-left: 10px;">* ${item.notes}</span>` : ''}
+                                    ${item.extras && item.extras.length > 0 ? `<span style="font-size: 0.85rem; margin-top: 4px; margin-left: 10px;">+ ${(Array.isArray(item.extras) ? item.extras.map(e => typeof e === 'object' ? e.name : e).join(', ') : item.extras)}</span>` : ''}
                                 </span>
                             </div>
                             <span class="item-price">${formatPrice(item.price || (item.unitPrice * item.qty))}</span>
@@ -2538,10 +2538,10 @@ if (total < selectedPaymentOrder.totalPrice) {
                         <div class="preview-item">
                             <div class="item-main">
                                 <span class="preview-qty">${item.clientName || item.qty}</span>
-                                <span class="preview-name" style="display: flex; flex-direction: column; color: var(--text-primary); font-weight: 600;">
+                                <span class="preview-name" style="display: flex; flex-direction: column; color: var(--text-primary); font-weight: 600; text-transform: uppercase;">
                                     <span>${item.name || item.categoryName || ''}</span>
-                                    ${item.notes && item.notes !== item.name ? `<span style="font-size: 0.85rem; margin-top: 2px;">* ${item.notes}</span>` : ''}
-                                    ${item.extras && item.extras.length > 0 ? `<span style="font-size: 0.85rem; margin-top: 2px;">+ ${(Array.isArray(item.extras) ? item.extras.map(e => typeof e === 'object' ? e.name : e).join(', ') : item.extras)}</span>` : ''}
+                                    ${item.notes && item.notes !== item.name ? `<span style="font-size: 0.85rem; margin-top: 4px; margin-left: 10px;">* ${item.notes}</span>` : ''}
+                                    ${item.extras && item.extras.length > 0 ? `<span style="font-size: 0.85rem; margin-top: 4px; margin-left: 10px;">+ ${(Array.isArray(item.extras) ? item.extras.map(e => typeof e === 'object' ? e.name : e).join(', ') : item.extras)}</span>` : ''}
                                 </span>
                             </div>
                             <span class="item-price">${formatPrice(item.price / item.qty)}</span>
@@ -3296,10 +3296,10 @@ if (total < selectedPaymentOrder.totalPrice) {
                         <div class="preview-item">
                             <div class="item-main">
                                 <span class="preview-qty">${item.clientName || item.qty}</span>
-                                <span class="preview-name" style="display: flex; flex-direction: column; color: var(--text-primary); font-weight: 600;">
+                                <span class="preview-name" style="display: flex; flex-direction: column; color: var(--text-primary); font-weight: 600; text-transform: uppercase;">
                                     <span>${item.name || item.categoryName || ''}</span>
-                                    ${item.notes && item.notes !== item.name ? `<span style="font-size: 0.85rem; margin-top: 2px;">* ${item.notes}</span>` : ''}
-                                    ${item.extras && item.extras.length > 0 ? `<span style="font-size: 0.85rem; margin-top: 2px;">+ ${(Array.isArray(item.extras) ? item.extras.map(e => typeof e === 'object' ? e.name : e).join(', ') : item.extras)}</span>` : ''}
+                                    ${item.notes && item.notes !== item.name ? `<span style="font-size: 0.85rem; margin-top: 4px; margin-left: 10px;">* ${item.notes}</span>` : ''}
+                                    ${item.extras && item.extras.length > 0 ? `<span style="font-size: 0.85rem; margin-top: 4px; margin-left: 10px;">+ ${(Array.isArray(item.extras) ? item.extras.map(e => typeof e === 'object' ? e.name : e).join(', ') : item.extras)}</span>` : ''}
                                 </span>
                             </div>
                             <span class="item-price">${formatPrice(item.price / item.qty)}</span>
