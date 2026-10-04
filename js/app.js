@@ -1698,6 +1698,9 @@ function renderSplitUI() {
         cancelAppendBtn.addEventListener('click', () => {
             state.appendingOrderId = null;
             clearPosCart(false);
+            state.clients = ['P1'];
+            state.activeClient = 'P1';
+            if (typeof renderPosClientTabs === 'function') renderPosClientTabs();
             const locIn = document.getElementById('posLocationInput');
             const typeIn = document.getElementById('posOrderTypeInput');
             if (locIn) {
