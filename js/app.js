@@ -3724,8 +3724,8 @@ if (total < selectedPaymentOrder.totalPrice) {
                         <thead>
                             <tr style="background: var(--bg-tertiary);">
                                 <th style="padding: 10px 12px; text-align: left; color: var(--text-muted); font-weight: 600; font-size: 0.7rem;  letter-spacing: 0.5px;">Fecha</th>
-                                <th style="padding: 10px 12px; text-align: left; color: var(--text-muted); font-weight: 600; font-size: 0.7rem;  letter-spacing: 0.5px;">Categoría</th>
-                                <th style="padding: 10px 12px; text-align: left; color: var(--text-muted); font-weight: 600; font-size: 0.7rem;  letter-spacing: 0.5px;">Descripción</th>
+                                <th style="padding: 10px 12px; text-align: left; color: var(--text-muted); font-weight: 600; font-size: 0.7rem;  letter-spacing: 0.5px;">Categoria</th>
+                                <th style="padding: 10px 12px; text-align: left; color: var(--text-muted); font-weight: 600; font-size: 0.7rem;  letter-spacing: 0.5px;">Descripcion</th>
                                 <th style="padding: 10px 12px; text-align: center; color: var(--text-muted); font-weight: 600; font-size: 0.7rem;  letter-spacing: 0.5px;">Cant.</th>
                                 <th style="padding: 10px 12px; text-align: right; color: var(--text-muted); font-weight: 600; font-size: 0.7rem;  letter-spacing: 0.5px;">Unit.</th>
                                 <th style="padding: 10px 12px; text-align: right; color: var(--text-muted); font-weight: 600; font-size: 0.7rem;  letter-spacing: 0.5px;">Total</th>
@@ -3873,7 +3873,7 @@ if (total < selectedPaymentOrder.totalPrice) {
         const label = document.getElementById('newExpenseCatLabel')?.value.trim();
 
         if (!label) {
-            showNotification('ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â Ingresa un nombre para la categorÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­a', 'error');
+            showNotification('ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â Ingresa un nombre para la Categoria', 'error');
             return;
         }
 
@@ -3881,13 +3881,13 @@ if (total < selectedPaymentOrder.totalPrice) {
         const id = label.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9_]/g, '');
 
         if (cats.find(c => c.id === id)) {
-            showNotification('ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â Ya existe una categorÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­a con ese nombre', 'error');
+            showNotification('ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â Ya existe una Categoria con ese nombre', 'error');
             return;
         }
 
         cats.push({ id, label, emoji: 'ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â°ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ÃƒÆ’Ã¢â‚¬Â¦ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢' });
         StorageManager.saveExpenseCategories(cats);
-        showNotification(`CategorÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­a "${label}" creada`);
+        showNotification(`Categoria "${label}" creada`);
         renderExpenseCategoriesManager();
     };
 
@@ -3900,7 +3900,7 @@ if (total < selectedPaymentOrder.totalPrice) {
             if (newLabel === null) return;
             cat.label = newLabel.trim() || cat.label;
             StorageManager.saveExpenseCategories(cats);
-            showNotification(`CategorÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­a actualizada: ${cat.label}`);
+            showNotification(`Categoria actualizada: ${cat.label}`);
             renderExpenseCategoriesManager();
         }, cat.label);
     };
@@ -3910,7 +3910,7 @@ if (total < selectedPaymentOrder.totalPrice) {
             window.minesofConfirm('Eliminar esta categoria de Gasto?', () => {
                 const cats = StorageManager.getExpenseCategories().filter(c => c.id !== catId);
                 StorageManager.saveExpenseCategories(cats);
-                showNotification('CategorÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­a eliminada');
+                showNotification('Categoria eliminada');
                 renderExpenseCategoriesManager();
             });
         };
@@ -4093,8 +4093,8 @@ if (total < selectedPaymentOrder.totalPrice) {
 
         const CATS = getExpenseCatMap();
 
-        // Build data rows matching the table: Fecha | Categoría | Descripción | Cant. | V. Unit. | Total
-        const rows = [['Fecha', 'Categoría', 'Descripción', 'Cant.', 'V. Unit.', 'Total']];
+        // Build data rows matching the table: Fecha | Categoria | Descripcion | Cant. | V. Unit. | Total
+        const rows = [['Fecha', 'Categoria', 'Descripcion', 'Cant.', 'V. Unit.', 'Total']];
 
         let total = 0;
         expenses.forEach(expense => {
@@ -4125,8 +4125,8 @@ if (total < selectedPaymentOrder.totalPrice) {
         // Set column widths
         ws['!cols'] = [
             { wch: 12 },  // Fecha
-            { wch: 20 },  // Categoría
-            { wch: 30 },  // Descripción
+            { wch: 20 },  // Categoria
+            { wch: 30 },  // Descripcion
             { wch: 8 },   // Cant.
             { wch: 12 },  // V. Unit.
             { wch: 12 }   // Total
@@ -4472,7 +4472,7 @@ window.moveAdminItem = function(type, id, direction) {
                     <div class="form-group"><label>Precio ($)</label><input type="number" autocomplete="off" id="editPrice" value="${item.price}"></div>`;
         } else if (type === 'observation') {
             const item = config.observations[parentId].find(o => o.id === id);
-            html = `<div class="form-group"><label>DescripciÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³n / Nota</label><input type="text" autocomplete="off" id="editName" value="${item.name}"></div>
+            html = `<div class="form-group"><label>Descripcion / Nota</label><input type="text" autocomplete="off" id="editName" value="${item.name}"></div>
                     <div class="form-group"><label>Precio Extra si aplica ($)</label><input type="number" autocomplete="off" id="editPrice" value="${item.price || 0}"></div>`;
         }
         elements.adminModalBody.innerHTML = html;
