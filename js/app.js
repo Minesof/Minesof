@@ -4312,7 +4312,7 @@ window.moveAdminItem = function(type, id, direction) {
                             </button>
                         </div>
                     </div>
-                ; }).join('');
+                `; }).join('');
             }
 
             return `
