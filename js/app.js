@@ -4190,7 +4190,7 @@ if (total < selectedPaymentOrder.totalPrice) {
 
     window.openAddProductModal = function(catId) {
         adminEditContext = { type: 'flavor', id: null, parentId: catId };
-        elements.adminModalTitle.textContent = 'Nuevo Producto';
+        elements.adminModalTitle.innerHTML = '<i data="lucide" name="plus-circle" style="width: 18px; height: 18px; color: #10b981;"></i> Nuevo Producto';
         elements.adminModalBody.innerHTML = `
             <div class="form-group"><label>Nombre del Producto</label><input type="text" autocomplete="off" id="editName" placeholder="Ej: Hamburguesa, Gaseosa, Promo"></div>
             <div class="form-group">
@@ -4446,7 +4446,7 @@ window.moveAdminItem = function(type, id, direction) {
         adminEditContext = { type, id, parentId };
         const config = StorageManager.getConfig();
         const displayType = type === 'flavor' ? 'Producto' : (type === 'category' ? 'Categoria' : (type === 'extra' ? 'Adicional' : 'Observacion'));
-        elements.adminModalTitle.textContent = `Editar ${displayType}`;
+        elements.adminModalTitle.innerHTML = `<i data-lucide="edit" style="width: 18px; height: 18px; color: #3b82f6;"></i> Editar ${displayType}`;
         let html = '';
         if (type === 'category') {
             const item = config.categories.find(c => c.id === id);
@@ -4620,7 +4620,7 @@ window.moveAdminItem = function(type, id, direction) {
     if (elements.addCategoryBtn) {
         elements.addCategoryBtn.onclick = () => {
             adminEditContext = { type: 'category', id: null };
-            elements.adminModalTitle.textContent = 'Nueva Categoria';
+            elements.adminModalTitle.innerHTML = '<i data="lucide" name="plus-circle" style="width: 18px; height: 18px; color: #10b981;"></i> Nueva Categoria';
             elements.adminModalBody.innerHTML = '<div class="form-group"><label>Nombre de categoria</label><input type="text" autocomplete="off" id="editName" placeholder="Ej: Comida, Bebidas, Combos"></div>';
             elements.adminModal.classList.add('open');
         };
@@ -4630,7 +4630,7 @@ window.moveAdminItem = function(type, id, direction) {
         elements.addFlavorBtn.onclick = () => {
             const catId = elements.adminCategorySelectFlavors ? elements.adminCategorySelectFlavors.value : 'panaderia';
             adminEditContext = { type: 'flavor', id: null, parentId: catId };
-            elements.adminModalTitle.textContent = 'Nuevo Producto';
+            elements.adminModalTitle.innerHTML = '<i data="lucide" name="plus-circle" style="width: 18px; height: 18px; color: #10b981;"></i> Nuevo Producto';
             elements.adminModalBody.innerHTML = `
                 <div class="form-group"><label>Nombre del Producto</label><input type="text" autocomplete="off" id="editName" placeholder="Ej: Hamburguesa, Gaseosa, Promo"></div>
                 <div class="form-group"><label>Precio Unitario ($)</label><input type="number" autocomplete="off" id="editPrice" placeholder="4500" value="0"></div>
