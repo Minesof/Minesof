@@ -370,7 +370,22 @@ document.addEventListener('DOMContentLoaded', () => {
         deviceUserNames.forEach(el => el.textContent = dUser);
         
         if (businessNameInput) businessNameInput.value = bName;
-        if (billingSystemInput) billingSystemInput.value = billingSys;
+        if (billingSystemInput) {
+            billingSystemInput.value = billingSys;
+            const btn = document.getElementById('adminBillingSystemBtn');
+            const btnText = document.getElementById('adminBillingSystemBtnText');
+            if (btn && btnText) {
+                if (billingSys === 'standard') {
+                    btn.style.backgroundColor = '#f97316';
+                    btn.style.boxShadow = '0 4px 10px rgba(249, 115, 22, 0.2)';
+                    btnText.innerHTML = 'Cobro Din&aacute;mico (Mesas-Pedidos)';
+                } else {
+                    btn.style.backgroundColor = '#3b82f6';
+                    btn.style.boxShadow = '0 4px 10px rgba(59, 130, 246, 0.2)';
+                    btnText.innerHTML = 'Cobro Directo (Caja R&aacute;pida)';
+                }
+            }
+        }
         if (deviceUserInput) deviceUserInput.value = dUser === 'Caja' ? '' : dUser;
         
         // Hide/Show tabs based on billing system
