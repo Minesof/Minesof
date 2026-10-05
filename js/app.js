@@ -4289,18 +4289,18 @@ window.moveAdminItem = function(type, id, direction) {
                             <span style="font-size: 0.95rem;">${f.name}</span>
                             <span style="font-weight: 700; color: var(--accent-gold); font-size: 0.9rem;">${formatPrice(f.price || 0)}</span>
                         </div>
-                        <div class="admin-item-actions">
-                            <button class="btn-icon" onclick="window.moveAdminItem('flavor', '${f.id}', -1)" title="Subir">
-                                <i data-lucide="chevron-up" style="width: 16px; height: 16px;"></i>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; flex-shrink: 0;">
+                            <button class="btn-icon" onclick="window.editAdminItem('flavor', '${f.id}', '${cat.id}')" style="padding: 4px; min-width: 28px; height: 28px;" title="Editar">
+                                <i data-lucide="edit-2" style="width: 14px; height: 14px;"></i>
                             </button>
-                            <button class="btn-icon" onclick="window.moveAdminItem('flavor', '${f.id}', 1)" title="Bajar">
-                                <i data-lucide="chevron-down" style="width: 16px; height: 16px;"></i>
+                            <button class="btn-icon" onclick="window.moveAdminItem('flavor', '${f.id}', -1)" style="padding: 4px; min-width: 28px; height: 28px;" title="Subir">
+                                <i data-lucide="chevron-up" style="width: 14px; height: 14px;"></i>
                             </button>
-                            <button class="btn-icon" onclick="window.editAdminItem('flavor', '${f.id}', '${cat.id}')">
-                                <i data-lucide="edit-2" style="width: 16px; height: 16px;"></i>
+                            <button class="btn-icon delete-btn" onclick="window.deleteAdminItem('flavor', '${f.id}', '${cat.id}')" style="padding: 4px; min-width: 28px; height: 28px;" title="Eliminar">
+                                <i data-lucide="trash-2" style="width: 14px; height: 14px;"></i>
                             </button>
-                            <button class="btn-icon delete-btn" onclick="window.deleteAdminItem('flavor', '${f.id}', '${cat.id}')">
-                                <i data-lucide="trash-2" style="width: 16px; height: 16px;"></i>
+                            <button class="btn-icon" onclick="window.moveAdminItem('flavor', '${f.id}', 1)" style="padding: 4px; min-width: 28px; height: 28px;" title="Bajar">
+                                <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i>
                             </button>
                         </div>
                     </div>
