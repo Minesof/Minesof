@@ -4221,7 +4221,7 @@ if (total < selectedPaymentOrder.totalPrice) {
                     <option value="fixed">Precio Fijo (Normal)</option>
                     <option value="open_price">Precio Abierto (Ingresar al cobrar)</option>
                     <option value="quantity">Selector de Cantidad (+ / -)</option>
-                    <option value="text">Texto Libre (Observacion)</option><option value="fixed_with_obs">Precio Fijo + Observacion</option>
+                    <option value="fixed_with_obs">Precio Fijo + Observacion</option>
                 </select>
             </div>
             <div class="form-group" id="editPriceGroup"><label>Precio Unitario ($)</label><input type="number" autocomplete="off" id="editPrice" placeholder="4500" value="0"></div>
@@ -4310,7 +4310,6 @@ window.moveAdminItem = function(type, id, direction) {
                     let tLabel = "Precio Fijo";
                     if(f.prodType === "open_price") tLabel = "Precio Abierto";
                     else if(f.prodType === "quantity") tLabel = "Selector de Cantidad";
-                    else if(f.prodType === "text") tLabel = "Texto Libre / Obs.";
                     else if(f.prodType === "fixed_with_obs") tLabel = "Precio Fijo + Obs.";
                     
                     return `
@@ -4485,10 +4484,10 @@ window.moveAdminItem = function(type, id, direction) {
                             <option value="fixed" ${pt === 'fixed' ? 'selected' : ''}>Precio Fijo (Normal)</option>
                             <option value="open_price" ${pt === 'open_price' ? 'selected' : ''}>Precio Abierto (Ingresar al cobrar)</option>
                             <option value="quantity" ${pt === 'quantity' ? 'selected' : ''}>Selector de Cantidad (+ / -)</option>
-                            <option value="text" ${pt === 'text' ? 'selected' : ''}>Texto Libre (Observacion)</option><option value="fixed_with_obs" ${pt === 'fixed_with_obs' ? 'selected' : ''}>Precio Fijo + Observacion</option>
+                            <option value="fixed_with_obs" ${pt === 'fixed_with_obs' ? 'selected' : ''}>Precio Fijo + Observacion</option>
                         </select>
                     </div>
-                    <div class="form-group" id="editPriceGroup" style="display: ${pt === 'open_price' || pt === 'text' ? 'none' : 'block'};"><label>Precio Unitario ($)</label><input type="number" autocomplete="off" id="editPrice" value="${item.price || 0}"></div>`;
+                    <div class="form-group" id="editPriceGroup" style="display: ${pt === 'open_price' ? 'none' : 'block'};"><label>Precio Unitario ($)</label><input type="number" autocomplete="off" id="editPrice" value="${item.price || 0}"></div>`;
         } else if (type === 'extra') {
             const item = config.extras[parentId].find(e => e.id === id);
             html = `<div class="form-group"><label>Nombre</label><input type="text" autocomplete="off" id="editName" value="${item.name}"></div>
