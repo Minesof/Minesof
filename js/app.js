@@ -1958,12 +1958,12 @@ function renderSplitUI() {
                                             ${item.extras && item.extras.length > 0 ? `<div style="font-size:0.8rem; color:#4ecdc4; margin-left:14px;">+ ${(Array.isArray(item.extras) ? item.extras.map(e => typeof e === 'object' ? e.name : e).join(', ') : item.extras)}</div>` : ''}
                                         </div>
                                     `).join('')}
-                                `).join('');
+                                `; }).join('');
                             })()}
                         </div>
                         <button class="k-action-btn" onclick="window.advanceOrder('${o.id}')">${action}</button>
                     </div>
-                `).join('');
+                `; }).join('');
             }
         };
 
@@ -2766,7 +2766,7 @@ if (total < selectedPaymentOrder.totalPrice) {
                         <span class="stats-label">${name}</span>
                         <span class="stats-value">${count} ud.</span>
                     </div>
-                `).join('');
+                `; }).join('');
             }
 
             elements.flavorSalesList.innerHTML = flavorsHtml || '<div class="empty-state">Sin datos</div>';
@@ -4313,7 +4313,7 @@ window.moveAdminItem = function(type, id, direction) {
                             </button>
                         </div>
                     </div>
-                `).join('');
+                `; }).join('');
             }
 
             return `
