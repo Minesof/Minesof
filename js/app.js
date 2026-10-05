@@ -4311,8 +4311,8 @@ window.moveAdminItem = function(type, id, direction) {
                                 <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i>
                             </button>
                         </div>
-                \; }).join('');
-                `).join('');
+                    </div>
+                ; }).join('');
             }
 
             return `
