@@ -490,6 +490,7 @@ document.addEventListener('DOMContentLoaded', () => {
         input.value = defaultValue;
 
         modal.classList.add('open');
+        if (typeof lucide !== 'undefined') lucide.createIcons();
         input.focus();
 
         const close = () => modal.classList.remove('open');
@@ -541,6 +542,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Show modal
         modal.classList.add('open');
+        if (typeof lucide !== 'undefined') lucide.createIcons();
 
         // Handlers
         const close = () => modal.classList.remove('open');
@@ -1107,6 +1109,7 @@ window.switchClient = function(client) {
         }
 
         modal.classList.add('open');
+        if (typeof lucide !== 'undefined') lucide.createIcons();
         setTimeout(() => input.focus(), 100);
     };
 
@@ -1179,6 +1182,7 @@ window.switchClient = function(client) {
         }
         
         modal.classList.add('open');
+        if (typeof lucide !== 'undefined') lucide.createIcons();
         setTimeout(() => input.select(), 100);
     };
 
@@ -1206,6 +1210,7 @@ window.switchClient = function(client) {
         }
         
         modal.classList.add('open');
+        if (typeof lucide !== 'undefined') lucide.createIcons();
         setTimeout(() => input.focus(), 100);
     };
 
@@ -1233,6 +1238,7 @@ window.switchClient = function(client) {
         }
         
         modal.classList.add('open');
+        if (typeof lucide !== 'undefined') lucide.createIcons();
         setTimeout(() => input.focus(), 100);
     };
 
@@ -1506,6 +1512,7 @@ function renderSplitUI() {
         }
 
         if (modal) modal.classList.add('open');
+        if (typeof lucide !== 'undefined') lucide.createIcons();
         if (inputEl) inputEl.focus();
     };
 
