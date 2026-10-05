@@ -2026,18 +2026,20 @@ function renderSplitUI() {
 }
 function createCheckoutCard(order) {
         const labels = { pending: 'Pendiente', preparing: 'Preparando', ready: 'Listo', delivered: 'Entregado' };
-        const titleName = order.createdBy ? order.createdBy.toUpperCase() : 'CAJA';
-        const titleSeq = order.sequenceNumber ? `(${order.sequenceNumber})` : `(${order.orderNumber})`;
+        
+        const customerName = order.customerInfo ? order.customerInfo.toUpperCase() : 'CLIENTE';
+        const titleSeq = order.sequenceNumber ? '#' + String(order.sequenceNumber).padStart(3, '0') : order.orderNumber;
+        const waiterName = order.createdBy ? order.createdBy.toUpperCase() : 'CAJA';
         
         return `
             <div class="order-list-card ${order.paid ? 'paid' : ''}" data-order-id="${order.id}">
                 <div class="order-card-header">
-                    <span class="order-number">${titleName} ${titleSeq}</span>
+                    <span class="order-number">${titleSeq}  ${customerName}</span>
                     <span class="order-status-badge">${order.paid ? 'Pagado' : labels[order.status]}</span>
                 </div>
                 <div class="order-customer-info">
                     <span class="order-time">${new Date(order.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
-                    <span> - ${order.customerInfo}</span>
+                    <span> - ${waiterName}</span>
                 </div>
                 <div class="order-items-preview">
                     ${[...(order.items || [])].sort((a,b) => (a.clientName || "Z").localeCompare(b.clientName || "Z")).map((item, i, arr) => `
