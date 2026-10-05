@@ -4961,9 +4961,21 @@ window.moveAdminItem = function(type, id, direction) {
     const currentOrderCounterEl = document.getElementById('currentOrderCounter');
 
     // Load and display current counter
-    async function loadCurrentOrderCounter() {
+        async function loadCurrentOrderCounter() {
         const currentOrderCounterEl = document.getElementById('currentOrderCounter');
         if (!currentOrderCounterEl) return;
+        
+        if (typeof db !== 'undefined') {
+            try {
+                const doc = await getDbCollection('minesof_settings').doc('global_config').get();
+                if (doc.exists) {
+                    const data = doc.data();
+                    const cloudCounter = data.orderCounter || 0;
+                    currentOrderCounterEl.textContent = '#' + String(parseInt(cloudCounter)).padStart(3, '0');
+                    return;
+                }
+            } catch(e) {}
+        }
 
         const localCounter = localStorage.getItem('galeria_order_counter') || '0';
         currentOrderCounterEl.textContent = '#' + String(parseInt(localCounter)).padStart(3, '0');
