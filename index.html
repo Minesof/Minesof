@@ -152,7 +152,7 @@
                         <i data-lucide="user" style="width:14px; height:14px; flex-shrink:0;"></i>
                         <span id="currentUserEmailDisplay" style="font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">...</span>
                     </div>
-                    <span style="font-size:0.7rem; opacity:0.7;">Versión 530</span>
+                    <span style="font-size:0.7rem; opacity:0.7;">Versión 531</span>
                 </div>
             </div>
         </div>
@@ -648,41 +648,41 @@
                                 Registrar Gasto
                             </h3>
                             <input type="date" id="expenseDate"
-                                style="width: auto; padding: 6px 10px; background: var(--bg-tertiary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); color: var(--text-primary); font-size: 0.8rem; box-sizing: border-box;">
+                                style="width: auto; padding: 6px 10px; background: #ffffff; border: 1px solid #94a3b8; border-radius: var(--radius-md); color: var(--text-primary); font-size: 0.8rem; box-sizing: border-box;">
                         </div>
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-sm);">
                             <div style="grid-column: 1 / -1;">
                                 <label
-                                    style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 4px; display: block;">Categoría</label>
+                                    style="font-size: 0.8rem; font-weight: 600; color: #475569; margin-bottom: 4px; display: block;">Categoría</label>
                                 <select id="expenseCategory"
-                                    style="width: 100%; padding: 10px 12px; background: var(--bg-tertiary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); color: var(--text-primary); font-size: 0.9rem;">
+                                    style="width: 100%; padding: 10px 12px; background: #ffffff; border: 1px solid #94a3b8; border-radius: var(--radius-md); color: #1e293b; font-size: 0.95rem; font-weight: 500;">
                                     <!-- Populated dynamically from admin categories -->
                                 </select>
                             </div>
                             <div style="grid-column: 1 / -1;">
                                 <label
-                                    style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 4px; display: block;">Descripción</label>
+                                    style="font-size: 0.8rem; font-weight: 600; color: #475569; margin-bottom: 4px; display: block;">Descripción</label>
                                 <input type="text" autocomplete="off" id="expenseDescription"
                                     placeholder="Ej: Compra de pan, pago de luz..."
-                                    style="width: 100%; padding: 10px 12px; background: var(--bg-tertiary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); color: var(--text-primary); font-size: 0.9rem; box-sizing: border-box;">
+                                    style="width: 100%; padding: 10px 12px; background: #ffffff; border: 1px solid #94a3b8; border-radius: var(--radius-md); color: #1e293b; font-size: 0.95rem; font-weight: 500; box-sizing: border-box;">
                             </div>
                             <div style="grid-column: 1 / -1;">
                                 <div style="display: flex; flex-direction: column; gap: 4px;">
                                     <label
-                                        style="font-size: 0.75rem; color: var(--text-muted); display: block;">Cantidad</label>
+                                        style="font-size: 0.8rem; font-weight: 600; color: #475569; display: block;">Cantidad</label>
                                     <input type="number" autocomplete="off" id="expenseQty" placeholder="1"
-                                        style="width: 100%; padding: 10px 12px; background: var(--bg-tertiary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); color: var(--text-primary); font-size: 0.9rem; box-sizing: border-box;">
+                                        style="width: 100%; padding: 10px 12px; background: #ffffff; border: 1px solid #94a3b8; border-radius: var(--radius-md); color: #1e293b; font-size: 0.95rem; font-weight: 500; box-sizing: border-box;">
                                 </div>
                             </div>
                             <div style="grid-column: 1 / -1;">
                                 <div
                                     style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                                    <label style="font-size: 0.75rem; color: var(--text-muted); margin: 0;">Precio/Costo ($)</label>
+                                    <label style="font-size: 0.8rem; font-weight: 600; color: #475569; margin: 0;">Precio/Costo ($)</label>
                                     <span id="expenseAmountPreview"
                                         style="font-size: 0.9rem; font-weight: 800; color: var(--accent-primary);">$0</span>
                                 </div>
                                 <input type="number" autocomplete="off" id="expenseAmount" placeholder="0"
-                                    style="width: 100%; padding: 12px; background: var(--bg-tertiary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); color: var(--text-primary); font-size: 1.1rem; font-weight: 700; box-sizing: border-box;">
+                                    style="width: 100%; padding: 12px; background: #ffffff; border: 1px solid #94a3b8; border-radius: var(--radius-md); color: var(--text-primary); font-size: 1.1rem; font-weight: 700; box-sizing: border-box;">
                             </div>
                         </div>
                         <button id="addExpenseBtn"
@@ -739,7 +739,7 @@
                 <div style="padding: 0 var(--space-md) var(--space-md);">
                     <div
                         style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-sm);">
-                        <h3 style="color: var(--text-primary); font-size: 0.9rem; margin: 0;">Registro de Gastos</h3>
+                        <h3 style="color: #1e293b; font-size: 0.95rem; font-weight: 500; margin: 0;">Registro de Gastos</h3>
                         <button onclick="window.downloadExpensesExcel()"
                             style="background: none; border: none; color: var(--accent-primary); cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 4px;"
                             title="Descargar Excel Gastos">
@@ -843,7 +843,7 @@
                                 <i data-lucide="save"></i> Actualizar Contrase&ntilde;a
                             </button>
                             <p
-                                style="font-size: 0.75rem; color: var(--text-muted); margin-top: var(--space-md); text-align: center;">
+                                style="font-size: 0.8rem; font-weight: 600; color: #475569; margin-top: var(--space-md); text-align: center;">
                                 <i data-lucide="info" style="width: 12px; height: 12px; vertical-align: middle;"></i>
                                 La nueva Contrase&ntilde;a se sincronizar&aacute; con todos los dispositivos.
                             </p>
@@ -1284,11 +1284,11 @@
                     </div>
                 </div>
 
-    <script src="js/data.js?v=530"></script>
+    <script src="js/data.js?v=531"></script>
     
-    <script src="js/storage.js?v=530"></script>
-    <script src="js/auth.js?v=530"></script>
-    <script src="js/app.js?v=530"></script>
+    <script src="js/storage.js?v=531"></script>
+    <script src="js/auth.js?v=531"></script>
+    <script src="js/app.js?v=531"></script>
     <script>
         // Disable Service Worker and clear cache to force internet-only mode
         if ('serviceWorker' in navigator) {
