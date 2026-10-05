@@ -4297,7 +4297,6 @@ window.moveAdminItem = function(type, id, direction) {
                             <span style="font-size: 0.7rem; color: #64748b; font-weight: 700; text-transform: uppercase;">${tLabel}</span>
                             <span style="font-weight: 800; color: var(--accent-gold); font-size: 0.95rem; margin-top: 2px;">${formatPrice(f.price || 0)}</span>
                         </div>
-                        </div>
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; flex-shrink: 0;">
                             <button class="btn-icon" onclick="window.editAdminItem('flavor', '${f.id}', '${cat.id}')" style="padding: 4px; min-width: 28px; height: 28px;" title="Editar">
                                 <i data-lucide="edit-2" style="width: 14px; height: 14px;"></i>
