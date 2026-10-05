@@ -4283,11 +4283,20 @@ window.moveAdminItem = function(type, id, direction) {
             if (catProducts.length === 0) {
                 productsHtml = `<div style="padding: 20px; text-align: center; color: #94a3b8; font-size: 0.85rem;"><i data-lucide="package-x" style="width: 24px; height: 24px; margin-bottom: 8px; opacity: 0.6;"></i><br>No hay productos en esta categoria</div>`;
             } else {
-                productsHtml = catProducts.map(f => `
-                    <div class="admin-item" style="background: rgba(0,0,0,0.03); margin-bottom: 5px; border-radius: 4px; border-left: 3px solid var(--accent-royal);">
-                        <div class="admin-item-info">
-                            <span style="font-size: 0.95rem;">${f.name}</span>
-                            <span style="font-weight: 700; color: var(--accent-gold); font-size: 0.9rem;">${formatPrice(f.price || 0)}</span>
+                productsHtml = catProducts.map(f => {
+                    let tLabel = "Precio Fijo";
+                    if(f.prodType === "open_price") tLabel = "Precio Abierto";
+                    else if(f.prodType === "quantity") tLabel = "Selector de Cantidad";
+                    else if(f.prodType === "text") tLabel = "Texto Libre / Obs.";
+                    else if(f.prodType === "fixed_with_obs") tLabel = "Precio Fijo + Obs.";
+                    
+                    return \
+                    <div class="admin-item" style="background: rgba(0,0,0,0.03); margin-bottom: 5px; border-radius: 4px; border-left: 3px solid var(--accent-royal); align-items: flex-start; padding: 10px;">
+                        <div class="admin-item-info" style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
+                            <span style="font-size: 0.95rem; font-weight: 600;">${f.name}</span>
+                            <span style="font-size: 0.7rem; color: #64748b; font-weight: 700; text-transform: uppercase;">${tLabel}</span>
+                            <span style="font-weight: 800; color: var(--accent-gold); font-size: 0.95rem; margin-top: 2px;">${formatPrice(f.price || 0)}</span>
+                        </div>
                         </div>
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; flex-shrink: 0;">
                             <button class="btn-icon" onclick="window.editAdminItem('flavor', '${f.id}', '${cat.id}')" style="padding: 4px; min-width: 28px; height: 28px;" title="Editar">
