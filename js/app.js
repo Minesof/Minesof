@@ -3444,9 +3444,9 @@ if (total < selectedPaymentOrder.totalPrice) {
             t += justify('USUARIO:', order.createdBy.toUpperCase().substring(0, 20)) + '\n';
         }
 
-                if (order.customerInfo) {
+                        if (order.customerInfo) {
             let cInfo = order.customerInfo.toUpperCase();
-            if (cInfo === order.sequenceNumber || cInfo === order.orderNumber) {
+            if (cInfo === order.sequenceNumber) {
                 cInfo = 'GENERAL';
             }
             t += justify('DETALLE:', cInfo.substring(0, 23)) + '\n';
@@ -3542,9 +3542,9 @@ if (total < selectedPaymentOrder.totalPrice) {
             t += justify('USUARIO:', order.createdBy.toUpperCase().substring(0, 20)) + '\n';
         }
 
-                if (order.customerInfo) {
+                        if (order.customerInfo) {
             let cInfo = order.customerInfo.toUpperCase();
-            if (cInfo === order.sequenceNumber || cInfo === order.orderNumber) {
+            if (cInfo === order.sequenceNumber) {
                 cInfo = 'GENERAL';
             }
             t += justify('DETALLE:', cInfo.substring(0, 23)) + '\n';
