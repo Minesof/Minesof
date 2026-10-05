@@ -4290,7 +4290,7 @@ window.moveAdminItem = function(type, id, direction) {
                     else if(f.prodType === "text") tLabel = "Texto Libre / Obs.";
                     else if(f.prodType === "fixed_with_obs") tLabel = "Precio Fijo + Obs.";
                     
-                    return \
+                    return `
                     <div class="admin-item" style="background: rgba(0,0,0,0.03); margin-bottom: 5px; border-radius: 4px; border-left: 3px solid var(--accent-royal); align-items: flex-start; padding: 10px;">
                         <div class="admin-item-info" style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
                             <span style="font-size: 0.95rem; font-weight: 600;">${f.name}</span>
