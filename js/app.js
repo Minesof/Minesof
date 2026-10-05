@@ -1095,13 +1095,13 @@ window.switchClient = function(client) {
         priceEl.textContent = '$' + (product.price || 0).toLocaleString('es-CO');
 
         if (editIndex !== -1) {
-            titleEl.textContent = 'Editar Observación';
-            confirmBtn.textContent = 'Guardar';
+            titleEl.innerHTML = '<i data-lucide="edit" style="width: 18px; height: 18px; color: #3b82f6;"></i> Editar Observaci&oacute;n';
+            confirmBtn.innerHTML = '<i data-lucide="save" style="width: 16px; height: 16px;"></i> Guardar';
             input.value = state.cart[editIndex].notes || '';
             removeBtn.style.display = 'block';
         } else {
-            titleEl.textContent = 'Agregar Producto';
-            confirmBtn.textContent = 'Agregar';
+            titleEl.innerHTML = '<i data-lucide="plus-circle" style="width: 18px; height: 18px; color: #10b981;"></i> Agregar Producto';
+            confirmBtn.innerHTML = '<i data-lucide="plus" style="width: 16px; height: 16px;"></i> Agregar';
             input.value = '';
             removeBtn.style.display = 'none';
         }
