@@ -115,6 +115,46 @@ function getLocalDateKey() {
 }
 
 async function getNextOrderNumber() {
+    const today = new Date().toDateString();
+    
+    if (typeof db !== 'undefined' && typeof firebase !== 'undefined') {
+        try {
+            const configRef = getDbCollection('minesof_settings').doc('global_config');
+            
+            const nextNum = await db.runTransaction(async (transaction) => {
+                const doc = await transaction.get(configRef);
+                let current = 0;
+                let cloudDate = null;
+                
+                if (doc.exists) {
+                    const data = doc.data();
+                    if (data.orderCounter !== undefined) current = data.orderCounter;
+                    if (data.counterDate) cloudDate = data.counterDate;
+                }
+                
+                if (cloudDate !== today) {
+                    current = 0;
+                }
+                
+                const next = current + 1;
+                transaction.set(configRef, {
+                    orderCounter: next,
+                    counterDate: today
+                }, { merge: true });
+                
+                return next;
+            });
+            
+            orderCounter = nextNum;
+            localStorage.setItem('galeria_order_counter', nextNum.toString());
+            localStorage.setItem('galeria_last_order_date', today);
+            return '#' + String(nextNum).padStart(3, '0');
+            
+        } catch (error) {
+            console.error('Transaction failed for order counter', error);
+        }
+    }
+    
     return generateOrderNumberLocal();
 }
 
