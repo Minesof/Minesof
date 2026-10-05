@@ -640,7 +640,8 @@ document.addEventListener('DOMContentLoaded', () => {
         adminModal: document.getElementById('adminModal'),
         adminModalTitle: document.getElementById('adminModalTitle'),
         adminModalBody: document.getElementById('adminModalBody'),
-        cancelAdminModal: document.getElementById('cancelAdminModal'),
+        closeAdminModal: document.getElementById('closeAdminModal'),
+            cancelAdminModal: document.getElementById('cancelAdminModal'),
         confirmAdminModal: document.getElementById('confirmAdminModal'),
         addCategoryBtn: document.getElementById('addCategoryBtn'),
         addFlavorBtn: document.getElementById('addFlavorBtn'),
@@ -4521,6 +4522,7 @@ window.moveAdminItem = function(type, id, direction) {
     };
 
     if (elements.cancelAdminModal) elements.cancelAdminModal.onclick = () => elements.adminModal.classList.remove('open');
+        if (elements.closeAdminModal) elements.closeAdminModal.onclick = () => elements.adminModal.classList.remove('open');
     if (elements.confirmAdminModal) {
         elements.confirmAdminModal.onclick = () => {
             const config = StorageManager.getConfig();
