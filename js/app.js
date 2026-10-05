@@ -2028,7 +2028,7 @@ function createCheckoutCard(order) {
         const labels = { pending: 'Pendiente', preparing: 'Preparando', ready: 'Listo', delivered: 'Entregado' };
         
         const customerName = order.customerInfo ? order.customerInfo.toUpperCase() : 'CLIENTE';
-        const titleSeq = order.sequenceNumber ? '#' + String(order.sequenceNumber).padStart(3, '0') : order.orderNumber;
+        const titleSeq = order.sequenceNumber ? order.sequenceNumber : order.orderNumber;
         const waiterName = order.createdBy ? order.createdBy.toUpperCase() : 'CAJA';
         
         return `
@@ -3317,7 +3317,7 @@ if (total < selectedPaymentOrder.totalPrice) {
 
         container.innerHTML = orders.map(order => {
             const customerName = order.customerInfo ? order.customerInfo.toUpperCase() : 'CLIENTE';
-            const titleSeq = order.sequenceNumber ? '#' + String(order.sequenceNumber).padStart(3, '0') : order.orderNumber;
+            const titleSeq = order.sequenceNumber ? order.sequenceNumber : order.orderNumber;
             const waiterName = order.createdBy ? order.createdBy.toUpperCase() : 'CAJA';
             return `
             <div class="order-list-card history-order-card" data-order-id="${order.id}">
