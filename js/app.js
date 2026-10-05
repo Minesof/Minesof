@@ -4444,7 +4444,7 @@ window.moveAdminItem = function(type, id, direction) {
     window.editAdminItem = function (type, id, parentId = null) {
         adminEditContext = { type, id, parentId };
         const config = StorageManager.getConfig();
-        const displayType = type === 'flavor' ? 'Producto' : (type === 'category' ? 'CategorÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­a' : (type === 'extra' ? 'Adicional' : 'Observacion'));
+        const displayType = type === 'flavor' ? 'Producto' : (type === 'category' ? 'Categoria' : (type === 'extra' ? 'Adicional' : 'Observacion'));
         elements.adminModalTitle.textContent = `Editar ${displayType}`;
         let html = '';
         if (type === 'category') {
