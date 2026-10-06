@@ -3493,10 +3493,7 @@ if (total < selectedPaymentOrder.totalPrice) {
         }
         t += doubleLine + '\n';
 
-        t += '\n';
-        t += center('GRACIAS POR SU VISITA!') + '\n';
-        t += center((FOODX_DATA.businessName || 'Minesof').toUpperCase()) + '\n';
-        t += '\n\n.';
+        t += '\n.';
 
         return t;
     }
@@ -3602,10 +3599,7 @@ if (total < selectedPaymentOrder.totalPrice) {
         }
         t += doubleLine + '\n';
 
-        t += '\n';
-        t += center('GRACIAS POR SU VISITA!') + '\n';
-        t += center((FOODX_DATA.businessName || 'Minesof').toUpperCase()) + '\n';
-        t += '\n\n.';
+        t += '\n.';
 
         return t;
     }
