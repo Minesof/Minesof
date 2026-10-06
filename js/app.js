@@ -1110,7 +1110,7 @@ window.switchClient = function(client) {
 
         modal.classList.add('open');
         if (typeof lucide !== 'undefined') lucide.createIcons();
-        setTimeout(() => input.focus(), 100);
+        // setTimeout(() => input.focus(), 100);
     };
 
     const fixedObsConfirmBtn = document.getElementById('fixedObsConfirmBtn');
@@ -1211,7 +1211,7 @@ window.switchClient = function(client) {
         
         modal.classList.add('open');
         if (typeof lucide !== 'undefined') lucide.createIcons();
-        setTimeout(() => input.focus(), 100);
+        // setTimeout(() => input.focus(), 100);
     };
 
     let activeTextProductId = null;
@@ -1239,7 +1239,7 @@ window.switchClient = function(client) {
         
         modal.classList.add('open');
         if (typeof lucide !== 'undefined') lucide.createIcons();
-        setTimeout(() => input.focus(), 100);
+        // setTimeout(() => input.focus(), 100);
     };
 
     window.triggerToggleProduct = function(productId) {
