@@ -54,9 +54,9 @@ document.addEventListener('DOMContentLoaded', () => {
                             await window.auth.signOut();
                             if (loginError) {
                                                                 loginError.style.display = 'block';
-                                loginError.textContent = 'Esta cuenta ha sido desactivada o eliminada.';
+                                loginError.textContent = 'Esta cuenta ha sido desactivada o eliminada. Por favor, comun\u00edcate con servicio al cliente.';
                             }
-                            const authBtn = document.getElementById('authSubmitBtn');
+                            const authBtn = document.getElementById('loginBtn');
                             if (authBtn) {
                                 authBtn.textContent = 'Ingresar';
                                 authBtn.disabled = false;
