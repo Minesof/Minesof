@@ -53,8 +53,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (status === 'suspended' || status === 'deleted') {
                             await window.auth.signOut();
                             if (loginError) {
-                                loginError.style.display = 'block';
+                                                                loginError.style.display = 'block';
                                 loginError.textContent = 'Esta cuenta ha sido desactivada o eliminada.';
+                            }
+                            const authBtn = document.getElementById('authSubmitBtn');
+                            if (authBtn) {
+                                authBtn.textContent = 'Ingresar';
+                                authBtn.disabled = false;
                             }
                             return;
                         }
