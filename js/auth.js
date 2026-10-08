@@ -48,12 +48,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (typeof db !== 'undefined') {
                     const tenantDocRef = db.collection('tenants').doc(user.uid);
                     const tenantDoc = await tenantDocRef.get();
-                    if (tenantDoc.exists) {
-                        if (tenantDoc.data().status === 'suspended') {
+                                        if (tenantDoc.exists) {
+                        const status = tenantDoc.data().status;
+                        if (status === 'suspended' || status === 'deleted') {
                             await window.auth.signOut();
                             if (loginError) {
                                 loginError.style.display = 'block';
-                                loginError.textContent = 'Tu cuenta ha sido suspendida. Comunícate con soporte.';
+                                loginError.textContent = 'Esta cuenta ha sido desactivada o eliminada.';
                             }
                             return;
                         }
