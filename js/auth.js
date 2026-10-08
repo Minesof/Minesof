@@ -112,6 +112,21 @@ document.addEventListener('DOMContentLoaded', () => {
                         const counter = document.getElementById('trialRemainingCounter');
                         if (counter) counter.innerHTML = "Quedan <b>15 d&iacute;as</b> de prueba";
                     }
+
+                    // REALTIME LISTENER TO KICK USER OUT INSTANTLY
+                    tenantDocRef.onSnapshot((doc) => {
+                        if (doc.exists) {
+                            const rtStatus = doc.data().status;
+                            if (rtStatus === 'suspended' || rtStatus === 'deleted') {
+                                alert('Esta cuenta ha sido desactivada o eliminada por el administrador. El sistema se cerrar\u00e1.');
+                                StorageManager.clearAll();
+                                window.auth.signOut().then(() => {
+                                    window.location.reload();
+                                });
+                            }
+                        }
+                    });
+
                 }
             } catch(e) {
                 console.error("Error validando cuenta:", e);
