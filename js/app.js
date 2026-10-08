@@ -4765,10 +4765,22 @@ window.moveAdminItem = function(type, id, direction) {
                 config.adminPassword = newPass;
                 StorageManager.saveConfig(config);
 
-                showNotification('Contrase\u00f1a actualizada correctamente');
+                showNotification('Contrase\u00f1a actualizada. Cerrando sesi\u00f3n...');
                 document.getElementById('currentAdminPassword').value = '';
                 elements.newAdminPassword.value = '';
                 elements.confirmAdminPassword.value = '';
+                
+                setTimeout(() => {
+                    StorageManager.clearAll();
+                    localStorage.removeItem('minesof_last_tenant');
+                    if (window.auth) {
+                        window.auth.signOut().then(() => {
+                            window.location.reload();
+                        });
+                    } else {
+                        window.location.reload();
+                    }
+                }, 1500);
             } catch (err) {
                 console.error(err);
                 if (err.code === 'auth/wrong-password') {
