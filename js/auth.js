@@ -151,6 +151,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
+            const tempPass = sessionStorage.getItem('temp_admin_pass');
+            if (tempPass) {
+                const cfg = StorageManager.getConfig();
+                cfg.adminPassword = tempPass;
+                StorageManager.saveConfig(cfg);
+                sessionStorage.removeItem('temp_admin_pass');
+            }
+
             // Reload the configuration for this specific tenant
             const config = StorageManager.getConfig();
             Object.assign(FOODX_DATA, config);
