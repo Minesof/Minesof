@@ -4731,16 +4731,22 @@ window.moveAdminItem = function(type, id, direction) {
 
     if (elements.saveAdminPasswordBtn) {
         elements.saveAdminPasswordBtn.addEventListener('click', async () => {
+            const currentPass = document.getElementById('currentAdminPassword').value;
             const newPass = elements.newAdminPassword.value;
             const confirmPass = elements.confirmAdminPassword.value;
 
+            if (!currentPass) {
+                showNotification('Debes ingresar tu contrase\u00f1a actual', 'error');
+                return;
+            }
+
             if (newPass.length < 6) {
-                showNotification('La contrase\u00f1a de la cuenta debe tener al menos 6 caracteres', 'error');
+                showNotification('La nueva contrase\u00f1a debe tener al menos 6 caracteres', 'error');
                 return;
             }
 
             if (newPass !== confirmPass) {
-                showNotification('Las contrase\u00f1as no coinciden', 'error');
+                showNotification('Las contrase\u00f1as nuevas no coinciden', 'error');
                 return;
             }
 
@@ -4750,6 +4756,8 @@ window.moveAdminItem = function(type, id, direction) {
 
             try {
                 if (typeof firebase !== 'undefined' && window.auth && window.auth.currentUser) {
+                    const credential = firebase.auth.EmailAuthProvider.credential(window.auth.currentUser.email, currentPass);
+                    await window.auth.currentUser.reauthenticateWithCredential(credential);
                     await window.auth.currentUser.updatePassword(newPass);
                 }
                 
@@ -4757,14 +4765,15 @@ window.moveAdminItem = function(type, id, direction) {
                 config.adminPassword = newPass;
                 StorageManager.saveConfig(config);
 
-                showNotification('Contrase\u00f1a de ingreso actualizada correctamente');
+                showNotification('Contrase\u00f1a actualizada correctamente');
+                document.getElementById('currentAdminPassword').value = '';
                 elements.newAdminPassword.value = '';
                 elements.confirmAdminPassword.value = '';
             } catch (err) {
-                if (err.code === 'auth/requires-recent-login') {
-                    showNotification('Por seguridad, cierra sesi\u00f3n y vuelve a entrar para cambiarla', 'error');
+                console.error(err);
+                if (err.code === 'auth/wrong-password') {
+                    showNotification('La contrase\u00f1a actual es incorrecta', 'error');
                 } else {
-                    console.error(err);
                     showNotification('Error al actualizar: ' + err.message, 'error');
                 }
             } finally {
