@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (doc.exists) {
                             const rtStatus = doc.data().status;
                             if (rtStatus === 'suspended' || rtStatus === 'deleted') {
-                                alert('Esta cuenta ha sido desactivada o eliminada por el administrador. El sistema se cerrar\u00e1.');
+                                alert('Esta cuenta ha sido desactivada o eliminada por el administrador. El sistema se cerrar\u00e1. Por favor, comun\u00edcate con servicio al cliente.');
                                 StorageManager.clearAll();
                                 window.auth.signOut().then(() => {
                                     window.location.reload();
