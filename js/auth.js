@@ -300,10 +300,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        // SAVE TEMPORARILY BEFORE FIREBASE CALL TO AVOID RACE CONDITIONS
+        sessionStorage.setItem('temp_admin_pass', password);
+
         if (isLoginMode) {
             window.auth.signInWithEmailAndPassword(email, password)
                 .then((userCredential) => {
-                    sessionStorage.setItem('temp_admin_pass', password);
                     // La pantalla se oculta automticamente por onAuthStateChanged
                     // No limpiamos el formulario para evitar parpadeos visuales
                 })
@@ -320,7 +322,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             window.auth.createUserWithEmailAndPassword(email, password)
                 .then((userCredential) => {
-                    sessionStorage.setItem('temp_admin_pass', password);
                     // La pantalla se oculta automticamente por onAuthStateChanged
                     // No limpiamos el formulario para evitar parpadeos visuales
                 })
