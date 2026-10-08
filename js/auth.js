@@ -303,9 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isLoginMode) {
             window.auth.signInWithEmailAndPassword(email, password)
                 .then((userCredential) => {
-                    const config = StorageManager.getConfig();
-                    config.adminPassword = password;
-                    StorageManager.saveConfig(config);
+                    sessionStorage.setItem('temp_admin_pass', password);
                     // La pantalla se oculta automticamente por onAuthStateChanged
                     // No limpiamos el formulario para evitar parpadeos visuales
                 })
@@ -322,9 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             window.auth.createUserWithEmailAndPassword(email, password)
                 .then((userCredential) => {
-                    const config = StorageManager.getConfig();
-                    config.adminPassword = password;
-                    StorageManager.saveConfig(config);
+                    sessionStorage.setItem('temp_admin_pass', password);
                     // La pantalla se oculta automticamente por onAuthStateChanged
                     // No limpiamos el formulario para evitar parpadeos visuales
                 })
