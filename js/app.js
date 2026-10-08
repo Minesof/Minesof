@@ -4730,27 +4730,48 @@ window.moveAdminItem = function(type, id, direction) {
     }
 
     if (elements.saveAdminPasswordBtn) {
-        elements.saveAdminPasswordBtn.addEventListener('click', () => {
+        elements.saveAdminPasswordBtn.addEventListener('click', async () => {
             const newPass = elements.newAdminPassword.value;
             const confirmPass = elements.confirmAdminPassword.value;
 
-            if (newPass.length < 4) {
-                showNotification('La contraseÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±a debe tener al menos 4 caracteres', 'error');
+            if (newPass.length < 6) {
+                showNotification('La contrase\u00f1a de la cuenta debe tener al menos 6 caracteres', 'error');
                 return;
             }
 
             if (newPass !== confirmPass) {
-                showNotification('Las contraseÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±as no coinciden', 'error');
+                showNotification('Las contrase\u00f1as no coinciden', 'error');
                 return;
             }
 
-            const config = StorageManager.getConfig();
-            config.adminPassword = newPass;
-            StorageManager.saveConfig(config);
+            elements.saveAdminPasswordBtn.innerHTML = '<i data-lucide="loader-2" class="animate-spin"></i> Actualizando...';
+            elements.saveAdminPasswordBtn.disabled = true;
+            if (typeof lucide !== 'undefined') lucide.createIcons();
 
-            showNotification('ContraseÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±a actualizada correctamente');
-            elements.newAdminPassword.value = '';
-            elements.confirmAdminPassword.value = '';
+            try {
+                if (typeof firebase !== 'undefined' && window.auth && window.auth.currentUser) {
+                    await window.auth.currentUser.updatePassword(newPass);
+                }
+                
+                const config = StorageManager.getConfig();
+                config.adminPassword = newPass;
+                StorageManager.saveConfig(config);
+
+                showNotification('Contrase\u00f1a de ingreso actualizada correctamente');
+                elements.newAdminPassword.value = '';
+                elements.confirmAdminPassword.value = '';
+            } catch (err) {
+                if (err.code === 'auth/requires-recent-login') {
+                    showNotification('Por seguridad, cierra sesi\u00f3n y vuelve a entrar para cambiarla', 'error');
+                } else {
+                    console.error(err);
+                    showNotification('Error al actualizar: ' + err.message, 'error');
+                }
+            } finally {
+                elements.saveAdminPasswordBtn.innerHTML = '<i data-lucide="save"></i> Actualizar Contrase\u00f1a';
+                elements.saveAdminPasswordBtn.disabled = false;
+                if (typeof lucide !== 'undefined') lucide.createIcons();
+            }
         });
     }
 
