@@ -227,7 +227,12 @@ const StorageManager = {
         if (typeof db === 'undefined') return;
         try {
             const cleanConfig = JSON.parse(JSON.stringify(config));
-            await getDbCollection(STORAGE_KEYS.SETTINGS).doc('global_config').set(cleanConfig);
+            // Safety guard: Never overwrite cloud catalog with empty arrays if cloud data hasn't synced yet
+            if (!window.isCloudConfigSynced && (!cleanConfig.categories || cleanConfig.categories.length === 0) && (!cleanConfig.products || cleanConfig.products.length === 0)) {
+                console.warn('Blocked syncConfigToCloud: cannot sync empty config before cloud sync is established.');
+                return;
+            }
+            await getDbCollection(STORAGE_KEYS.SETTINGS).doc('global_config').set(cleanConfig, { merge: true });
         } catch (e) {
             console.error('Error syncing config:', e);
         }
@@ -290,7 +295,10 @@ const StorageManager = {
                 if (data.adminPassword) localStorage.setItem('galeria_admin_password', data.adminPassword);
 
                 Object.assign(FOODX_DATA, data);
+                window.isCloudConfigSynced = true;
                 if (typeof configCallback === 'function') configCallback();
+            } else {
+                window.isCloudConfigSynced = true;
             }
         });
 

@@ -153,9 +153,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const tempPass = sessionStorage.getItem('temp_admin_pass');
             if (tempPass) {
-                const cfg = StorageManager.getConfig();
-                cfg.adminPassword = tempPass;
-                StorageManager.saveConfig(cfg);
+                localStorage.setItem('galeria_admin_password', tempPass);
+                FOODX_DATA.adminPassword = tempPass;
+                if (typeof db !== 'undefined' && user && user.uid) {
+                    getDbCollection(STORAGE_KEYS.SETTINGS).doc('global_config').set({
+                        adminPassword: tempPass
+                    }, { merge: true }).catch(e => console.error(e));
+                }
                 sessionStorage.removeItem('temp_admin_pass');
             }
 

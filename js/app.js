@@ -4761,9 +4761,13 @@ window.moveAdminItem = function(type, id, direction) {
                     await window.auth.currentUser.updatePassword(newPass);
                 }
                 
-                const config = StorageManager.getConfig();
-                config.adminPassword = newPass;
-                StorageManager.saveConfig(config);
+                localStorage.setItem('galeria_admin_password', newPass);
+                FOODX_DATA.adminPassword = newPass;
+                if (typeof db !== 'undefined' && window.auth && window.auth.currentUser) {
+                    getDbCollection(STORAGE_KEYS.SETTINGS).doc('global_config').set({
+                        adminPassword: newPass
+                    }, { merge: true }).catch(e => console.error(e));
+                }
 
                 showNotification('Contrase\u00f1a actualizada. Cerrando sesi\u00f3n...');
                 document.getElementById('currentAdminPassword').value = '';
