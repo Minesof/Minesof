@@ -86,8 +86,15 @@ const StorageManager = {
             categories = null;
         }
 
-        const parsedCategories = categories ? JSON.parse(categories) : FOODX_DATA.categories;
-        const parsedProducts = products ? JSON.parse(products) : (FOODX_DATA.products || []);
+        const parsedCategories = categories ? JSON.parse(categories) : (FOODX_DATA.categories || []);
+        let parsedProducts = products ? JSON.parse(products) : (FOODX_DATA.products || []);
+
+        if (parsedCategories && parsedCategories.length > 0 && Array.isArray(parsedProducts)) {
+            const validIds = new Set(parsedCategories.map(c => c.id));
+            parsedProducts = parsedProducts.filter(p => p.category && validIds.has(p.category));
+        } else if ((!parsedCategories || parsedCategories.length === 0) && Array.isArray(parsedProducts)) {
+            parsedProducts = [];
+        }
 
         const config = {
             businessName: localStorage.getItem(PREFIX + 'businessName') || FOODX_DATA.businessName,
@@ -144,6 +151,13 @@ const StorageManager = {
             const migrated = {};
             config.categories.forEach(c => migrated[c.id] = [...config.observations]);
             config.observations = migrated;
+        }
+
+        if (config.categories && config.categories.length > 0 && Array.isArray(config.products)) {
+            const validIds = new Set(config.categories.map(c => c.id));
+            config.products = config.products.filter(p => p.category && validIds.has(p.category));
+        } else if ((!config.categories || config.categories.length === 0) && Array.isArray(config.products)) {
+            config.products = [];
         }
 
         if (config.categories) localStorage.setItem(STORAGE_KEYS.CATEGORIES, JSON.stringify(config.categories));

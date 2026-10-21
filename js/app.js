@@ -903,24 +903,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Get Active Products from Config or Fallback
     function getActiveProductsList(config) {
+        if (!config.categories || config.categories.length === 0) {
+            return [];
+        }
+        const validCategoryIds = new Set(config.categories.map(c => c.id));
         if (config.products && config.products.length > 0) {
-            return config.products.filter(p => p.active !== false);
+            return config.products.filter(p => p.active !== false && validCategoryIds.has(p.category));
         }
         const list = [];
         Object.keys(config.flavors || {}).forEach(catId => {
-            (config.flavors[catId] || []).forEach(f => {
-                if (f.active !== false) {
-                    list.push({
-                        id: f.id,
-                        name: f.name,
-                        price: f.price || 0,
-                        category: catId,
-                        icon: 'ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢',
-                        active: true,
-                        prodType: f.prodType || 'fixed'
-                    });
-                }
-            });
+            if (validCategoryIds.has(catId)) {
+                (config.flavors[catId] || []).forEach(f => {
+                    if (f.active !== false) {
+                        list.push({
+                            id: f.id,
+                            name: f.name,
+                            price: f.price || 0,
+                            category: catId,
+                            icon: '',
+                            active: true,
+                            prodType: f.prodType || 'fixed'
+                        });
+                    }
+                });
+            }
         });
         return list;
     }
@@ -1361,9 +1367,9 @@ function renderSplitUI() {
     
     const groups = {};
     products.forEach(p => {
-        const catId = p.category || 'otros';
-        if(!groups[catId]) groups[catId] = [];
-        groups[catId].push(p);
+        if (!p.category) return;
+        if (!groups[p.category]) groups[p.category] = [];
+        groups[p.category].push(p);
     });
     
     let html = '';
@@ -1449,15 +1455,9 @@ function renderSplitUI() {
         return colHtml;
     };
 
-    config.categories.forEach(cat => {
+    (config.categories || []).forEach(cat => {
         html += renderColumn(cat.id, cat.name);
-        delete groups[cat.id];
     });
-    
-    const remaining = Object.keys(groups);
-    if (remaining.length > 0) {
-        html += renderColumn('otros', 'Otros');
-    }
 
     if (html === '') {
         html = `
